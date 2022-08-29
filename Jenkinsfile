@@ -5,7 +5,7 @@ pipeline {
         BUILD_TAG = "v1.0.${BUILD_NUMBER}"
         CONTAINER_NAME = "saigneur-candidat"
         CONTAINER_PORT = 9003
-        IMAGE_DEFAULT_DIR = "/usr/local/"
+        IMAGE_DEFAULT_DIR = "/usr/local/microservice/"
         VOLUME_NAME = "vmfirca-images"
     }
     stages {
