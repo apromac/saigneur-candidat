@@ -1,5 +1,6 @@
 pipeline {
-    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    #agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    agent any
     environment {
         DOCKER_IMAGE_NAME = "saigneur-candidat"
         BUILD_TAG = "v1.0.${BUILD_NUMBER}"
