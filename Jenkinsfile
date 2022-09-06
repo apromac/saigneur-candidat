@@ -12,7 +12,7 @@ pipeline {
         stage('Compilation du code source') {
             steps {
                 echo 'Compilation du code source ...'
-                sh 'mvn --version'
+                sh 'mvn -version'
                 sh 'mvn clean install -DskipTests'
             }
         }
