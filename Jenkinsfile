@@ -10,7 +10,7 @@ pipeline {
         VOLUME_NAME = "postgres_data"
     }
     stages {
-        stage('Compilation du code source') {
+        stage('Build') {
             steps {
                 echo 'Compilation du code source ...'
                 sh '/usr/local/maven386/bin/mvn -version'
