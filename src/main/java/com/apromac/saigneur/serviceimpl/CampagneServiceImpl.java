@@ -1,6 +1,7 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.entity.CampagneEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.CampagneRepository;
 import com.apromac.saigneur.service.CampagneService;
@@ -19,7 +20,7 @@ public class CampagneServiceImpl implements CampagneService {
     /**
      *
      * @param campagneID
-     * @return
+     * @return campagneOptional
      */
     @Override
     public Optional<CampagneEntity> findByCampagneID(Long campagneID) {
@@ -33,14 +34,14 @@ public class CampagneServiceImpl implements CampagneService {
 
     /**
      *
-     * @return
+     * @return campagnes, list of all campagne
      */
     @Override
     public List<CampagneEntity> findAllCampagne() {
         List<CampagneEntity> campagnes = campagneRepository.findAll();
 
         if (campagnes.isEmpty())
-            throw new NotFoundException("Désolé, aucune campagne disponible");
+            throw new NoContentException("Désolé, aucune campagne disponible");
 
         return campagnes;
     }

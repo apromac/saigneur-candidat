@@ -35,4 +35,12 @@ public class CandidatController {
         return new ResponseEntity<>(candidats, HttpStatus.OK);
     }
 
+//    @ApiOperation(value = "Méthode permettant de récupérer la liste des candidats en rapport à une campagne (ID de la campagne est passé en parametre)")
+//    @GetMapping(value = "/candidat/findByCampagneID/{campagneID}")
+//    public ResponseEntity<List<CandidatEntity>> recupererCandidatsParCampagne(@PathVariable long campagneID) {
+//        Optional<CandidatEntity> candidatOptional = candidatService.findByCandidatID(candidatID);
+//
+//        return new ResponseEntity<>(candidatOptional.get(), HttpStatus.OK);
+//    }
+
 }

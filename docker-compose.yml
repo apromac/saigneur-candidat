@@ -2,9 +2,11 @@ version: '3.7'
 services:
   docker-postgres:
     image: postgis/postgis:14-3.2
-    container_name: saigneur-database
+    container_name: msaigneur-database
+    ports:
+      - 5432:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data        # volume de la base de données
     restart: always
     environment:
       POSTGRES_PASSWORD: adminpostgres
@@ -12,11 +14,11 @@ services:
   docker-candidat:
     depends_on:
       - docker-postgres
-    container_name: saigneur-candidat
+    container_name: msaigneur-candidat
     build:
       dockerfile: Dockerfile
     ports:
-      - "9003:9003"   #le premier port est le port externe et le second port est le port interne
+      - "9003:9003"                                   # le premier port est le port externe et le second port est le port interne
     restart: always
     environment:
       CANDIDAT_DB_HOST: docker-postgres:5432
