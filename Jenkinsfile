@@ -13,8 +13,8 @@ pipeline {
         stage('Compilation du code source') {
             steps {
                 echo 'Compilation du code source ...'
-                sh 'mvn -version'
-                sh 'mvn clean install -DskipTests'
+                sh '/usr/local/maven386/bin/mvn -version'
+                sh '/usr/local/maven386/bin/mvn clean install -DskipTests'
             }
         }
         /*
