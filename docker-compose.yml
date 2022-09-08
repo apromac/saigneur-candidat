@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9003:9003"
+    restart: always
     depends_on:
       - docker-saigneur-postgres
     environment:
