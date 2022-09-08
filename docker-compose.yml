@@ -13,12 +13,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://78.138.45.243:5432/saigneurcandidatdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: adminpostgres
-    networks:
-      - saigneur-network
+#    networks:
+#      - saigneur-network
 
-networks:
-  saigneur-network:
-    external: true
+#networks:
+#  saigneur-network:
+#    external: true
 
 #      DB_HOST: docker-saigneur-postgres
 #      DB_PORT: 5432
