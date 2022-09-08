@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9003:9003"
+    networks:
+      - saigneur-network
 
 
 
