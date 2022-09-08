@@ -1,30 +1,42 @@
-version: '3.7'
+version: "3.9"
 services:
-  docker-postgres:
-    image: postgis/postgis:14-3.2
-    container_name: msaigneur-database
-    ports:
-      - 5432:5432
-    volumes:
-      - postgres_data:/var/lib/postgresql/data        # volume de la base de données
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: adminpostgres
-
-  docker-candidat:
-    depends_on:
-      - docker-postgres
+  docker-saigneur-candidat:
+    image: saigneur-candidat
     container_name: msaigneur-candidat
     build:
       dockerfile: Dockerfile
     ports:
-      - "9003:9003"                                   # le premier port est le port externe et le second port est le port interne
-    restart: always
-    environment:
-      CANDIDAT_DB_HOST: docker-postgres:5432
-      CANDIDAT_DB_USER: postgres
-      CANDIDAT_DB_PASSWORD: adminpostgres
-      CANDIDAT_DB_NAME: saigneurcandidatdb
+      - "9003:9003"
 
-volumes:
-  postgres_data: {}
+
+
+#version: '3.7'
+#services:
+#  docker-postgres:
+#    image: postgis/postgis:14-3.2
+#    container_name: msaigneur-database
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data        # volume de la base de données
+#    restart: always
+#    environment:
+#      POSTGRES_PASSWORD: adminpostgres
+#
+#  docker-candidat:
+#    depends_on:
+#      - docker-postgres
+#    container_name: msaigneur-candidat
+#    build:
+#      dockerfile: Dockerfile
+#    ports:
+#      - "9003:9003"                                   # le premier port est le port externe et le second port est le port interne
+#    restart: always
+#    environment:
+#      CANDIDAT_DB_HOST: docker-postgres:5432
+#      CANDIDAT_DB_USER: postgres
+#      CANDIDAT_DB_PASSWORD: adminpostgres
+#      CANDIDAT_DB_NAME: saigneurcandidatdb
+#
+#volumes:
+#  postgres_data: {}
