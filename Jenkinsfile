@@ -20,13 +20,8 @@ pipeline {
 
         stage("Build and start container") {
             steps {
-                echo 'Compilation du docker-compose et construction de l image docker à partir du Dockerfile ...'
                 sh 'docker compose build'
-
-                echo 'Lancement des images contenuent dans le docker-compose (containers)...'
                 sh 'docker compose up -d'
-
-                echo 'Affichage des containers actifs ...'
                 sh 'docker ps'
             }
         }
