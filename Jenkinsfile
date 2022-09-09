@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('----------[ Build ]----------') {
+        stage('Build') {
             steps {
                 echo '--------------------< Compilation du code source >--------------------'
                 sh 'mvn -B -DskipTests clean package'
@@ -18,7 +18,7 @@ pipeline {
             }
         }
 
-        stage('----------[ Build and start container ]----------') {
+        stage('Build and start container') {
             steps {
                 echo '--------------------< Compilation du docker-compose >--------------------'
                 sh 'docker compose build'
