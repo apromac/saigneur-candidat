@@ -10,53 +10,14 @@ services:
     restart: always
     depends_on:
       - docker-saigneur-postgres
+      - docker-saigneur-discovery
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://docker-saigneur-postgres:5432/saigneurcandidatdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: adminpostgres
-#    networks:
-#      - saigneur-network
+    networks:
+      - saigneur-network
 
-#networks:
-#  saigneur-network:
-#    external: true
-
-#      DB_HOST: docker-saigneur-postgres
-#      DB_PORT: 5432
-#      DB_USER: postgres
-#      DB_PASSWORD: adminpostgres
-#      DB_NAME: saigneurcandidatdb
-
-
-
-
-#version: '3.7'
-#services:
-#  docker-postgres:
-#    image: postgis/postgis:14-3.2
-#    container_name: msaigneur-database
-#    ports:
-#      - 5432:5432
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data        # volume de la base de données
-#    restart: always
-#    environment:
-#      POSTGRES_PASSWORD: adminpostgres
-#
-#  docker-candidat:
-#    depends_on:
-#      - docker-postgres
-#    container_name: msaigneur-candidat
-#    build:
-#      dockerfile: Dockerfile
-#    ports:
-#      - "9003:9003"                                   # le premier port est le port externe et le second port est le port interne
-#    restart: always
-#    environment:
-#      CANDIDAT_DB_HOST: docker-postgres:5432
-#      CANDIDAT_DB_USER: postgres
-#      CANDIDAT_DB_PASSWORD: adminpostgres
-#      CANDIDAT_DB_NAME: saigneurcandidatdb
-#
-#volumes:
-#  postgres_data: {}
+networks:
+  saigneur-network:
+    external: true
