@@ -32,7 +32,7 @@ public class CampagneController {
     public ResponseEntity<CampagneEntity> sauvegarderUneCampagne(@RequestBody CampagneEntity campagne) {
         CampagneEntity campagneSave = campagneService.saveCampagne(campagne);
 
-        return new ResponseEntity<>(campagneSave, HttpStatus.OK);
+        return new ResponseEntity<>(campagneSave, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des campagnes")

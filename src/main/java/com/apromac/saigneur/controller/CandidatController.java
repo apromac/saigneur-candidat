@@ -56,7 +56,7 @@ public class CandidatController {
     public ResponseEntity<CandidatEntity> sauvegarderUnCandidat(@RequestBody CandidatEntity candidat) {
         CandidatEntity candidatSave = candidatService.saveCandidat(candidat);
 
-        return new ResponseEntity<>(candidatSave, HttpStatus.OK);
+        return new ResponseEntity<>(candidatSave, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Méthode permettant de récupérer tous candidats, quelques soit la campagne")
