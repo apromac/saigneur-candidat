@@ -22,13 +22,26 @@ public class CandidatServiceImpl implements CandidatService {
      * @return
      */
     @Override
-    public Optional<CandidatEntity> findByCandidatID(Long candidatID) {
+    public CandidatEntity findByCandidatID(Long candidatID) {
         Optional<CandidatEntity> candidatOptional = candidatRepository.findById(candidatID);
-
         if (!candidatOptional.isPresent())
             throw new NotFoundException("Désolé, la campagne désignée n'existe pas");
 
-        return candidatOptional;
+        return candidatOptional.get();
+    }
+
+    /**
+     *
+     * @param candidat
+     * @return
+     */
+    @Override
+    public CandidatEntity saveCandidat(CandidatEntity candidat) {
+        CandidatEntity candidatSave = candidatRepository.save(candidat);
+        if (candidatSave == null)
+            throw new RuntimeException("Une erreur est survenu lors de la sauvegarde du candidat.");
+
+        return candidatSave;
     }
 
     /**
@@ -38,7 +51,6 @@ public class CandidatServiceImpl implements CandidatService {
     @Override
     public List<CandidatEntity> findAllCandidat() {
         List<CandidatEntity> candidats = candidatRepository.findAll();
-
         if (candidats.isEmpty())
             throw new NotFoundException("Désolé, aucun candidat disponible");
 

@@ -17,19 +17,34 @@ public class CampagneServiceImpl implements CampagneService {
     @Autowired
     private CampagneRepository campagneRepository;
 
+
+
     /**
      *
      * @param campagneID
-     * @return campagneOptional
+     * @return
      */
     @Override
-    public Optional<CampagneEntity> findByCampagneID(Long campagneID) {
+    public CampagneEntity findByCampagneID(Long campagneID) {
         Optional<CampagneEntity> campagneOptional = campagneRepository.findById(campagneID);
-
         if (!campagneOptional.isPresent())
             throw new NotFoundException("Désolé, la campagne désignée n'existe pas");
 
-        return campagneOptional;
+        return campagneOptional.get();
+    }
+
+    /**
+     *
+     * @param campagne
+     * @return
+     */
+    @Override
+    public CampagneEntity saveCampagne(CampagneEntity campagne) {
+        CampagneEntity campagneSave = campagneRepository.save(campagne);
+        if (campagneSave == null)
+            throw new RuntimeException("Une erreur est survenu lors de la sauvegarde de la campagne.");
+
+        return campagneSave;
     }
 
     /**
@@ -39,7 +54,6 @@ public class CampagneServiceImpl implements CampagneService {
     @Override
     public List<CampagneEntity> findAllCampagne() {
         List<CampagneEntity> campagnes = campagneRepository.findAll();
-
         if (campagnes.isEmpty())
             throw new NoContentException("Désolé, aucune campagne disponible");
 
@@ -47,3 +61,4 @@ public class CampagneServiceImpl implements CampagneService {
     }
 
 }
+

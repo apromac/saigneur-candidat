@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -22,9 +21,9 @@ public class IdentifierController {
     @ApiOperation(value = "Méthode permettant de récupérer une identification grace à son ID")
     @GetMapping(value = "/identifier/findByIdentifierID/{identifierID}")
     public ResponseEntity<IdentifierEntity> recupererUnIdentifier(@PathVariable String identifierID) {
-        Optional<IdentifierEntity> identifierOptional = identifierService.findByIdentifierID(identifierID);
+        IdentifierEntity byIdentifierID = identifierService.findByIdentifierID(identifierID);
 
-        return new ResponseEntity<>(identifierOptional.get(), HttpStatus.OK);
+        return new ResponseEntity<>(byIdentifierID, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des identifications grace à l'ID de la campagne")

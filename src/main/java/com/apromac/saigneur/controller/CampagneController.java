@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -19,12 +18,21 @@ public class CampagneController {
     @Autowired
     private CampagneService campagneService;
 
+
     @ApiOperation(value = "Méthode permettant de récupérer une campagne grace à son ID")
     @GetMapping(value = "/campagne/findByCampagneID/{campagneID}")
     public ResponseEntity<CampagneEntity> recupererUneCampagne(@PathVariable long campagneID) {
-        Optional<CampagneEntity> campagneOptional = campagneService.findByCampagneID(campagneID);
+        CampagneEntity campagne = campagneService.findByCampagneID(campagneID);
 
-        return new ResponseEntity<>(campagneOptional.get(), HttpStatus.OK);
+        return new ResponseEntity<>(campagne, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Méthode permettant de sauvegarder une campagne")
+    @PostMapping(value = "/campagne/saveCampagne")
+    public ResponseEntity<CampagneEntity> sauvegarderUneCampagne(@RequestBody CampagneEntity campagne) {
+        CampagneEntity campagneSave = campagneService.saveCampagne(campagne);
+
+        return new ResponseEntity<>(campagneSave, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des campagnes")
