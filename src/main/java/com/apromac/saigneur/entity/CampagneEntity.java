@@ -18,4 +18,7 @@ public class CampagneEntity {
     @Column(name = "lib_campagne", nullable = false)
     private String libelleCampagne;
 
+    @Column(name = "active_campagne", nullable = false)
+    private Boolean activeCampagne;
+
 }
