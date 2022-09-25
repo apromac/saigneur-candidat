@@ -88,7 +88,7 @@ public class InscriptionEntity {
 
 
 
-    @Column(name = "enActivite_act", nullable = false)
+    @Column(name = "enactivite_act", nullable = false)
     private Boolean isActivite;
 
     @Column(name = "nplanteur_act", nullable = true)
