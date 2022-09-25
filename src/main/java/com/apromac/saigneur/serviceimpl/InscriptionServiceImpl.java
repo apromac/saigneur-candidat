@@ -40,13 +40,24 @@ public class InscriptionServiceImpl implements InscriptionService {
     public InscriptionEntity saveInscriptionCampagneCandidat(CampagneEntity campagneEntity,
                                                              CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO) {
+
+
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
-//        saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
+
+        // on set la campagne dans l'objet inscription
         saveInscriptionEntity.setCampagne(campagneEntity);
-        saveInscriptionEntity.setCandidat(candidatEntity);
+
+        // on enregistre le candidat puis on set la valeur de l'objet dans celui de inscription
+        CandidatEntity saveCandidat = candidatRepository.save(candidatEntity);
+        if (saveCandidat == null)
+            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
+
+        saveInscriptionEntity.setCandidat(saveCandidat);
+
+//        saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
         saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
-        saveInscriptionEntity.setAbreviationDistrictInscription(inscriptionDTO.getAbreviationDistrictInscription());
+//        saveInscriptionEntity.setAbreviationDistrictInscription("");
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
 
         saveInscriptionEntity.setIsFormer(inscriptionDTO.getIsFormer());

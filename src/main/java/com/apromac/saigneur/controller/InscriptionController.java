@@ -38,13 +38,9 @@ public class InscriptionController {
         if (campagneTrouver == null)
             throw new RuntimeException("Désolé, aucune campagne trouvé avec cet ID");
 
-        CandidatEntity saveCandidat = candidatService.saveCandidat(candidatCampagneRequest.getCandidatEntity());
-        if (saveCandidat == null)
-            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
-
         InscriptionEntity saveInscription = inscriptionService.saveInscriptionCampagneCandidat(
                 campagneTrouver,
-                saveCandidat,
+                candidatCampagneRequest.getCandidatEntity(),
                 candidatCampagneRequest.getInscriptionDTO());
         if (saveInscription == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à l'insnscription du candidat");
