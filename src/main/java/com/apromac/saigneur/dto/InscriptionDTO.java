@@ -8,16 +8,15 @@ import java.util.Date;
 @Getter
 @Setter
 public class InscriptionDTO {
-    private Long inscriptionID;
+//    private Long inscriptionID;
     private String districtInscription;
     private String abreviationDistrictInscription;
     private String zoneInscription;
     private Date dateInscription;
 
 
-
-    private String isFormer;
-    private Boolean structureFormation;
+    private Boolean isFormer;
+    private String structureFormation;
     private Date anneeFormation;
     private Boolean isAppliquer;
     private String typeFormation;
@@ -27,7 +26,7 @@ public class InscriptionDTO {
     private String matriculePlanteurFormation;
     private String lieuPlanteurFormation;
     private Date anneePlanteurFormation;
-    private String contactPlanteurFormation;
+    private Integer contactPlanteurFormation;
 
 
     private Boolean propositionEmploi;
@@ -35,16 +34,17 @@ public class InscriptionDTO {
     private String matriculePlanteurEmploi;
     private String lieuPlanteurEmploi;
     private Date anneePlanteurEmploi;
-    private String contactPlanteurEmploi;
+    private Integer contactPlanteurEmploi;
 
 
     private Boolean isActivite;
     private String nomPlanteurActivite;
     private String matriculePlanteurActivite;
     private String lieuPlanteurActivite;
-    private Boolean anneePlanteurActivite;
-    private String contactPlanteurActivite;
+    private Date anneePlanteurActivite;
+    private Integer contactPlanteurActivite;
 
 
     private String motivation;
+
 }

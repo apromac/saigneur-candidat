@@ -41,7 +41,7 @@ public class InscriptionServiceImpl implements InscriptionService {
                                                              CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO) {
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
-//        saveInscriptionEntity.setInscriptionID("");
+//        saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
         saveInscriptionEntity.setCampagne(campagneEntity);
         saveInscriptionEntity.setCandidat(candidatEntity);
         saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());

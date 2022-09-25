@@ -31,10 +31,10 @@ public class InscriptionEntity {
 
 
     @Column(name = "estFormer_form", nullable = false)
-    private String isFormer;
+    private Boolean isFormer;
 
     @Column(name = "structure_form", nullable = true)
-    private Boolean structureFormation;
+    private String structureFormation;
 
     @Column(name = "annee_form", nullable = true)
     private Date anneeFormation;
@@ -64,7 +64,7 @@ public class InscriptionEntity {
     private Date anneePlanteurFormation;
 
     @Column(name = "cplanteur_form", nullable = true)
-    private String contactPlanteurFormation;
+    private Integer contactPlanteurFormation;
 
 
 
@@ -84,7 +84,7 @@ public class InscriptionEntity {
     private Date anneePlanteurEmploi;
 
     @Column(name = "cplanteur_emp", nullable = true)
-    private String contactPlanteurEmploi;
+    private Integer contactPlanteurEmploi;
 
 
 
@@ -101,10 +101,10 @@ public class InscriptionEntity {
     private String lieuPlanteurActivite;
 
     @Column(name = "aplanteur_act", nullable = true)
-    private Boolean anneePlanteurActivite;
+    private Date anneePlanteurActivite;
 
     @Column(name = "cplanteur_act", nullable = true)
-    private String contactPlanteurActivite;
+    private Integer contactPlanteurActivite;
 
 
 
