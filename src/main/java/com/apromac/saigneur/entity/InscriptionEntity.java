@@ -30,6 +30,86 @@ public class InscriptionEntity {
 
 
 
+    @Column(name = "estFormer_form", nullable = false)
+    private String isFormer;
+
+    @Column(name = "structure_form", nullable = true)
+    private Boolean structureFormation;
+
+    @Column(name = "annee_form", nullable = true)
+    private Date anneeFormation;
+
+    @Column(name = "appliquer_form", nullable = false)
+    private Boolean isAppliquer;
+
+    @Column(name = "tformation_form", nullable = true)
+    private String typeFormation;
+
+    @Column(name = "lformation_form", nullable = true)
+    private String lieuFormation;
+
+    @Column(name = "tsaigne_form", nullable = true)
+    private String typeSaigneFormation;
+
+    @Column(name = "nplanteur_form", nullable = true)
+    private String nomPlanteurFormation;
+
+    @Column(name = "mplanteur_form", nullable = true)
+    private String matriculePlanteurFormation;
+
+    @Column(name = "lplanteur_form", nullable = true)
+    private String lieuPlanteurFormation;
+
+    @Column(name = "aplanteur_form", nullable = false)
+    private Date anneePlanteurFormation;
+
+    @Column(name = "cplanteur_form", nullable = false)
+    private String contactPlanteurFormation;
+
+
+
+    @Column(name = "proposition_emp", nullable = false)
+    private Boolean propositionEmploi;
+
+    @Column(name = "nplanteur_emp", nullable = true)
+    private String nomPlanteurEmploi;
+
+    @Column(name = "mplanteur_emp", nullable = true)
+    private String matriculePlanteurEmploi;
+
+    @Column(name = "aplanteur_emp", nullable = true)
+    private Date anneePlanteurEmploi;
+
+    @Column(name = "cplanteur_emp", nullable = true)
+    private String contactPlanteurEmploi;
+
+
+
+    @Column(name = "enActivite_act", nullable = false)
+    private Boolean isActivite;
+
+    @Column(name = "nplanteur_act", nullable = true)
+    private String nomPlanteurActivite;
+
+    @Column(name = "mplanteur_act", nullable = true)
+    private String matriculePlanteurActivite;
+
+    @Column(name = "lplanteur_act", nullable = true)
+    private String lieuPlanteurActivite;
+
+    @Column(name = "aplanteur_act", nullable = true)
+    private Boolean anneePlanteurActivite;
+
+    @Column(name = "cplanteur_act", nullable = true)
+    private String contactPlanteurActivite;
+
+
+
+    @Column(name = "desire_motiv", nullable = true)
+    private String motivation;
+
+
+
     @ManyToOne
     @JoinColumn(name = "code_candidat", nullable = false)
     private CandidatEntity candidat;

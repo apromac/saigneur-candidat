@@ -41,13 +41,41 @@ public class InscriptionServiceImpl implements InscriptionService {
                                                              CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO) {
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
+//        saveInscriptionEntity.setInscriptionID("");
         saveInscriptionEntity.setCampagne(campagneEntity);
         saveInscriptionEntity.setCandidat(candidatEntity);
         saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
         saveInscriptionEntity.setAbreviationDistrictInscription(inscriptionDTO.getAbreviationDistrictInscription());
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
-//        saveInscriptionEntity.setInscriptionID("");
+
+        saveInscriptionEntity.setIsFormer(inscriptionDTO.getIsFormer());
+        saveInscriptionEntity.setStructureFormation(inscriptionDTO.getStructureFormation());
+        saveInscriptionEntity.setAnneeFormation(inscriptionDTO.getAnneeFormation());
+        saveInscriptionEntity.setIsAppliquer(inscriptionDTO.getIsAppliquer());
+        saveInscriptionEntity.setTypeFormation(inscriptionDTO.getTypeFormation());
+        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
+        saveInscriptionEntity.setTypeSaigneFormation(inscriptionDTO.getTypeSaigneFormation());
+        saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation());
+        saveInscriptionEntity.setMatriculePlanteurFormation(inscriptionDTO.getMatriculePlanteurFormation());
+        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
+        saveInscriptionEntity.setAnneePlanteurFormation(inscriptionDTO.getAnneePlanteurFormation());
+        saveInscriptionEntity.setContactPlanteurFormation(inscriptionDTO.getContactPlanteurFormation());
+
+        saveInscriptionEntity.setPropositionEmploi(inscriptionDTO.getPropositionEmploi());
+        saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi());
+        saveInscriptionEntity.setMatriculePlanteurEmploi(inscriptionDTO.getMatriculePlanteurEmploi());
+        saveInscriptionEntity.setAnneePlanteurEmploi(inscriptionDTO.getAnneePlanteurEmploi());
+        saveInscriptionEntity.setContactPlanteurEmploi(inscriptionDTO.getContactPlanteurEmploi());
+
+        saveInscriptionEntity.setIsActivite(inscriptionDTO.getIsActivite());
+        saveInscriptionEntity.setNomPlanteurActivite(inscriptionDTO.getNomPlanteurActivite());
+        saveInscriptionEntity.setMatriculePlanteurActivite(inscriptionDTO.getMatriculePlanteurActivite());
+        saveInscriptionEntity.setLieuPlanteurActivite(inscriptionDTO.getLieuPlanteurActivite());
+        saveInscriptionEntity.setAnneePlanteurActivite(inscriptionDTO.getAnneePlanteurActivite());
+        saveInscriptionEntity.setContactPlanteurActivite(inscriptionDTO.getContactPlanteurActivite());
+
+        saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
 
         InscriptionEntity saveInscription = inscriptionRepository.save(saveInscriptionEntity);
         if (saveInscription == null)

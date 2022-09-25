@@ -34,13 +34,13 @@ public class LocaliteCandidatController {
         return new ResponseEntity<>(localiteCandidat, HttpStatus.OK);
     }
 
-//    @ApiOperation(value = "Méthode permettant de récupérer la localite du candidat grace à l'ID du poste du TDH")
-//    @GetMapping(value = "/localite/findByPosteTDH/{posteID}")
-//    public ResponseEntity<OccuperBean> recupererLocaliteCandidatParPosteTDH(@PathVariable Long posteID) {
-//        OccuperBean occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHOccuper(posteID);
-//        if (occuperBeans == null)
-//            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
-//
-//        return new ResponseEntity<>(occuperBeans, HttpStatus.OK);
-//    }
+    @ApiOperation(value = "Méthode permettant de récupérer la localite du candidat grace à l'ID du poste du TDH")
+    @GetMapping(value = "/localite/occuper/findByPosteTDH/{posteID}")
+    public ResponseEntity<OccuperBean> recupererOccuperUtilisateur(@PathVariable Long posteID) {
+        OccuperBean occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHOccuper(posteID);
+        if (occuperBeans == null)
+            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
+
+        return new ResponseEntity<>(occuperBeans, HttpStatus.OK);
+    }
 }
