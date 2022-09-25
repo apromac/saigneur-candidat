@@ -19,13 +19,13 @@ public class InscriptionEntity {
     @Column(name = "dist_inscri", nullable = false)
     private String districtInscription;
 
-    @Column(name = "abr_dist_inscri", nullable = false)
+    @Column(name = "abr_dist_inscri", nullable = true)
     private String abreviationDistrictInscription;
 
     @Column(name = "zone_inscri", nullable = false)
     private String zoneInscription;
 
-    @Column(name = "date_inscri", nullable = false)
+    @Column(name = "date_inscri", nullable = true)
     private Date dateInscription;
 
 
@@ -60,10 +60,10 @@ public class InscriptionEntity {
     @Column(name = "lplanteur_form", nullable = true)
     private String lieuPlanteurFormation;
 
-    @Column(name = "aplanteur_form", nullable = false)
+    @Column(name = "aplanteur_form", nullable = true)
     private Date anneePlanteurFormation;
 
-    @Column(name = "cplanteur_form", nullable = false)
+    @Column(name = "cplanteur_form", nullable = true)
     private String contactPlanteurFormation;
 
 
