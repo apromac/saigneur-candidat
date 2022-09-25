@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients("com.apromac.saigneur.proxy")
+@EnableFeignClients("com.apromac.saigneur")
 public class SaigneurCandidatApplication {
 
 	public static void main(String[] args) {
