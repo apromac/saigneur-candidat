@@ -77,6 +77,9 @@ public class InscriptionEntity {
     @Column(name = "mplanteur_emp", nullable = true)
     private String matriculePlanteurEmploi;
 
+    @Column(name = "lplanteur_emp", nullable = true)
+    private String lieuPlanteurEmploi;
+
     @Column(name = "aplanteur_emp", nullable = true)
     private Date anneePlanteurEmploi;
 

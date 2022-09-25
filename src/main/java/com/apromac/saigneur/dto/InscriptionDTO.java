@@ -33,6 +33,7 @@ public class InscriptionDTO {
     private Boolean propositionEmploi;
     private String nomPlanteurEmploi;
     private String matriculePlanteurEmploi;
+    private String lieuPlanteurEmploi;
     private Date anneePlanteurEmploi;
     private String contactPlanteurEmploi;
 

@@ -65,6 +65,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setPropositionEmploi(inscriptionDTO.getPropositionEmploi());
         saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi());
         saveInscriptionEntity.setMatriculePlanteurEmploi(inscriptionDTO.getMatriculePlanteurEmploi());
+        saveInscriptionEntity.setLieuPlanteurEmploi(inscriptionDTO.getLieuPlanteurEmploi());
         saveInscriptionEntity.setAnneePlanteurEmploi(inscriptionDTO.getAnneePlanteurEmploi());
         saveInscriptionEntity.setContactPlanteurEmploi(inscriptionDTO.getContactPlanteurEmploi());
 
