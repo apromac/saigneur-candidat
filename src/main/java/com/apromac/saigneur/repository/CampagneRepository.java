@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CampagneRepository extends JpaRepository<CampagneEntity, Long> {
+    CampagneEntity findByActiveCampagneTrue();
 }

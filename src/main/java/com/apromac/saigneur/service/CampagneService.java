@@ -8,4 +8,5 @@ public interface CampagneService {
     public CampagneEntity findByCampagneID(Long campagneID);
     public CampagneEntity saveCampagne(CampagneEntity campagne);
     public List<CampagneEntity> findAllCampagne();
+    public CampagneEntity findCurrentCampagne();
 }

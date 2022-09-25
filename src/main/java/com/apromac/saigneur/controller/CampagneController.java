@@ -35,6 +35,14 @@ public class CampagneController {
         return new ResponseEntity<>(campagnes, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Méthode permettant de récupérer la compagne en cours")
+    @GetMapping(value = "/campagne/findCurrentCampagne")
+    public ResponseEntity<CampagneEntity> recupererCampagneEnCours() {
+        CampagneEntity campagne = campagneService.findCurrentCampagne();
+
+        return new ResponseEntity<>(campagne, HttpStatus.OK);
+    }
+
 
 
 

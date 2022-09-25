@@ -83,21 +83,3 @@ public class CandidatController {
     }
 
 }
-
-//    @ApiOperation(value = "Méthode permettant de récupérer la liste des candidats d'une campagne grace à son ID")
-//    @GetMapping(value = "/candidat/findByCampagneID/{campagneID}")
-//    public ResponseEntity<List<CandidatEntity>> recupererCandidatParCampagne(@PathVariable long campagneID) {
-//        List<InscriptionEntity> byCampagne = inscriptionService.findByCampagne(campagneID);
-//
-//        List<CandidatEntity> candidats = new ArrayList<>();
-//
-//        for (InscriptionEntity identify: byCampagne) {
-//            CandidatEntity candidat = identify.getCandidat();
-//            candidats.add(candidat);
-//        }
-//
-//        if (candidats.isEmpty())
-//            throw new NoContentException("Désolé, aucun candidat trouvé.");
-//
-//        return new ResponseEntity<>(candidats, HttpStatus.OK);
-//    }

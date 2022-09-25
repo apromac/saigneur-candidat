@@ -60,4 +60,16 @@ public class CampagneServiceImpl implements CampagneService {
         return campagnes;
     }
 
+    /**
+     *
+     * @return
+     */
+    public CampagneEntity findCurrentCampagne() {
+        CampagneEntity campagneEntity = campagneRepository.findByActiveCampagneTrue();
+        if (campagneEntity == null)
+            throw new RuntimeException("");
+
+        return campagneEntity;
+    }
+
 }
