@@ -16,16 +16,16 @@ public class CandidatEntity {
     @Column(name = "id_candidat", updatable = false, nullable = false)
     private Long candidatID;
 
-    @Column(name = "nom_candidat", nullable = false)
+    @Column(name = "nom_candidat", nullable = true)
     private String nomCandidat;
 
-    @Column(name = "prenoms_candidat", nullable = false)
+    @Column(name = "prenoms_candidat", nullable = true)
     private String prenomsCandidat;
 
-    @Column(name = "genre_candidat", nullable = false)
+    @Column(name = "genre_candidat", nullable = true)
     private String genreCandidat;
 
-    @Column(name = "dnaissance_candidat", nullable = false)
+    @Column(name = "dnaissance_candidat", nullable = true)
     private Date dateNaisCandidat;
 
     @Column(name = "lnaissance_candidat", nullable = true)
@@ -40,16 +40,16 @@ public class CandidatEntity {
     @Column(name = "mactuel_candidat", nullable = true)
     private String metierActuelCandidat;
 
-    @Column(name = "pcontact_candidat", nullable = false)
+    @Column(name = "pcontact_candidat", nullable = true)
     private Integer premierContactCandidat;
 
     @Column(name = "scontact_candaidat", nullable = true)
     private Integer secondContactCandidat;
 
-    @Column(name = "tpiece_candidat", nullable = false)
+    @Column(name = "tpiece_candidat", nullable = true)
     private String typePieceCandidat;
 
-    @Column(name = "npiece_candidat", nullable = false)
+    @Column(name = "npiece_candidat", nullable = true)
     private String numeroPieceCandidat;
 
 }
