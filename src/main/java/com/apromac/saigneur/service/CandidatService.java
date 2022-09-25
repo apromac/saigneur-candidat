@@ -13,6 +13,8 @@ public interface CandidatService {
 
 
 
+
+
 //    public List<CandidatDTO> findByCampagne(Long campagneID);
 
     //

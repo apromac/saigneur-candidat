@@ -16,7 +16,22 @@ public interface InscriptionService {
 
 
 
-    public InscriptionEntity findByIdentifierID(String identifierID);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    public InscriptionEntity findByIdentifierID(String identifierID);
     public List<InscriptionEntity> findByCandidat(Long candidatID);
     public List<InscriptionEntity> findByCampagneAndCandidat(Long campagneID, Long candidatID);
 }

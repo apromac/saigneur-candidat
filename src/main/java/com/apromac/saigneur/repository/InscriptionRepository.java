@@ -9,8 +9,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InscriptionRepository extends JpaRepository<InscriptionEntity, String> {
+public interface InscriptionRepository extends JpaRepository<InscriptionEntity, Long> {
     List<InscriptionEntity> findByCampagne(CampagneEntity campagne);
+
+
+
+
+
+
+
+
+
+
+
+
     List<InscriptionEntity> findByCandidat(CandidatEntity candidat);
     List<InscriptionEntity> findByCampagneAndCandidat(CampagneEntity campagne, CandidatEntity candidat);
 }

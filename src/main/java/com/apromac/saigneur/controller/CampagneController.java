@@ -19,14 +19,6 @@ public class CampagneController {
     private CampagneService campagneService;
 
 
-    @ApiOperation(value = "Méthode permettant de récupérer une campagne grace à son ID")
-    @GetMapping(value = "/campagne/findByCampagneID/{campagneID}")
-    public ResponseEntity<CampagneEntity> recupererUneCampagne(@PathVariable long campagneID) {
-        CampagneEntity campagne = campagneService.findByCampagneID(campagneID);
-
-        return new ResponseEntity<>(campagne, HttpStatus.OK);
-    }
-
     @ApiOperation(value = "Méthode permettant de sauvegarder une campagne")
     @PostMapping(value = "/campagne/saveCampagne")
     public ResponseEntity<CampagneEntity> sauvegarderUneCampagne(@RequestBody CampagneEntity campagne) {
@@ -41,6 +33,35 @@ public class CampagneController {
         List<CampagneEntity> campagnes = campagneService.findAllCampagne();
 
         return new ResponseEntity<>(campagnes, HttpStatus.OK);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @ApiOperation(value = "Méthode permettant de récupérer une campagne grace à son ID")
+    @GetMapping(value = "/campagne/findByCampagneID/{campagneID}")
+    public ResponseEntity<CampagneEntity> recupererUneCampagne(@PathVariable long campagneID) {
+        CampagneEntity campagne = campagneService.findByCampagneID(campagneID);
+
+        return new ResponseEntity<>(campagne, HttpStatus.OK);
     }
 
 }

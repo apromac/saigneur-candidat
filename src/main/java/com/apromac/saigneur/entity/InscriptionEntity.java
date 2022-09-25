@@ -10,11 +10,11 @@ import java.util.Date;
 @Table(schema = "saigneurcandidat", name = "inscription")
 public class InscriptionEntity {
 
-//    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inscription", updatable = false, nullable = false)
-    private String inscriptionID;
+    private Long inscriptionID;
 
     @Column(name = "dist_inscri", nullable = false)
     private String districtInscription;

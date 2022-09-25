@@ -8,6 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class InscriptionDTO {
+    private Long inscriptionID;
     private String districtInscription;
     private String abreviationDistrictInscription;
     private String zoneInscription;

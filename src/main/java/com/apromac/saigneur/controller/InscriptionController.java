@@ -31,10 +31,9 @@ public class InscriptionController {
 
 
 
-
     @ApiOperation(value = "Méthode permettant de sauvegarder l'inscription d'un candidat pour une campagne prévise")
     @PostMapping(value = "/inscription/saveInscription")
-    public ResponseEntity<InscriptionEntity> sauvegarderInscription(@RequestParam CandidatCampagneRequest candidatCampagneRequest) {
+    public ResponseEntity<InscriptionEntity> sauvegarderInscription(@RequestBody CandidatCampagneRequest candidatCampagneRequest) {
         CampagneEntity campagneTrouver = campagneService.findByCampagneID(candidatCampagneRequest.getCampagneEntity().getCampagneID());
         if (campagneTrouver == null)
             throw new RuntimeException("Désolé, aucune campagne trouvé avec cet ID");
@@ -63,13 +62,26 @@ public class InscriptionController {
 
 
 
-    @ApiOperation(value = "Méthode permettant de récupérer une identification grace à son ID")
-    @GetMapping(value = "/inscription/findByIdentifierID/{identifierID}")
-    public ResponseEntity<InscriptionEntity> recupererUnIdentifier(@PathVariable String identifierID) {
-        InscriptionEntity byIdentifierID = inscriptionService.findByIdentifierID(identifierID);
 
-        return new ResponseEntity<>(byIdentifierID, HttpStatus.OK);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+//    @ApiOperation(value = "Méthode permettant de récupérer une identification grace à son ID")
+//    @GetMapping(value = "/inscription/findByIdentifierID/{identifierID}")
+//    public ResponseEntity<InscriptionEntity> recupererUnIdentifier(@PathVariable String identifierID) {
+//        InscriptionEntity byIdentifierID = inscriptionService.findByIdentifierID(identifierID);
+//
+//        return new ResponseEntity<>(byIdentifierID, HttpStatus.OK);
+//    }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des identifications grace à l'ID de la campagne")
     @GetMapping(value = "/inscription/findByCampagne/{campagneID}")
