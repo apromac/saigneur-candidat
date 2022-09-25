@@ -22,15 +22,25 @@ public class LocaliteCandidatController {
     @Autowired
     private LocaliteCandidatService localiteCandidatService;
 
+//    @ApiOperation(value = "Méthode permettant de récupérer la localite du candidat grace à l'ID du poste du TDH")
+//    @GetMapping(value = "/localite/findByPosteTDH/{posteID}")
+//    public ResponseEntity<LocaliteCandidatDTO> recupererLocaliteCandidatParPosteTDH(@PathVariable Long posteID) {
+//        OccuperBean occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHOccuper(posteID);
+//        if (occuperBeans == null)
+//            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
+//
+//        LocaliteCandidatDTO localiteCandidat = localiteCandidatService.findByPosteTDH(occuperBeans);
+//
+//        return new ResponseEntity<>(localiteCandidat, HttpStatus.OK);
+//    }
+
     @ApiOperation(value = "Méthode permettant de récupérer la localite du candidat grace à l'ID du poste du TDH")
     @GetMapping(value = "/localite/findByPosteTDH/{posteID}")
-    public ResponseEntity<LocaliteCandidatDTO> recupererLocaliteCandidatParPosteTDH(@PathVariable Long posteID) {
+    public ResponseEntity<OccuperBean> recupererLocaliteCandidatParPosteTDH(@PathVariable Long posteID) {
         OccuperBean occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHOccuper(posteID);
         if (occuperBeans == null)
             throw new RuntimeException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
 
-        LocaliteCandidatDTO localiteCandidat = localiteCandidatService.findByPosteTDH(occuperBeans);
-
-        return new ResponseEntity<>(localiteCandidat, HttpStatus.OK);
+        return new ResponseEntity<>(occuperBeans, HttpStatus.OK);
     }
 }
