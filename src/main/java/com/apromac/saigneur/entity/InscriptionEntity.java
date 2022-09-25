@@ -30,7 +30,7 @@ public class InscriptionEntity {
 
 
 
-    @Column(name = "estFormer_form", nullable = false)
+    @Column(name = "estformer_form", nullable = false)
     private Boolean isFormer;
 
     @Column(name = "structure_form", nullable = true)
