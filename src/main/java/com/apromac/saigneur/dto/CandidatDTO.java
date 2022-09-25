@@ -25,7 +25,7 @@ public class CandidatDTO {
     private CampagneEntity campagneEntity;
     private Long inscriptionID;
     private String districtInscription;
-    private String abreviationDistrictInscription;
+//    private String abreviationDistrictInscription;
     private String zoneInscription;
     private Date dateInscription;
 }
