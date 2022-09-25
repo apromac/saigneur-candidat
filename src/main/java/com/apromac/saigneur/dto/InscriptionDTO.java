@@ -46,5 +46,5 @@ public class InscriptionDTO {
 
 
     private String motivation;
-
+    private Boolean isSelectionner;
 }

@@ -88,6 +88,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setContactPlanteurActivite(inscriptionDTO.getContactPlanteurActivite());
 
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
+        saveInscriptionEntity.setIsSelectionner(inscriptionDTO.getIsSelectionner());
 
         InscriptionEntity saveInscription = inscriptionRepository.save(saveInscriptionEntity);
         if (saveInscription == null)

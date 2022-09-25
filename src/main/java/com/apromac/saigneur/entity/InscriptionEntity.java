@@ -19,9 +19,6 @@ public class InscriptionEntity {
     @Column(name = "dist_inscri", nullable = false)
     private String districtInscription;
 
-//    @Column(name = "abr_dist_inscri", nullable = true)
-//    private String abreviationDistrictInscription;
-
     @Column(name = "zone_inscri", nullable = false)
     private String zoneInscription;
 
@@ -111,6 +108,8 @@ public class InscriptionEntity {
     @Column(name = "desire_motiv", nullable = true)
     private String motivation;
 
+    @Column(name = "enselection", nullable = false)
+    private Boolean isSelectionner;
 
 
     @ManyToOne
