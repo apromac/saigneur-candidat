@@ -9,7 +9,7 @@ import java.util.Date;
 @Setter
 public class OccuperBean {
     private Long occuperID;
-    private String libelleOccuper;
+    private String motifOccuper;
     private Date dateOccuper;
     private Boolean isOccuper;
     private String zoneOccuper;
