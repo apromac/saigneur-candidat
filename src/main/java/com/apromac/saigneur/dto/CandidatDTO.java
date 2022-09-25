@@ -23,7 +23,7 @@ public class CandidatDTO {
     private String typePieceCandidat;
     private String numeroPieceCandidat;
     private CampagneEntity campagneEntity;
-    private String inscriptionID;
+    private Long inscriptionID;
     private String districtInscription;
     private String abreviationDistrictInscription;
     private String zoneInscription;

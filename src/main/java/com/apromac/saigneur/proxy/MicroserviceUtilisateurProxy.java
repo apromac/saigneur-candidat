@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "saigneur-utilisateur", url = "${apromac.msaigneur-utilisateur.url}")
 public interface MicroserviceUtilisateurProxy {
 
-    @GetMapping(value = "/api/v1/occuper/findByPosteTDHID/{posteTDHID}")
+    @GetMapping("/api/v1/occuper/findByPosteTDHID/{posteTDHID}")
     OccuperBean recupererPosteActuelTDHOccuper(@PathVariable long posteTDHID);
 
 }
