@@ -27,7 +27,7 @@ public class LocaliteCandidatController {
     public ResponseEntity<LocaliteCandidatDTO> recupererLocaliteCandidatParPosteTDH(@PathVariable Long posteID) {
         OccuperBean occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHOccuper(posteID);
         if (occuperBeans == null)
-            throw new RuntimeException("");
+            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
 
         LocaliteCandidatDTO localiteCandidat = localiteCandidatService.findByPosteTDH(occuperBeans);
 
