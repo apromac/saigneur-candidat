@@ -64,29 +64,6 @@ public class CandidatController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @ApiOperation(value = "Méthode permettant de récupérer un candidat grace à son ID")
     @GetMapping(value = "/candidat/findByCandidatID/{candidatID}")
     public ResponseEntity<CandidatEntity> recupererUnCandidat(@PathVariable long candidatID) {
@@ -94,6 +71,30 @@ public class CandidatController {
 
         return new ResponseEntity<>(candidat, HttpStatus.OK);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

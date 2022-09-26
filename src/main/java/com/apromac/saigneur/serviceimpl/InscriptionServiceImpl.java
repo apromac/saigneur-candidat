@@ -132,7 +132,24 @@ public class InscriptionServiceImpl implements InscriptionService {
         return inscriptions;
     }
 
+    /**
+     *
+     * @param inscriptionID
+     * @param isSelect
+     * @return
+     */
+    public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect) {
+        Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
+        if (inscriptionOptional.isPresent())
+            throw new RuntimeException("Désolé, l'inscription recherché est introuvable");
 
+        InscriptionEntity inscriptionEntity = inscriptionOptional.get();
+        inscriptionEntity.setIsSelectionner(isSelect);
+
+        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
+
+        return inscriptionUpdate;
+    }
 
 
 

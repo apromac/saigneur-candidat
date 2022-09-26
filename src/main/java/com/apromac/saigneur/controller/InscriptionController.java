@@ -1,7 +1,6 @@
 package com.apromac.saigneur.controller;
 
 import com.apromac.saigneur.entity.CampagneEntity;
-import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
 import com.apromac.saigneur.service.CampagneService;
 import com.apromac.saigneur.service.CandidatService;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -49,6 +47,7 @@ public class InscriptionController {
         return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
     }
 
+
     @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours avec plus de details")
     @GetMapping(value = "/inscription/candidat/selection/{isSelect}")
     public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
@@ -57,17 +56,14 @@ public class InscriptionController {
         return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
 
+    
+    @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat")
+    @GetMapping(value = "/inscription/{inscriptionID}/selection/{isSelect}")
+    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long inscriptionID, @PathVariable Boolean isSelect) {
+        InscriptionEntity inscription = inscriptionService.findByInscriptionID(inscriptionID, isSelect);
 
-
-//    @ApiOperation(value = "Méthode permettant de valider un candidat")
-//    @GetMapping(value = "/inscription/candidat/selection/{isValid}")
-//    public ResponseEntity<List<InscriptionEntity>> recupererValidationCandidat(@PathVariable Boolean isSelect/*, @RequestParam Long candidatID*/) {
-////        CandidatEntity candidatOptional = candidatService.findByCandidatID(candidatID);
-//
-//        List<InscriptionEntity> inscriptions = inscriptionService.findValidationCandidats(isValid);
-//
-//        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
-//    }
+        return new ResponseEntity<>(inscription, HttpStatus.OK);
+    }
 
 
 
@@ -88,15 +84,6 @@ public class InscriptionController {
 
 
 
-
-
-//    @ApiOperation(value = "Méthode permettant de récupérer une identification grace à son ID")
-//    @GetMapping(value = "/inscription/findByIdentifierID/{identifierID}")
-//    public ResponseEntity<InscriptionEntity> recupererUnIdentifier(@PathVariable String identifierID) {
-//        InscriptionEntity byIdentifierID = inscriptionService.findByIdentifierID(identifierID);
-//
-//        return new ResponseEntity<>(byIdentifierID, HttpStatus.OK);
-//    }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des identifications grace à l'ID de la campagne")
     @GetMapping(value = "/inscription/findByCampagne/{campagneID}")
