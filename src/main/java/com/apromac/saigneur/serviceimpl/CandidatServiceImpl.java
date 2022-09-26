@@ -49,7 +49,7 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setCampagneEntity(inscription.getCampagne());
             candidatDTO.setInscriptionID(inscription.getInscriptionID());
             candidatDTO.setDistrictInscription(inscription.getDistrictInscription());
-//            candidatDTO.setAbreviationDistrictInscription(inscription.getAbreviationDistrictInscription());
+            candidatDTO.setIsSelectionner(inscription.getIsSelectionner());
             candidatDTO.setZoneInscription(inscription.getZoneInscription());
             candidatDTO.setDateInscription(inscription.getDateInscription());
 

@@ -22,6 +22,7 @@ public class CandidatDTO {
     private Integer secondContactCandidat;
     private String typePieceCandidat;
     private String numeroPieceCandidat;
+    private Boolean isSelectionner;
     private CampagneEntity campagneEntity;
     private Long inscriptionID;
     private String districtInscription;

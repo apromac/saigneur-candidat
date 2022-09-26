@@ -57,7 +57,6 @@ public class InscriptionServiceImpl implements InscriptionService {
 //        saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
         saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
-//        saveInscriptionEntity.setAbreviationDistrictInscription("");
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
 
         saveInscriptionEntity.setIsFormer(inscriptionDTO.getIsFormer());
@@ -115,7 +114,19 @@ public class InscriptionServiceImpl implements InscriptionService {
         return inscriptions;
     }
 
+    /**
+     *
+     * @param candidatID
+     * @param isValid
+     * @return
+     */
+    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid) {
+//        candidatRepository.findById(candidatID);
+//
+//       inscriptionRepository.findByCandidat
 
+        return null;
+    }
 
 
 

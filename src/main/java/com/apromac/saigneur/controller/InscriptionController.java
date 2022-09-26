@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -48,7 +49,14 @@ public class InscriptionController {
         return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "Méthode permettant de valider un candidat")
+    @GetMapping(value = "/inscription/candidat/{candidatID}/selection/{isValid}")
+    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long candidatID, @PathVariable Boolean isValid) {
+        CandidatEntity candidatOptional = candidatService.findByCandidatID(candidatID);
+//        InscriptionEntity inscription = inscriptionService.findValidationCandidat(candidatID, isValid);
 
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 
 
 
