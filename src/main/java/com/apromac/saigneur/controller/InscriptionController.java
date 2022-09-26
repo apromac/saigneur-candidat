@@ -50,7 +50,7 @@ public class InscriptionController {
     }
 
     @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours avec plus de details")
-    @GetMapping(value = "/inscription/candidat/selection/{isValid}")
+    @GetMapping(value = "/inscription/candidat/selection/{isSelect}")
     public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
         List<InscriptionEntity> inscriptions = inscriptionService.findSelectionCandidats(isSelect);
 
