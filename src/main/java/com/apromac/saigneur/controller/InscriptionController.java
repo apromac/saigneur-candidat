@@ -49,14 +49,25 @@ public class InscriptionController {
         return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "Méthode permettant de valider un candidat")
-    @GetMapping(value = "/inscription/candidat/{candidatID}/selection/{isValid}")
-    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long candidatID, @PathVariable Boolean isValid) {
-        CandidatEntity candidatOptional = candidatService.findByCandidatID(candidatID);
-//        InscriptionEntity inscription = inscriptionService.findValidationCandidat(candidatID, isValid);
+    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours avec plus de details")
+    @GetMapping(value = "/inscription/candidat/selection/{isValid}")
+    public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
+        List<InscriptionEntity> inscriptions = inscriptionService.findSelectionCandidats(isSelect);
 
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
+
+
+
+//    @ApiOperation(value = "Méthode permettant de valider un candidat")
+//    @GetMapping(value = "/inscription/candidat/selection/{isValid}")
+//    public ResponseEntity<List<InscriptionEntity>> recupererValidationCandidat(@PathVariable Boolean isSelect/*, @RequestParam Long candidatID*/) {
+////        CandidatEntity candidatOptional = candidatService.findByCandidatID(candidatID);
+//
+//        List<InscriptionEntity> inscriptions = inscriptionService.findValidationCandidats(isValid);
+//
+//        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+//    }
 
 
 

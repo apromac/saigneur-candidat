@@ -11,7 +11,8 @@ import java.util.List;
 @Repository
 public interface InscriptionRepository extends JpaRepository<InscriptionEntity, Long> {
     List<InscriptionEntity> findByCampagne(CampagneEntity campagne);
-
+    List<InscriptionEntity> findByIsSelectionnerTrue();
+    List<InscriptionEntity> findByIsSelectionnerFalse();
 
 
 

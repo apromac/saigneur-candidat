@@ -13,6 +13,7 @@ import com.apromac.saigneur.service.InscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,21 +117,44 @@ public class InscriptionServiceImpl implements InscriptionService {
 
     /**
      *
-     * @param candidatID
      * @param isValid
      * @return
      */
-    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid) {
-//        candidatRepository.findById(candidatID);
-//
-//       inscriptionRepository.findByCandidat
+    public List<InscriptionEntity> findSelectionCandidats(Boolean isValid) {
+        List<InscriptionEntity> inscriptions = new ArrayList<>();
 
-        return null;
+        if (isValid) {
+            inscriptions = inscriptionRepository.findByIsSelectionnerTrue();
+        } else {
+            inscriptions = inscriptionRepository.findByIsSelectionnerFalse();
+        }
+
+        return inscriptions;
     }
 
 
 
 
+
+
+
+
+
+
+
+//    /**
+//     *
+//     * @param candidatID
+//     * @param isValid
+//     * @return
+//     */
+//    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid) {
+////        candidatRepository.findById(candidatID);
+////
+////       inscriptionRepository.findByCandidat
+//
+//        return null;
+//    }
 
 
 
@@ -198,17 +222,3 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 }
 
-
-//    /**
-//     *
-//     * @param identifierID
-//     * @return
-//     */
-//    @Override
-//    public InscriptionEntity findByIdentifierID(String identifierID) {
-//        Optional<InscriptionEntity> identifierOptional = inscriptionRepository.findById(identifierID);
-//        if (!identifierOptional.isPresent())
-//            throw new NotFoundException("Désolé, l'identification désignée n'existe pas");
-//
-//        return identifierOptional.get();
-//    }

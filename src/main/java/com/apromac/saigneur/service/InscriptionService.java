@@ -12,7 +12,7 @@ public interface InscriptionService {
                                                              CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO);
     public List<InscriptionEntity> findByCampagne(Long campagneID);
-    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid);
+    public List<InscriptionEntity> findSelectionCandidats(Boolean isValid);
 
 
 
@@ -31,6 +31,7 @@ public interface InscriptionService {
 
 
 
+//    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid);
 //    public InscriptionEntity findByIdentifierID(String identifierID);
     public List<InscriptionEntity> findByCandidat(Long candidatID);
     public List<InscriptionEntity> findByCampagneAndCandidat(Long campagneID, Long candidatID);
