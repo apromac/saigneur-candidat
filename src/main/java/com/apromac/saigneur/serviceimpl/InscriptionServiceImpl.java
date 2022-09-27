@@ -140,7 +140,7 @@ public class InscriptionServiceImpl implements InscriptionService {
      */
     public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect) {
         Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
-        if (inscriptionOptional.isPresent())
+        if (!inscriptionOptional.isPresent())
             throw new RuntimeException("Désolé, l'inscription recherché est introuvable");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();

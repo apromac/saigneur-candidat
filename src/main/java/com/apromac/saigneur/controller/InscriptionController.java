@@ -56,7 +56,7 @@ public class InscriptionController {
         return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
 
-    
+
     @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat")
     @GetMapping(value = "/inscription/{inscriptionID}/selection/{isSelect}")
     public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long inscriptionID, @PathVariable Boolean isSelect) {
