@@ -166,7 +166,7 @@ public class InscriptionServiceImpl implements InscriptionService {
     public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagneEntity) {
         List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsInterviewTrue(campagneEntity);
         if (inscriptions.isEmpty())
-            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
+            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
 
         return inscriptions;
     }
