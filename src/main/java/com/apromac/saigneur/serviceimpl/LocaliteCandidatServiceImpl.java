@@ -21,8 +21,9 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
 //        localiteCandidatDTO.setNomTDH(occuperBean.getUtilisateurBean().getNomUtilisateur());
 //        localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean().getPrenomsUtilisateur());
 
-        localiteCandidatDTO.setPosteTDH(occuperBean.getPosteBean());
-        localiteCandidatDTO.setUtilisateurTDH(occuperBean.getUtilisateurBean());
+//        localiteCandidatDTO.setPosteTDH(occuperBean.getPosteBean());
+//        localiteCandidatDTO.setUtilisateurTDH(occuperBean.getUtilisateurBean());
+
         localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
         localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
 
