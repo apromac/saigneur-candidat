@@ -10,9 +10,17 @@ import java.util.List;
 
 @Repository
 public interface InscriptionRepository extends JpaRepository<InscriptionEntity, Long> {
-    List<InscriptionEntity> findByCampagne(CampagneEntity campagne);
-    List<InscriptionEntity> findByIsSelectionnerTrue();
-    List<InscriptionEntity> findByIsSelectionnerFalse();
+    List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity);
+    List<InscriptionEntity> findByCampagneAndIsSelectionnerTrue(CampagneEntity campagneEntity);
+    List<InscriptionEntity> findByCampagneAndIsSelectionnerFalse(CampagneEntity campagneEntity);
+    List<InscriptionEntity> findByCampagneAndIsInterviewTrue(CampagneEntity campagneEntity);
+
+
+
+
+
+
+
 
 
 
@@ -26,4 +34,5 @@ public interface InscriptionRepository extends JpaRepository<InscriptionEntity, 
 
     List<InscriptionEntity> findByCandidat(CandidatEntity candidat);
     List<InscriptionEntity> findByCampagneAndCandidat(CampagneEntity campagne, CandidatEntity candidat);
+
 }

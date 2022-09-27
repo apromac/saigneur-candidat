@@ -27,6 +27,7 @@ public class CampagneController {
         return new ResponseEntity<>(campagneSave, HttpStatus.CREATED);
     }
 
+
     @ApiOperation(value = "Méthode permettant de récupérer la liste des campagnes")
     @GetMapping(value = "/campagne/findAllCampagne")
     public ResponseEntity<List<CampagneEntity>> recupererCampagnes() {
@@ -34,6 +35,7 @@ public class CampagneController {
 
         return new ResponseEntity<>(campagnes, HttpStatus.OK);
     }
+
 
     @ApiOperation(value = "Méthode permettant de récupérer la compagne en cours")
     @GetMapping(value = "/campagne/findCurrentCampagne")

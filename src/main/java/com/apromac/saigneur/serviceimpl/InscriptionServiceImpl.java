@@ -89,6 +89,8 @@ public class InscriptionServiceImpl implements InscriptionService {
 
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
         saveInscriptionEntity.setIsSelectionner(inscriptionDTO.getIsSelectionner());
+        saveInscriptionEntity.setIsInterview(inscriptionDTO.getIsInterview());
+        saveInscriptionEntity.setIsRetenu(inscriptionDTO.getIsRetenu());
 
         InscriptionEntity saveInscription = inscriptionRepository.save(saveInscriptionEntity);
         if (saveInscription == null)
@@ -120,13 +122,17 @@ public class InscriptionServiceImpl implements InscriptionService {
      * @param isValid
      * @return
      */
-    public List<InscriptionEntity> findSelectionCandidats(Boolean isValid) {
+    public List<InscriptionEntity> findSelectionCandidats(CampagneEntity campagneEntity, Boolean isValid) {
         List<InscriptionEntity> inscriptions = new ArrayList<>();
 
         if (isValid) {
-            inscriptions = inscriptionRepository.findByIsSelectionnerTrue();
+            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerTrue(campagneEntity);
+            if (inscriptions.isEmpty())
+                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
         } else {
-            inscriptions = inscriptionRepository.findByIsSelectionnerFalse();
+            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerFalse(campagneEntity);
+            if (inscriptions.isEmpty())
+                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
         }
 
         return inscriptions;
@@ -147,8 +153,22 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionEntity.setIsSelectionner(isSelect);
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
+        if (inscriptionUpdate == null)
+            throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
 
         return inscriptionUpdate;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagneEntity) {
+        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsInterviewTrue(campagneEntity);
+        if (inscriptions.isEmpty())
+            throw new RuntimeException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
+
+        return inscriptions;
     }
 
 
@@ -159,19 +179,10 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
 
-//    /**
-//     *
-//     * @param candidatID
-//     * @param isValid
-//     * @return
-//     */
-//    public InscriptionEntity findValidationCandidat(Long candidatID, Boolean isValid) {
-////        candidatRepository.findById(candidatID);
-////
-////       inscriptionRepository.findByCandidat
-//
-//        return null;
-//    }
+
+
+
+
 
 
 

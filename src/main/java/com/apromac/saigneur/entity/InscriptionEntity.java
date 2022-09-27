@@ -111,6 +111,11 @@ public class InscriptionEntity {
     @Column(name = "enselection", nullable = false)
     private Boolean isSelectionner;
 
+    @Column(name = "eninterview", nullable = false)
+    private Boolean isInterview;
+
+    @Column(name = "enretenu", nullable = false)
+    private Boolean isRetenu;
 
     @ManyToOne
     @JoinColumn(name = "code_candidat", nullable = false)

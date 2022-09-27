@@ -15,9 +15,10 @@ public interface CandidatService {
 
 
 
-//    public List<CandidatDTO> findByCampagne(Long campagneID);
 
-    //
+
+
+
     public CandidatEntity findByCandidatID(Long candidatID);
     public List<CandidatEntity> findAllCandidat();
 }

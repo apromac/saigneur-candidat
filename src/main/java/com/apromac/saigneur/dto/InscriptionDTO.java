@@ -10,7 +10,6 @@ import java.util.Date;
 public class InscriptionDTO {
 //    private Long inscriptionID;
     private String districtInscription;
-//    private String abreviationDistrictInscription;
     private String zoneInscription;
     private Date dateInscription;
 
@@ -47,4 +46,6 @@ public class InscriptionDTO {
 
     private String motivation;
     private Boolean isSelectionner;
+    private Boolean isInterview;
+    private Boolean isRetenu;
 }
