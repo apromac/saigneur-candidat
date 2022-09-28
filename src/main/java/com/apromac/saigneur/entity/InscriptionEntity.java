@@ -108,13 +108,13 @@ public class InscriptionEntity {
     @Column(name = "desire_motiv", nullable = true)
     private String motivation;
 
-    @Column(name = "enselection", nullable = false)
+    @Column(name = "enselection", nullable = true)
     private Boolean isSelectionner;
 
-    @Column(name = "eninterview", nullable = false)
+    @Column(name = "eninterview", nullable = true)
     private Boolean isInterview;
 
-    @Column(name = "enretenu", nullable = false)
+    @Column(name = "enretenu", nullable = true)
     private Boolean isRetenu;
 
     @ManyToOne
