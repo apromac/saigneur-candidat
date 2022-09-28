@@ -1,7 +1,9 @@
 package com.apromac.saigneur.controller;
 
 import com.apromac.saigneur.entity.CampagneEntity;
+import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
+import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.service.CampagneService;
 import com.apromac.saigneur.service.CandidatService;
 import com.apromac.saigneur.service.InscriptionService;
@@ -79,6 +81,19 @@ public class InscriptionController {
     }
 
 
+    @ApiOperation(value = "Méthode permettant de valider les candidats de l'interviewdont de la campagne en cours")
+    @GetMapping(value = "/inscription/candidat/{candidatID}/interview/{isInterview}")
+    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long inscriptionID, @PathVariable Boolean isInterview) {
+        CampagneEntity campagne = campagneService.findCurrentCampagne();
+
+        CandidatEntity candidat = candidatService.findByCandidatID(inscriptionID);
+        if (candidat == null)
+            throw new NotFoundException("Désolé, le candidat sélectionné n'existe pas dans la base.");
+
+        InscriptionEntity inscriptions = inscriptionService.findByValidationInterviewCandidats(candidat, campagne, isInterview);
+
+        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+    }
 
 
 

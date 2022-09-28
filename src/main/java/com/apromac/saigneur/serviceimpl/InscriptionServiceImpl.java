@@ -160,6 +160,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         return inscriptionUpdate;
     }
 
+
     /**
      *
      * @return
@@ -173,6 +174,25 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
+    /**
+     *
+     * @param candidatEntity
+     * @param campagneEntity
+     * @param isInterview
+     * @return
+     */
+    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity, CampagneEntity campagneEntity, Boolean isInterview) {
+        InscriptionEntity inscription = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
+        if (inscription == null)
+            throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
+
+        inscription.setIsRetenu(isInterview);
+        inscription.setIsInterview(false);
+
+        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscription);
+
+        return inscriptionUpdate;
+    }
 
 
 

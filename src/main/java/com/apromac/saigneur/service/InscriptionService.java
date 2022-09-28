@@ -15,6 +15,9 @@ public interface InscriptionService {
     public List<InscriptionEntity> findSelectionCandidats(CampagneEntity campagneEntity, Boolean isValid);
     public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect);
     public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagne);
+    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity,
+                                                                CampagneEntity campagneEntity,
+                                                                Boolean isInterview);
 
 
 
@@ -36,4 +39,5 @@ public interface InscriptionService {
 //    public InscriptionEntity findByIdentifierID(String identifierID);
     public List<InscriptionEntity> findByCandidat(Long candidatID);
     public List<InscriptionEntity> findByCampagneAndCandidat(Long campagneID, Long candidatID);
+
 }

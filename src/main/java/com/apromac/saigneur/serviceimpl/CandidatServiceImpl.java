@@ -60,32 +60,6 @@ public class CandidatServiceImpl implements CandidatService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      *
      * @param candidatID
@@ -95,10 +69,41 @@ public class CandidatServiceImpl implements CandidatService {
     public CandidatEntity findByCandidatID(Long candidatID) {
         Optional<CandidatEntity> candidatOptional = candidatRepository.findById(candidatID);
         if (!candidatOptional.isPresent())
-            throw new NotFoundException("Désolé, la campagne désignée n'existe pas");
+            throw new NotFoundException("Désolé, le candidat désignée n'existe pas");
 
         return candidatOptional.get();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      *
