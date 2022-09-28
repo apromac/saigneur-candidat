@@ -151,6 +151,7 @@ public class InscriptionServiceImpl implements InscriptionService {
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
         inscriptionEntity.setIsSelectionner(isSelect);
+        inscriptionEntity.setIsInterview(isSelect);
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
         if (inscriptionUpdate == null)
