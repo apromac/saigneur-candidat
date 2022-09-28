@@ -15,7 +15,7 @@ public interface InscriptionRepository extends JpaRepository<InscriptionEntity, 
     List<InscriptionEntity> findByCampagneAndIsSelectionnerFalse(CampagneEntity campagneEntity);
     List<InscriptionEntity> findByCampagneAndIsInterviewTrue(CampagneEntity campagneEntity);
     InscriptionEntity findByCandidatAndCampagne(CandidatEntity candidatEntity, CampagneEntity campagneEntity);
-
+    List<InscriptionEntity> findByCampagneAndIsRetenuTrue(CampagneEntity campagneEntity);
 
 
 

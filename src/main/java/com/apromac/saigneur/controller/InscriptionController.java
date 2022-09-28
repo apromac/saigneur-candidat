@@ -96,6 +96,15 @@ public class InscriptionController {
     }
 
 
+    @ApiOperation(value = "Méthode permettant de recupérer les candidats retenus de la campagne en cours")
+    @GetMapping(value = "/inscription/retenu")
+    public ResponseEntity<List<InscriptionEntity>> recupererRetenuCandidats() {
+        CampagneEntity campagne = campagneService.findCurrentCampagne();
+
+        List<InscriptionEntity> inscriptions = inscriptionService.findByRetenuCandidats(campagne);
+
+        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+    }
 
 
 

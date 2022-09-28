@@ -18,6 +18,7 @@ public interface InscriptionService {
     public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity,
                                                                 CampagneEntity campagneEntity,
                                                                 Boolean isInterview);
+    public List<InscriptionEntity> findByRetenuCandidats(CampagneEntity campagneEntity);
 
 
 

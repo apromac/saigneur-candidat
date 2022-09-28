@@ -195,6 +195,18 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
+    /**
+     *
+     * @param campagneEntity
+     * @return
+     */
+    public List<InscriptionEntity> findByRetenuCandidats(CampagneEntity campagneEntity) {
+        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsRetenuTrue(campagneEntity);
+        if (inscriptions.isEmpty())
+            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats retenus.");
+
+        return inscriptions;
+    }
 
 
 
