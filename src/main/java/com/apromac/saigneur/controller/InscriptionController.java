@@ -83,10 +83,10 @@ public class InscriptionController {
 
     @ApiOperation(value = "Méthode permettant de valider les candidats de l'interviewdont de la campagne en cours")
     @GetMapping(value = "/inscription/candidat/{candidatID}/interview/{isInterview}")
-    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long inscriptionID, @PathVariable Boolean isInterview) {
+    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long candidatID, @PathVariable Boolean isInterview) {
         CampagneEntity campagne = campagneService.findCurrentCampagne();
 
-        CandidatEntity candidat = candidatService.findByCandidatID(inscriptionID);
+        CandidatEntity candidat = candidatService.findByCandidatID(candidatID);
         if (candidat == null)
             throw new NotFoundException("Désolé, le candidat sélectionné n'existe pas dans la base.");
 
