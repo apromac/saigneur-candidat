@@ -99,6 +99,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         return saveInscription;
     }
 
+
     /**
      *
      * @param campagneID
@@ -116,6 +117,7 @@ public class InscriptionServiceImpl implements InscriptionService {
 
         return inscriptions;
     }
+
 
     /**
      *
@@ -208,6 +210,89 @@ public class InscriptionServiceImpl implements InscriptionService {
         return inscriptions;
     }
 
+
+    /**
+     *
+     * @param candidatEntity
+     * @param campagneEntity
+     * @param inscriptionID
+     * @param statutCandidat
+     * @return
+     */
+    public InscriptionEntity findByStatutNext(CandidatEntity candidatEntity, CampagneEntity campagneEntity, Long inscriptionID, Integer statutCandidat) {
+        InscriptionEntity updateInscription = null;
+
+        if (statutCandidat == 0) {
+            InscriptionEntity inscriptionSelection = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
+            if (inscriptionSelection == null)
+                throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
+
+            inscriptionSelection.setStatut(statutCandidat);
+            updateInscription = inscriptionRepository.save(inscriptionSelection);
+        } else if (statutCandidat == 1) {
+            InscriptionEntity inscriptionSelection = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
+            if (inscriptionSelection == null)
+                throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
+
+            inscriptionSelection.setStatut(statutCandidat);
+            updateInscription = inscriptionRepository.save(inscriptionSelection);
+        } else if (statutCandidat == 2) {
+            InscriptionEntity inscriptionSelection = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
+            if (inscriptionSelection == null)
+                throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
+
+            inscriptionSelection.setStatut(statutCandidat);
+            updateInscription = inscriptionRepository.save(inscriptionSelection);
+        } else if (statutCandidat == 3) {
+            InscriptionEntity inscriptionSelection = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
+            if (inscriptionSelection == null)
+                throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
+
+            inscriptionSelection.setStatut(statutCandidat);
+            updateInscription = inscriptionRepository.save(inscriptionSelection);
+        }
+
+        return updateInscription;
+    }
+
+
+    /**
+     *
+     * @param campagneEntity
+     * @param statutCandidat
+     * @return
+     */
+    public List<InscriptionEntity> findByStatutInscription(CampagneEntity campagneEntity, Integer statutCandidat) {
+        List<InscriptionEntity> statutInscriptions = new ArrayList<>();
+
+        if (statutCandidat == 0) { // liste des candidats de la campagne en cours
+            List<InscriptionEntity> inscriptionCandidats = inscriptionRepository.findByCampagneAndStatut(campagneEntity, statutCandidat);
+            if (inscriptionCandidats.isEmpty())
+                throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats pour la campagne en cours.");
+
+            statutInscriptions = inscriptionCandidats;
+        } else if (statutCandidat == 1) { // liste des candidats pour la selection
+            List<InscriptionEntity> inscriptionCandidatsSelection = inscriptionRepository.findByCampagneAndStatut(campagneEntity, statutCandidat);
+            if (inscriptionCandidatsSelection.isEmpty())
+                throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats sélectionnés.");
+
+            statutInscriptions = inscriptionCandidatsSelection;
+        } else if (statutCandidat == 2) { // listes des candidats pour l'interview
+            List<InscriptionEntity> inscriptionCandidatsInterview = inscriptionRepository.findByCampagneAndStatut(campagneEntity, statutCandidat);
+            if (inscriptionCandidatsInterview.isEmpty())
+                throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
+
+            statutInscriptions = inscriptionCandidatsInterview;
+        } else if (statutCandidat == 3) { // listes des candidats retenus
+            List<InscriptionEntity> inscriptionCandidatsRetenus = inscriptionRepository.findByCampagneAndStatut(campagneEntity, statutCandidat);
+            if (inscriptionCandidatsRetenus.isEmpty())
+                throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats retenus.");
+
+            statutInscriptions = inscriptionCandidatsRetenus;
+        }
+
+        return statutInscriptions;
+    }
 
 
 

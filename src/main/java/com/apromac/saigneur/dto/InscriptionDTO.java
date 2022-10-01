@@ -48,4 +48,5 @@ public class InscriptionDTO {
     private Boolean isSelectionner;
     private Boolean isInterview;
     private Boolean isRetenu;
+    private Integer statut;
 }

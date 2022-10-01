@@ -23,6 +23,7 @@ public class InscriptionEntity {
     private String zoneInscription;
 
     @Column(name = "date_inscri", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date dateInscription;
 
 
@@ -34,6 +35,7 @@ public class InscriptionEntity {
     private String structureFormation;
 
     @Column(name = "annee_form", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date anneeFormation;
 
     @Column(name = "appliquer_form", nullable = false)
@@ -58,6 +60,7 @@ public class InscriptionEntity {
     private String lieuPlanteurFormation;
 
     @Column(name = "aplanteur_form", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date anneePlanteurFormation;
 
     @Column(name = "cplanteur_form", nullable = true)
@@ -78,6 +81,7 @@ public class InscriptionEntity {
     private String lieuPlanteurEmploi;
 
     @Column(name = "aplanteur_emp", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date anneePlanteurEmploi;
 
     @Column(name = "cplanteur_emp", nullable = true)
@@ -98,6 +102,7 @@ public class InscriptionEntity {
     private String lieuPlanteurActivite;
 
     @Column(name = "aplanteur_act", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date anneePlanteurActivite;
 
     @Column(name = "cplanteur_act", nullable = true)
@@ -116,6 +121,11 @@ public class InscriptionEntity {
 
     @Column(name = "enretenu", nullable = true)
     private Boolean isRetenu;
+
+    @Column(name = "statut_inscri", nullable = false)
+    private Integer statut;
+
+
 
     @ManyToOne
     @JoinColumn(name = "code_candidat", nullable = false)

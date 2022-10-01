@@ -26,6 +26,7 @@ public class CandidatEntity {
     private String genreCandidat;
 
     @Column(name = "dnaissance_candidat", nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date dateNaisCandidat;
 
     @Column(name = "lnaissance_candidat", nullable = true)
