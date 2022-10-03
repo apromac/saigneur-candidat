@@ -3,6 +3,7 @@ package com.apromac.saigneur.serviceimpl;
 import com.apromac.saigneur.dto.CandidatDTO;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.CandidatRepository;
 import com.apromac.saigneur.service.CandidatService;
@@ -127,7 +128,7 @@ public class CandidatServiceImpl implements CandidatService {
     public List<CandidatEntity> findAllCandidat() {
         List<CandidatEntity> candidats = candidatRepository.findAll();
         if (candidats.isEmpty())
-            throw new NotFoundException("Désolé, aucun candidat disponible");
+            throw new NoContentException("Désolé, aucun candidat disponible");
 
         return candidats;
     }

@@ -70,7 +70,7 @@ public class CampagneServiceImpl implements CampagneService {
     public CampagneEntity findCurrentCampagne() {
         CampagneEntity campagneEntity = campagneRepository.findByActiveCampagneTrue();
         if (campagneEntity == null)
-            throw new RuntimeException("Désolé, nous n'avons pas reussi à récupérer la campagne en cours");
+            throw new NotFoundException("Désolé, nous n'avons pas reussi à récupérer la campagne en cours");
 
         return campagneEntity;
     }
