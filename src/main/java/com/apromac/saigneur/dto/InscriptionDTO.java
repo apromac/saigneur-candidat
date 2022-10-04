@@ -45,8 +45,8 @@ public class InscriptionDTO {
 
 
     private String motivation;
-    private Boolean isSelectionner;
-    private Boolean isInterview;
-    private Boolean isRetenu;
+//    private Boolean isSelectionner;
+//    private Boolean isInterview;
+//    private Boolean isRetenu;
     private Integer statut;
 }
