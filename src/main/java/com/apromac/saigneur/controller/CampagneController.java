@@ -46,7 +46,16 @@ public class CampagneController {
     }
 
 
+    @ApiOperation(value = "Méthode permettant de modifier une campagne grace à son ID")
+    @PutMapping(value = "/campagne/{campagneID}")
+    public ResponseEntity<CampagneEntity> modifierCampagne(@RequestBody CampagneEntity campagneEntity,
+                                                           @PathVariable Long campagneID) {
+        CampagneEntity campagneTrouver = campagneService.findByCampagneID(campagneID);
 
+        CampagneEntity campagneUpdate = campagneService.updateCampagne(campagneTrouver, campagneEntity);
+
+        return new ResponseEntity<>(campagneUpdate, HttpStatus.OK);
+    }
 
 
 

@@ -75,4 +75,19 @@ public class CampagneServiceImpl implements CampagneService {
         return campagneEntity;
     }
 
+
+    /**
+     *
+     * @param campagneTrouver
+     * @param campagneEntity
+     * @return
+     */
+    public CampagneEntity updateCampagne(CampagneEntity campagneTrouver, CampagneEntity campagneEntity) {
+        campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
+        campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+
+        CampagneEntity campagneSave = campagneRepository.saveAndFlush(campagneTrouver);
+
+        return campagneSave;
+    }
 }

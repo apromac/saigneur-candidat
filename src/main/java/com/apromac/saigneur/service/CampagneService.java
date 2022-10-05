@@ -9,4 +9,5 @@ public interface CampagneService {
     public CampagneEntity saveCampagne(CampagneEntity campagne);
     public List<CampagneEntity> findAllCampagne();
     public CampagneEntity findCurrentCampagne();
+    public CampagneEntity updateCampagne(CampagneEntity campagneTrouver, CampagneEntity campagneEntity);
 }
