@@ -79,7 +79,7 @@ public class InscriptionController {
         return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
 
-    
+
 //    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour la selection")
 //    @GetMapping(value = "/inscription/candidat/selection/{isSelect}")
 //    public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
