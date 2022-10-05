@@ -55,7 +55,8 @@ public class InscriptionController {
 
     @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat dans la liste des candidats à selectionner")
     @GetMapping(value = "/inscription/{inscriptionID}/selection/{isSelect}")
-    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long inscriptionID, @PathVariable Boolean isSelect) {
+    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long inscriptionID,
+                                                                         @PathVariable Boolean isSelect) {
         InscriptionEntity inscription = inscriptionService.findByInscriptionID(inscriptionID, isSelect);
 
         return new ResponseEntity<>(inscription, HttpStatus.OK);
@@ -67,7 +68,8 @@ public class InscriptionController {
 
     @ApiOperation(value = "Méthode permettant de valider les candidats de l'interviewdont de la campagne en cours")
     @GetMapping(value = "/inscription/candidat/{candidatID}/interview/{isInterview}")
-    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long candidatID, @PathVariable Boolean isInterview) {
+    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long candidatID,
+                                                                                  @PathVariable Boolean isInterview) {
         CampagneEntity campagne = campagneService.findCurrentCampagne();
 
         CandidatEntity candidat = candidatService.findByCandidatID(candidatID);
@@ -78,6 +80,8 @@ public class InscriptionController {
 
         return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
+
+
 
 
 //    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour la selection")

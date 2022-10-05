@@ -89,7 +89,7 @@ public class InscriptionServiceImpl implements InscriptionService {
 
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
         saveInscriptionEntity.setStatut(inscriptionDTO.getStatut());
-        
+
 //        saveInscriptionEntity.setIsSelectionner(inscriptionDTO.getIsSelectionner());
 //        saveInscriptionEntity.setIsInterview(inscriptionDTO.getIsInterview());
 //        saveInscriptionEntity.setIsRetenu(inscriptionDTO.getIsRetenu());
@@ -136,8 +136,12 @@ public class InscriptionServiceImpl implements InscriptionService {
             throw new RuntimeException("Désolé, l'inscription recherché est introuvable");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
-//        inscriptionEntity.setIsSelectionner(isSelect);
-//        inscriptionEntity.setIsInterview(isSelect);
+
+        if (isSelect) {
+            inscriptionEntity.setStatut(1);
+        } else {
+            inscriptionEntity.setStatut(0);
+        }
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
         if (inscriptionUpdate == null)
@@ -154,14 +158,19 @@ public class InscriptionServiceImpl implements InscriptionService {
      * @param isInterview
      * @return
      */
-    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity, CampagneEntity campagneEntity, Boolean isInterview) {
+    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity,
+                                                                CampagneEntity campagneEntity,
+                                                                Boolean isInterview) {
         InscriptionEntity inscription = inscriptionRepository.findByCandidatAndCampagne(candidatEntity, campagneEntity);
         if (inscription == null)
             throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
 
-//        inscription.setIsRetenu(isInterview);
-//        inscription.setIsInterview(false);
-
+        if (isInterview) {
+            inscription.setStatut(2);
+        } else {
+            inscription.setStatut(1);
+        }
+        
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscription);
 
         return inscriptionUpdate;

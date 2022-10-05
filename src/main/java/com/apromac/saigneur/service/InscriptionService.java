@@ -11,17 +11,17 @@ public interface InscriptionService {
     public InscriptionEntity saveInscriptionCampagneCandidat(CampagneEntity campagneEntity,
                                                              CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO);
+    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity,
+                                                                CampagneEntity campagneEntity,
+                                                                Boolean isInterview);
     public List<InscriptionEntity> findByCampagne(Long campagneID);
     public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect);
-    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity,
 
 
 
 
 //    public List<InscriptionEntity> findSelectionCandidats(CampagneEntity campagneEntity, Boolean isValid);
 //    public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagne);
-                                                                CampagneEntity campagneEntity,
-                                                                Boolean isInterview);
 //    public List<InscriptionEntity> findByRetenuCandidats(CampagneEntity campagneEntity);
 
 
