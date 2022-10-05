@@ -100,6 +100,7 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
+
     /**
      *
      * @param campagneID
@@ -119,26 +120,7 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
-    /**
-     *
-     * @param isValid
-     * @return
-     */
-    public List<InscriptionEntity> findSelectionCandidats(CampagneEntity campagneEntity, Boolean isValid) {
-        List<InscriptionEntity> inscriptions = new ArrayList<>();
 
-        if (isValid) {
-            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerTrue(campagneEntity);
-            if (inscriptions.isEmpty())
-                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
-        } else {
-            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerFalse(campagneEntity);
-            if (inscriptions.isEmpty())
-                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
-        }
-
-        return inscriptions;
-    }
 
     /**
      *
@@ -165,19 +147,6 @@ public class InscriptionServiceImpl implements InscriptionService {
 
     /**
      *
-     * @return
-     */
-    public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagneEntity) {
-        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsInterviewTrue(campagneEntity);
-        if (inscriptions.isEmpty())
-            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
-
-        return inscriptions;
-    }
-
-
-    /**
-     *
      * @param candidatEntity
      * @param campagneEntity
      * @param isInterview
@@ -194,20 +163,6 @@ public class InscriptionServiceImpl implements InscriptionService {
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscription);
 
         return inscriptionUpdate;
-    }
-
-
-    /**
-     *
-     * @param campagneEntity
-     * @return
-     */
-    public List<InscriptionEntity> findByRetenuCandidats(CampagneEntity campagneEntity) {
-        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsRetenuTrue(campagneEntity);
-        if (inscriptions.isEmpty())
-            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats retenus.");
-
-        return inscriptions;
     }
 
 
@@ -294,11 +249,53 @@ public class InscriptionServiceImpl implements InscriptionService {
         return statutInscriptions;
     }
 
+//    /**
+//     *
+//     * @param isValid
+//     * @return
+//     */
+//    public List<InscriptionEntity> findSelectionCandidats(CampagneEntity campagneEntity, Boolean isValid) {
+//        List<InscriptionEntity> inscriptions = new ArrayList<>();
+//
+//        if (isValid) {
+//            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerTrue(campagneEntity);
+//            if (inscriptions.isEmpty())
+//                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
+//        } else {
+//            inscriptions = inscriptionRepository.findByCampagneAndIsSelectionnerFalse(campagneEntity);
+//            if (inscriptions.isEmpty())
+//                throw new NoContentException("Désolé, aucune inscription trouvée pour la campagne en cours.");
+//        }
+//
+//        return inscriptions;
+//    }
 
 
+//    /**
+//     *
+//     * @return
+//     */
+//    public List<InscriptionEntity> findByInterviewCandidats(CampagneEntity campagneEntity) {
+//        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsInterviewTrue(campagneEntity);
+//        if (inscriptions.isEmpty())
+//            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats destinés à l'interview.");
+//
+//        return inscriptions;
+//    }
 
 
-
+//    /**
+//     *
+//     * @param campagneEntity
+//     * @return
+//     */
+//    public List<InscriptionEntity> findByRetenuCandidats(CampagneEntity campagneEntity) {
+//        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndIsRetenuTrue(campagneEntity);
+//        if (inscriptions.isEmpty())
+//            throw new NoContentException("Désolé, nous n'avons pas pu récupérer la liste des candidats retenus.");
+//
+//        return inscriptions;
+//    }
 
 
 
