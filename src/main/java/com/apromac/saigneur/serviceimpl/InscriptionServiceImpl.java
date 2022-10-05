@@ -88,9 +88,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setContactPlanteurActivite(inscriptionDTO.getContactPlanteurActivite());
 
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
-        saveInscriptionEntity.setIsSelectionner(inscriptionDTO.getIsSelectionner());
-        saveInscriptionEntity.setIsInterview(inscriptionDTO.getIsInterview());
-        saveInscriptionEntity.setIsRetenu(inscriptionDTO.getIsRetenu());
+//        saveInscriptionEntity.setIsSelectionner(inscriptionDTO.getIsSelectionner());
+//        saveInscriptionEntity.setIsInterview(inscriptionDTO.getIsInterview());
+//        saveInscriptionEntity.setIsRetenu(inscriptionDTO.getIsRetenu());
 
         InscriptionEntity saveInscription = inscriptionRepository.save(saveInscriptionEntity);
         if (saveInscription == null)
@@ -152,8 +152,8 @@ public class InscriptionServiceImpl implements InscriptionService {
             throw new RuntimeException("Désolé, l'inscription recherché est introuvable");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
-        inscriptionEntity.setIsSelectionner(isSelect);
-        inscriptionEntity.setIsInterview(isSelect);
+//        inscriptionEntity.setIsSelectionner(isSelect);
+//        inscriptionEntity.setIsInterview(isSelect);
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
         if (inscriptionUpdate == null)
@@ -188,8 +188,8 @@ public class InscriptionServiceImpl implements InscriptionService {
         if (inscription == null)
             throw new NotFoundException("Désolé, nous avons rencontré un problème lors de la sauvegarde des informations.");
 
-        inscription.setIsRetenu(isInterview);
-        inscription.setIsInterview(false);
+//        inscription.setIsRetenu(isInterview);
+//        inscription.setIsInterview(false);
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscription);
 
