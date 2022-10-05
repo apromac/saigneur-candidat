@@ -170,7 +170,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         } else {
             inscription.setStatut(1);
         }
-        
+
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscription);
 
         return inscriptionUpdate;

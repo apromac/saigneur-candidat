@@ -1,6 +1,7 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.dto.CandidatDTO;
+import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
 import com.apromac.saigneur.exception.NoContentException;
@@ -33,7 +34,7 @@ public class CandidatServiceImpl implements CandidatService {
             CandidatDTO candidatDTO = new CandidatDTO();
 
             CandidatEntity candidat = inscription.getCandidat();
-
+            // candidat
             candidatDTO.setCandidatID(candidat.getCandidatID());
             candidatDTO.setNomCandidat(candidat.getNomCandidat());
             candidatDTO.setPrenomsCandidat(candidat.getPrenomsCandidat());
@@ -47,12 +48,45 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setSecondContactCandidat(candidat.getSecondContactCandidat());
             candidatDTO.setTypePieceCandidat(candidat.getTypePieceCandidat());
             candidatDTO.setNumeroPieceCandidat(candidat.getNumeroPieceCandidat());
-            candidatDTO.setCampagneEntity(inscription.getCampagne());
-            candidatDTO.setInscriptionID(inscription.getInscriptionID());
+
+
+            CampagneEntity campagne = inscription.getCampagne();
+            //campagne
+            candidatDTO.setCampagneID(campagne.getCampagneID());
+            candidatDTO.setLibelleCampagne(campagne.getLibelleCampagne());
+            candidatDTO.setActiveCampagne(campagne.getActiveCampagne());
+
+
+            //inscription
             candidatDTO.setDistrictInscription(inscription.getDistrictInscription());
-//            candidatDTO.setIsSelectionner(inscription.getIsSelectionner());
             candidatDTO.setZoneInscription(inscription.getZoneInscription());
             candidatDTO.setDateInscription(inscription.getDateInscription());
+            candidatDTO.setIsFormer(inscription.getIsFormer());
+            candidatDTO.setStructureFormation(inscription.getStructureFormation());
+            candidatDTO.setAnneeFormation(inscription.getAnneeFormation());
+            candidatDTO.setIsAppliquer(inscription.getIsAppliquer());
+            candidatDTO.setTypeFormation(inscription.getTypeFormation());
+            candidatDTO.setLieuFormation(inscription.getLieuFormation());
+            candidatDTO.setTypeSaigneFormation(inscription.getTypeSaigneFormation());
+            candidatDTO.setNomPlanteurFormation(inscription.getNomPlanteurFormation());
+            candidatDTO.setMatriculePlanteurFormation(inscription.getMatriculePlanteurFormation());
+            candidatDTO.setLieuPlanteurFormation(inscription.getLieuPlanteurFormation());
+            candidatDTO.setAnneePlanteurFormation(inscription.getAnneePlanteurFormation());
+            candidatDTO.setContactPlanteurFormation(inscription.getContactPlanteurFormation());
+            candidatDTO.setPropositionEmploi(inscription.getPropositionEmploi());
+            candidatDTO.setNomPlanteurEmploi(inscription.getNomPlanteurEmploi());
+            candidatDTO.setMatriculePlanteurEmploi(inscription.getMatriculePlanteurEmploi());
+            candidatDTO.setLieuPlanteurEmploi(inscription.getLieuPlanteurEmploi());
+            candidatDTO.setAnneePlanteurEmploi(inscription.getAnneePlanteurEmploi());
+            candidatDTO.setContactPlanteurEmploi(inscription.getContactPlanteurEmploi());
+            candidatDTO.setIsActivite(inscription.getIsActivite());
+            candidatDTO.setNomPlanteurActivite(inscription.getNomPlanteurActivite());
+            candidatDTO.setMatriculePlanteurActivite(inscription.getMatriculePlanteurActivite());
+            candidatDTO.setLieuPlanteurActivite(inscription.getLieuPlanteurActivite());
+            candidatDTO.setAnneePlanteurActivite(inscription.getAnneePlanteurActivite());
+            candidatDTO.setContactPlanteurActivite(inscription.getContactPlanteurActivite());
+            candidatDTO.setMotivation(inscription.getMotivation());
+            candidatDTO.setStatut(inscription.getStatut());
 
             candidatsDTO.add(candidatDTO);
         }
