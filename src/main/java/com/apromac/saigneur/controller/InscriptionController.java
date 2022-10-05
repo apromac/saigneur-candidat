@@ -50,15 +50,7 @@ public class InscriptionController {
     }
 
 
-    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour la selection")
-    @GetMapping(value = "/inscription/candidat/selection/{isSelect}")
-    public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
-        CampagneEntity campagne = campagneService.findCurrentCampagne();
 
-        List<InscriptionEntity> inscriptions = inscriptionService.findSelectionCandidats(campagne, isSelect);
-
-        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
-    }
 
 
     @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat dans la liste des candidats à selectionner")
@@ -70,15 +62,7 @@ public class InscriptionController {
     }
 
 
-    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour l'interview")
-    @GetMapping(value = "/inscription/interview")
-    public ResponseEntity<List<InscriptionEntity>> recupererInterviewCandidat() {
-        CampagneEntity campagne = campagneService.findCurrentCampagne();
 
-        List<InscriptionEntity> inscriptions = inscriptionService.findByInterviewCandidats(campagne);
-
-        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
-    }
 
 
     @ApiOperation(value = "Méthode permettant de valider les candidats de l'interviewdont de la campagne en cours")
@@ -95,16 +79,36 @@ public class InscriptionController {
         return new ResponseEntity<>(inscriptions, HttpStatus.OK);
     }
 
+    
+//    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour la selection")
+//    @GetMapping(value = "/inscription/candidat/selection/{isSelect}")
+//    public ResponseEntity<List<InscriptionEntity>> recupererSelectionCandidat(@PathVariable Boolean isSelect) {
+//        CampagneEntity campagne = campagneService.findCurrentCampagne();
+//
+//        List<InscriptionEntity> inscriptions = inscriptionService.findSelectionCandidats(campagne, isSelect);
+//
+//        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+//    }
 
-    @ApiOperation(value = "Méthode permettant de recupérer les candidats retenus de la campagne en cours")
-    @GetMapping(value = "/inscription/retenu")
-    public ResponseEntity<List<InscriptionEntity>> recupererRetenuCandidats() {
-        CampagneEntity campagne = campagneService.findCurrentCampagne();
+//    @ApiOperation(value = "Méthode permettant de recupérer les candidats de la campagne en cours pour l'interview")
+//    @GetMapping(value = "/inscription/interview")
+//    public ResponseEntity<List<InscriptionEntity>> recupererInterviewCandidat() {
+//        CampagneEntity campagne = campagneService.findCurrentCampagne();
+//
+//        List<InscriptionEntity> inscriptions = inscriptionService.findByInterviewCandidats(campagne);
+//
+//        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+//    }
 
-        List<InscriptionEntity> inscriptions = inscriptionService.findByRetenuCandidats(campagne);
-
-        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
-    }
+//    @ApiOperation(value = "Méthode permettant de recupérer les candidats retenus de la campagne en cours")
+//    @GetMapping(value = "/inscription/retenu")
+//    public ResponseEntity<List<InscriptionEntity>> recupererRetenuCandidats() {
+//        CampagneEntity campagne = campagneService.findCurrentCampagne();
+//
+//        List<InscriptionEntity> inscriptions = inscriptionService.findByRetenuCandidats(campagne);
+//
+//        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
+//    }
 
 
 
