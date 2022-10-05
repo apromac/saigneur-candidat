@@ -11,12 +11,16 @@ import java.util.List;
 @Repository
 public interface InscriptionRepository extends JpaRepository<InscriptionEntity, Long> {
     List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity);
-    List<InscriptionEntity> findByCampagneAndIsSelectionnerTrue(CampagneEntity campagneEntity);
-    List<InscriptionEntity> findByCampagneAndIsSelectionnerFalse(CampagneEntity campagneEntity);
-    List<InscriptionEntity> findByCampagneAndIsInterviewTrue(CampagneEntity campagneEntity);
     InscriptionEntity findByCandidatAndCampagne(CandidatEntity candidatEntity, CampagneEntity campagneEntity);
-    List<InscriptionEntity> findByCampagneAndIsRetenuTrue(CampagneEntity campagneEntity);
     List<InscriptionEntity> findByCampagneAndStatut(CampagneEntity campagneEntity, Integer statutCandidat);
+
+
+
+
+//    List<InscriptionEntity> findByCampagneAndIsSelectionnerTrue(CampagneEntity campagneEntity);
+//    List<InscriptionEntity> findByCampagneAndIsSelectionnerFalse(CampagneEntity campagneEntity);
+//    List<InscriptionEntity> findByCampagneAndIsInterviewTrue(CampagneEntity campagneEntity);
+//    List<InscriptionEntity> findByCampagneAndIsRetenuTrue(CampagneEntity campagneEntity);
 
 
 
