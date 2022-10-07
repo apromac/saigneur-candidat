@@ -39,10 +39,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -53,11 +49,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-			<version>2.2.8.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
 		<dependency>
@@ -65,6 +56,14 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>${springfox.version}</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-cache</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -105,6 +104,10 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.github.ben-manes.caffeine</groupId>-->
+<!--			<artifactId>caffeine</artifactId>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<dependencyManagement>
@@ -118,24 +121,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-<!--	<profiles>-->
-<!--		<profile>-->
-<!--			<id>dev</id>-->
-<!--			<activation>-->
-<!--				<activeByDefault>true</activeByDefault>-->
-<!--			</activation>-->
-<!--			<properties>-->
-<!--				<spring.profiles.active>dev</spring.profiles.active>-->
-<!--			</properties>-->
-<!--		</profile>-->
-<!--		<profile>-->
-<!--			<id>prod</id>-->
-<!--			<properties>-->
-<!--				<spring.profiles.active>dev</spring.profiles.active>-->
-<!--			</properties>-->
-<!--		</profile>-->
-<!--	</profiles>-->
 
 	<build>
 		<finalName>saigneur-candidat</finalName>
@@ -162,7 +147,6 @@
 						<include>**/*Test.java</include>
 					</includes>
 					<excludes>
-						<exclude>**/Abstract*.java</exclude>
 						<exclude>**/SaigneurCandidat*.java</exclude>
 					</excludes>
 					<junitArtifactName>junit:junit</junitArtifactName>

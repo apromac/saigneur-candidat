@@ -10,7 +10,6 @@ services:
     restart: always
     depends_on:
       - docker-saigneur-postgres
-      - docker-saigneur-discovery
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://docker-saigneur-postgres:5432/saigneurcandidatdb
       SPRING_DATASOURCE_USERNAME: postgres
