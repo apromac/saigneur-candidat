@@ -113,14 +113,6 @@ public class InscriptionEntity {
     @Column(name = "desire_motiv", nullable = true)
     private String motivation;
 
-//    @Column(name = "enselection", nullable = true)
-//    private Boolean isSelectionner;
-//
-//    @Column(name = "eninterview", nullable = true)
-//    private Boolean isInterview;
-//
-//    @Column(name = "enretenu", nullable = true)
-//    private Boolean isRetenu;
 
     @Column(name = "statut_inscri", nullable = false)
     private Integer statut;

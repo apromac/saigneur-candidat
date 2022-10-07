@@ -1,7 +1,5 @@
 package com.apromac.saigneur.dto;
 
-import com.apromac.saigneur.bean.PosteBean;
-import com.apromac.saigneur.bean.UtilisateurBean;
 import lombok.Getter;
 import lombok.Setter;
 

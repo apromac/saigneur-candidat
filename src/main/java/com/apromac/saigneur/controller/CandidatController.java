@@ -36,8 +36,6 @@ public class CandidatController {
     @GetMapping(value = "/candidat/campagne/findByCampagneID/{campagneID}")
     public ResponseEntity<List<CandidatDTO>> recupererCandidatParCampagne(@PathVariable long campagneID) {
         List<InscriptionEntity> inscriptions = inscriptionService.findByCampagne(campagneID);
-        if (inscriptions.isEmpty())
-            throw new NoContentException("Désolé, la liste ne contient aucune inscription pour cette campagne.");
 
         List<CandidatDTO> candidatsByCampagne = candidatService.candidatsByCampagne(inscriptions);
         if (candidatsByCampagne.isEmpty())
@@ -53,8 +51,6 @@ public class CandidatController {
         CampagneEntity campagne = campagneService.findCurrentCampagne();
 
         List<InscriptionEntity> inscriptions = inscriptionService.findByCampagne(campagne.getCampagneID());
-        if (inscriptions.isEmpty())
-            throw new NoContentException("Désolé, la liste ne contient aucune inscription pour cette campagne.");
 
         List<CandidatDTO> candidatsByCampagne = candidatService.candidatsByCampagne(inscriptions);
         if (candidatsByCampagne.isEmpty())

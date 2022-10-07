@@ -95,6 +95,8 @@ public class CandidatServiceImpl implements CandidatService {
     }
 
 
+
+
     /**
      *
      * @param candidatID
@@ -108,35 +110,6 @@ public class CandidatServiceImpl implements CandidatService {
 
         return candidatOptional.get();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -10,15 +10,5 @@ public interface CandidatService {
     public CandidatEntity saveCandidat(CandidatEntity candidat);
     public List<CandidatDTO> candidatsByCampagne(List<InscriptionEntity> inscriptions);
     public CandidatEntity findByCandidatID(Long candidatID);
-
-
-
-
-
-
-
-
-
-
     public List<CandidatEntity> findAllCandidat();
 }
