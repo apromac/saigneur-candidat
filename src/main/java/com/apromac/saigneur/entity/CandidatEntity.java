@@ -42,10 +42,10 @@ public class CandidatEntity {
     private String metierActuelCandidat;
 
     @Column(name = "pcontact_candidat", nullable = true)
-    private Integer premierContactCandidat;
+    private String premierContactCandidat;
 
     @Column(name = "scontact_candaidat", nullable = true)
-    private Integer secondContactCandidat;
+    private String secondContactCandidat;
 
     @Column(name = "tpiece_candidat", nullable = true)
     private String typePieceCandidat;
