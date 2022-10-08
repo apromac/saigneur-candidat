@@ -44,7 +44,7 @@ public class CandidatEntity {
     @Column(name = "pcontact_candidat", nullable = true)
     private String premierContactCandidat;
 
-    @Column(name = "scontact_candaidat", nullable = true)
+    @Column(name = "scontact_candidat", nullable = true)
     private String secondContactCandidat;
 
     @Column(name = "tpiece_candidat", nullable = true)
