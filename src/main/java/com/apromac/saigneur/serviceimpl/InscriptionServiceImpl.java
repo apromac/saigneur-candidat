@@ -118,6 +118,25 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
+    /**
+     *
+     * @param campagneID
+     * @param statutCandidat
+     * @return
+     */
+    @Override
+    public List<InscriptionEntity> findByCampagneAndStatut(Long campagneID, Integer statutCandidat) {
+        Optional<CampagneEntity> campagneOptional = campagneRepository.findById(campagneID);
+        if (!campagneOptional.isPresent())
+            throw new NotFoundException("Désolé, cette campagne n'existe pas");
+
+        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagneAndStatut(campagneOptional.get(), statutCandidat);
+        if (inscriptions.isEmpty())
+            throw new NoContentException("Désolé, la liste ne contient aucune inscription pour cette campagne.");
+
+        return inscriptions;
+    }
+
 
 
     /**

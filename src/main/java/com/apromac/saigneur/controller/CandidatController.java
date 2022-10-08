@@ -60,6 +60,21 @@ public class CandidatController {
     }
 
 
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des candidats de la campagne en cours")
+    @GetMapping(value = "/candidat/campagne/findByCurrentCampagne/statut/{statutID}")
+    public ResponseEntity<List<CandidatDTO>> recupererCandidatCampagneActuelParStatut(@PathVariable Integer statutCandidat) {
+        CampagneEntity campagne = campagneService.findCurrentCampagne();
+
+        List<InscriptionEntity> inscriptions = inscriptionService.findByCampagneAndStatut(campagne.getCampagneID(), statutCandidat);
+
+        List<CandidatDTO> candidatsByCampagne = candidatService.candidatsByCampagne(inscriptions);
+        if (candidatsByCampagne.isEmpty())
+            throw new NoContentException("Désolé, la liste ne contient aucun candidat pour cette campagne.");
+
+        return new ResponseEntity<>(candidatsByCampagne, HttpStatus.OK);
+    }
+
+
     @ApiOperation(value = "Méthode permettant de récupérer un candidat grace à son ID")
     @GetMapping(value = "/candidat/findByCandidatID/{candidatID}")
     public ResponseEntity<CandidatEntity> recupererUnCandidat(@PathVariable long candidatID) {
