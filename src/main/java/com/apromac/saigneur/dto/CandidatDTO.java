@@ -31,6 +31,7 @@ public class CandidatDTO {
 
 
     // inscriptionDTO
+    private Long inscriptionID;
     private String districtInscription;
     private String zoneInscription;
     private Date dateInscription;

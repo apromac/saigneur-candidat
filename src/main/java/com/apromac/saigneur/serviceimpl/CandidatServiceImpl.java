@@ -58,6 +58,7 @@ public class CandidatServiceImpl implements CandidatService {
 
 
             //inscription
+            candidatDTO.setInscriptionID(inscription.getInscriptionID());
             candidatDTO.setDistrictInscription(inscription.getDistrictInscription());
             candidatDTO.setZoneInscription(inscription.getZoneInscription());
             candidatDTO.setDateInscription(inscription.getDateInscription());
