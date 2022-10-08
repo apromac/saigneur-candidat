@@ -25,7 +25,7 @@ public class InscriptionDTO {
     private String matriculePlanteurFormation;
     private String lieuPlanteurFormation;
     private Date anneePlanteurFormation;
-    private Integer contactPlanteurFormation;
+    private String contactPlanteurFormation;
 
 
     private Boolean propositionEmploi;
@@ -33,7 +33,7 @@ public class InscriptionDTO {
     private String matriculePlanteurEmploi;
     private String lieuPlanteurEmploi;
     private Date anneePlanteurEmploi;
-    private Integer contactPlanteurEmploi;
+    private String contactPlanteurEmploi;
 
 
     private Boolean isActivite;
@@ -41,7 +41,7 @@ public class InscriptionDTO {
     private String matriculePlanteurActivite;
     private String lieuPlanteurActivite;
     private Date anneePlanteurActivite;
-    private Integer contactPlanteurActivite;
+    private String contactPlanteurActivite;
 
 
     private String motivation;

@@ -64,7 +64,7 @@ public class InscriptionEntity {
     private Date anneePlanteurFormation;
 
     @Column(name = "cplanteur_form", nullable = true)
-    private Integer contactPlanteurFormation;
+    private String contactPlanteurFormation;
 
 
 
@@ -85,7 +85,7 @@ public class InscriptionEntity {
     private Date anneePlanteurEmploi;
 
     @Column(name = "cplanteur_emp", nullable = true)
-    private Integer contactPlanteurEmploi;
+    private String contactPlanteurEmploi;
 
 
 
@@ -106,7 +106,7 @@ public class InscriptionEntity {
     private Date anneePlanteurActivite;
 
     @Column(name = "cplanteur_act", nullable = true)
-    private Integer contactPlanteurActivite;
+    private String contactPlanteurActivite;
 
 
 

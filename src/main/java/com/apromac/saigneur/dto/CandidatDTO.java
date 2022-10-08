@@ -19,8 +19,8 @@ public class CandidatDTO {
     private String lieuResidCandidat;
     private String niveauEtudeCandidat;
     private String metierActuelCandidat;
-    private Integer premierContactCandidat;
-    private Integer secondContactCandidat;
+    private String premierContactCandidat;
+    private String secondContactCandidat;
     private String typePieceCandidat;
     private String numeroPieceCandidat;
 
@@ -46,21 +46,21 @@ public class CandidatDTO {
     private String matriculePlanteurFormation;
     private String lieuPlanteurFormation;
     private Date anneePlanteurFormation;
-    private Integer contactPlanteurFormation;
+    private String contactPlanteurFormation;
 
     private Boolean propositionEmploi;
     private String nomPlanteurEmploi;
     private String matriculePlanteurEmploi;
     private String lieuPlanteurEmploi;
     private Date anneePlanteurEmploi;
-    private Integer contactPlanteurEmploi;
+    private String contactPlanteurEmploi;
 
     private Boolean isActivite;
     private String nomPlanteurActivite;
     private String matriculePlanteurActivite;
     private String lieuPlanteurActivite;
     private Date anneePlanteurActivite;
-    private Integer contactPlanteurActivite;
+    private String contactPlanteurActivite;
 
     private String motivation;
     private Integer statut;
