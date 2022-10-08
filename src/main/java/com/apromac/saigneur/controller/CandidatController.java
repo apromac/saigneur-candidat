@@ -61,7 +61,7 @@ public class CandidatController {
 
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des candidats de la campagne en cours")
-    @GetMapping(value = "/candidat/campagne/findByCurrentCampagne/statut/{statutID}")
+    @GetMapping(value = "/candidat/campagne/findByCurrentCampagne/statut/{statutCandidat}")
     public ResponseEntity<List<CandidatDTO>> recupererCandidatCampagneActuelParStatut(@PathVariable Integer statutCandidat) {
         CampagneEntity campagne = campagneService.findCurrentCampagne();
 
