@@ -8,8 +8,8 @@ services:
     ports:
       - "9003:9003"
     restart: always
-    depends_on:
-      - docker-saigneur-postgres
+#    depends_on:
+#      - docker-saigneur-postgres
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://docker-saigneur-postgres:5432/saigneurcandidatdb
       SPRING_DATASOURCE_USERNAME: postgres
