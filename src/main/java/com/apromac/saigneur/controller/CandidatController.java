@@ -35,7 +35,8 @@ public class CandidatController {
     @ApiOperation(value = "Méthode permettant de récupérer la liste des candidats d'une campagne grace à son ID")
     @GetMapping(value = "/candidat/campagne/findByCampagneID/{campagneID}")
     public ResponseEntity<List<CandidatDTO>> recupererCandidatParCampagne(@PathVariable long campagneID) {
-        List<InscriptionEntity> inscriptions = inscriptionService.findByCampagne(campagneID);
+//        List<InscriptionEntity> inscriptions = inscriptionService.findByCampagne(campagneID);
+        List<InscriptionEntity> inscriptions = inscriptionService.findByCampagneAndStatut(campagneID, 0);
 
         List<CandidatDTO> candidatsByCampagne = candidatService.candidatsByCampagne(inscriptions);
         if (candidatsByCampagne.isEmpty())
