@@ -113,9 +113,70 @@ public class InscriptionEntity {
     @Column(name = "desire_motiv", nullable = true)
     private String motivation;
 
-
     @Column(name = "statut_inscri", nullable = false)
     private Integer statut;
+
+
+    // motivation
+    @Column(name = "desc_reveil", nullable = true)
+    private String descriptionReveil;
+
+    @Column(name = "note_reveil", nullable = true)
+    private Double noteReveil;
+
+    @Column(name = "desc_couche", nullable = true)
+    private String descriptionCouche;
+
+    @Column(name = "note_couche", nullable = true)
+    private Double noteCouche;
+
+    @Column(name = "desc_occup", nullable = true)
+    private String descriptionOccupation;
+
+    @Column(name = "note_occup", nullable = true)
+    private Double noteOccupation;
+
+    @Column(name = "peur_obscur", nullable = true)
+    private Boolean peurObscurite;
+
+    @Column(name = "note_obscur", nullable = true)
+    private Double noteObscurite;
+
+
+
+    // endurance
+    @Column(name = "sportif", nullable = true)
+    private Boolean sportif;
+
+    @Column(name = "desc_sport", nullable = true)
+    private String descriptionSportif;
+
+    @Column(name = "note_sport", nullable = true)
+    private Double noteSprotif;
+
+    @Column(name = "desc_long_dist", nullable = true)
+    private String descriptionLongueDistance;
+
+    @Column(name = "note_long_dist", nullable = true)
+    private Double noteLongueDistance;
+
+
+
+    // adaptation
+    @Column(name = "monte_velo", nullable = true)
+    private Boolean monteVelo;
+
+    @Column(name = "note_velo", nullable = true)
+    private Double noteVelo;
+
+    @Column(name = "pres_plan", nullable = true)
+    private Boolean presencePlantation;
+
+    @Column(name = "motif_pres", nullable = true)
+    private String motifPresencePlantation;
+
+    @Column(name = "note_pres", nullable = true)
+    private Double notePresencePlantation;
 
 
 

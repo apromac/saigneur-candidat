@@ -89,6 +89,34 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setMotivation(inscription.getMotivation());
             candidatDTO.setStatut(inscription.getStatut());
 
+
+            // motivation
+            candidatDTO.setDescriptionReveil(inscription.getDescriptionReveil());
+            candidatDTO.setNoteReveil(inscription.getNoteReveil());
+            candidatDTO.setDescriptionCouche(inscription.getDescriptionCouche());
+            candidatDTO.setNoteCouche(inscription.getNoteCouche());
+            candidatDTO.setDescriptionOccupation(inscription.getDescriptionOccupation());
+            candidatDTO.setNoteOccupation(inscription.getNoteOccupation());
+            candidatDTO.setPeurObscurite(inscription.getPeurObscurite());
+            candidatDTO.setNoteObscurite(inscription.getNoteObscurite());
+
+
+            // endurance
+            candidatDTO.setSportif(inscription.getSportif());
+            candidatDTO.setDescriptionSportif(inscription.getDescriptionSportif());
+            candidatDTO.setNoteSprotif(inscription.getNoteSprotif());
+            candidatDTO.setDescriptionLongueDistance(inscription.getDescriptionLongueDistance());
+            candidatDTO.setNoteLongueDistance(inscription.getNoteLongueDistance());
+
+
+            // adaptation
+            candidatDTO.setMonteVelo(inscription.getMonteVelo());
+            candidatDTO.setNoteVelo(inscription.getNoteVelo());
+            candidatDTO.setPresencePlantation(inscription.getPresencePlantation());
+            candidatDTO.setMotifPresencePlantation(inscription.getMotifPresencePlantation());
+            candidatDTO.setNotePresencePlantation(inscription.getNotePresencePlantation());
+
+
             candidatsDTO.add(candidatDTO);
         }
 
