@@ -52,12 +52,12 @@ public class LocaliteCandidatController {
     }
 
 
-    @ApiOperation(value = "Méthode permettant de récupérer la liste des TDH avec leur localités en fonction de l'utilisateur connecté")
-    @GetMapping(value = "/localite/posteTDH/{posteID}/district/{district}")
-    public ResponseEntity<List<LocaliteCandidatDTO>> recupererLocaliteTDHParDistrict(@PathVariable Long posteID, @PathVariable String district) {
-        List<OccuperBean> occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHParDisctrict(posteID, district);
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des profil TDH par district")
+    @GetMapping(value = "/localite/district/{district}/profil/{profilID}")
+    public ResponseEntity<List<LocaliteCandidatDTO>> recupererProfilTDHParDistrict(@PathVariable String district, @PathVariable Long profilID) {
+        List<OccuperBean> occuperBeans = microserviceUtilisateurProxy.recupererProfilTDHParDisctrict(district, profilID);
         if (occuperBeans.isEmpty())
-            throw new NoContentException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
+            throw new NoContentException("Désolé, nous n'avons pas pu récupérer les informations relatives au district du TDH");
 
         List<LocaliteCandidatDTO> posteTDHParDistrict = localiteCandidatService.findByPosteTDH(occuperBeans);
 
