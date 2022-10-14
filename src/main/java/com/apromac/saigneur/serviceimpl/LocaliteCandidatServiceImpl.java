@@ -48,11 +48,8 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
         for(OccuperBean occuperBean: occuperBeans) {
             LocaliteCandidatDTO localiteCandidatDTO = new LocaliteCandidatDTO();
 
-            UtilisateurBean utilisateurBean = occuperBean.getUtilisateurBean();
-            if(utilisateurBean == null)
-                throw new NotFoundException("Désolé, nous n'avons pas pu recupérer l'utilisateur");
-
-//            localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean().getPrenomsUtilisateur());
+            localiteCandidatDTO.setNomTDH(occuperBean.getUtilisateurBean() != null ? occuperBean.getUtilisateurBean().getNomUtilisateur() : "");
+            localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean() != null ? occuperBean.getUtilisateurBean().getPrenomsUtilisateur() : "");
             localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
             localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
 
