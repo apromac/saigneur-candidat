@@ -61,7 +61,7 @@ public class LocaliteCandidatController {
 
         List<LocaliteCandidatDTO> profilTDHParDistrict = localiteCandidatService.findByProfilTDH(occuperBeans);
 
-        return new ResponseEntity<>(posteTDHParDistrict, HttpStatus.OK);
+        return new ResponseEntity<>(profilTDHParDistrict, HttpStatus.OK);
     }
 
 }
