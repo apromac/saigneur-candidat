@@ -2,6 +2,7 @@ package com.apromac.saigneur.controller;
 
 import com.apromac.saigneur.bean.OccuperBean;
 import com.apromac.saigneur.dto.LocaliteCandidatDTO;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.proxy.MicroserviceUtilisateurProxy;
 import com.apromac.saigneur.service.LocaliteCandidatService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -46,6 +49,19 @@ public class LocaliteCandidatController {
             throw new NotFoundException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
 
         return new ResponseEntity<>(occuperBeans, HttpStatus.OK);
+    }
+
+
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des TDH avec leur localités en fonction de l'utilisateur connecté")
+    @GetMapping(value = "/localite/posteTDH/{posteID}/district/{district}")
+    public ResponseEntity<List<LocaliteCandidatDTO>> recupererLocaliteTDHParDistrict(@PathVariable Long posteID, @PathVariable String district) {
+        List<OccuperBean> occuperBeans = microserviceUtilisateurProxy.recupererPosteActuelTDHParDisctrict(posteID, district);
+        if (occuperBeans.isEmpty())
+            throw new NoContentException("Désolé, nous n'avons pas pu récupérer les informations relatives à la zone du TDH");
+
+        List<LocaliteCandidatDTO> posteTDHParDistrict = localiteCandidatService.findByPosteTDH(occuperBeans);
+
+        return new ResponseEntity<>(posteTDHParDistrict, HttpStatus.OK);
     }
 
 }

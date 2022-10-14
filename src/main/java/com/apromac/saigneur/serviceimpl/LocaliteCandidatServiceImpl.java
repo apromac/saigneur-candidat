@@ -5,6 +5,9 @@ import com.apromac.saigneur.dto.LocaliteCandidatDTO;
 import com.apromac.saigneur.service.LocaliteCandidatService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
 
@@ -28,5 +31,24 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
         localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
 
         return localiteCandidatDTO;
+    }
+
+
+    /**
+     *
+     * @param occuperBeans
+     * @return
+     */
+    public List<LocaliteCandidatDTO> findByPosteTDH(List<OccuperBean> occuperBeans) {
+        List<LocaliteCandidatDTO> localiteCandidatDTOS = new ArrayList<>();
+
+        for(OccuperBean occuperBean: occuperBeans) {
+            LocaliteCandidatDTO localiteCandidatDTO = new LocaliteCandidatDTO();
+
+            localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
+            localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
+        }
+        
+        return localiteCandidatDTOS;
     }
 }
