@@ -2,6 +2,7 @@ package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.bean.OccuperBean;
 import com.apromac.saigneur.dto.LocaliteCandidatDTO;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.service.LocaliteCandidatService;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
      * @param occuperBeans
      * @return
      */
-    public List<LocaliteCandidatDTO> findByPosteTDH(List<OccuperBean> occuperBeans) {
+    public List<LocaliteCandidatDTO> findByProfilTDH(List<OccuperBean> occuperBeans) {
         List<LocaliteCandidatDTO> localiteCandidatDTOS = new ArrayList<>();
 
         for(OccuperBean occuperBean: occuperBeans) {
@@ -47,8 +48,13 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
 
             localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
             localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
+
+            localiteCandidatDTOS.add(localiteCandidatDTO);
         }
-        
+
+        if (localiteCandidatDTOS.isEmpty())
+            throw new NoContentException("Désolé, la liste est vide.");
+
         return localiteCandidatDTOS;
     }
 }

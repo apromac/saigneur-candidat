@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface LocaliteCandidatService {
     public LocaliteCandidatDTO findByPosteTDH(OccuperBean occuperBean);
-    public List<LocaliteCandidatDTO> findByPosteTDH(List<OccuperBean> occuperBeans);
+    public List<LocaliteCandidatDTO> findByProfilTDH(List<OccuperBean> occuperBeans);
 }
