@@ -14,7 +14,7 @@ public interface MicroserviceUtilisateurProxy {
     OccuperBean recupererPosteActuelTDHOccuper(@PathVariable long posteTDHID);
 
 
-    @GetMapping(value = "/api/v1/occuper/poste/{posteID}/district/{disctrict}")
+    @GetMapping(value = "/api/v1/occuper/poste/{posteID}/district/{district}")
     List<OccuperBean> recupererPosteActuelTDHParDisctrict(@PathVariable long posteID, @PathVariable String district);
 
 }
