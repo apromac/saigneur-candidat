@@ -46,6 +46,7 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
         for(OccuperBean occuperBean: occuperBeans) {
             LocaliteCandidatDTO localiteCandidatDTO = new LocaliteCandidatDTO();
 
+            localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean().getPrenomsUtilisateur());
             localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
             localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
 
