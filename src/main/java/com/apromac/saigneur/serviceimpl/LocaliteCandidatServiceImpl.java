@@ -1,8 +1,10 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.bean.OccuperBean;
+import com.apromac.saigneur.bean.UtilisateurBean;
 import com.apromac.saigneur.dto.LocaliteCandidatDTO;
 import com.apromac.saigneur.exception.NoContentException;
+import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.service.LocaliteCandidatService;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +48,11 @@ public class LocaliteCandidatServiceImpl implements LocaliteCandidatService {
         for(OccuperBean occuperBean: occuperBeans) {
             LocaliteCandidatDTO localiteCandidatDTO = new LocaliteCandidatDTO();
 
-            localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean().getPrenomsUtilisateur());
+            UtilisateurBean utilisateurBean = occuperBean.getUtilisateurBean();
+            if(utilisateurBean == null)
+                throw new NotFoundException("Désolé, nous n'avons pas pu recupérer l'utilisateur");
+
+//            localiteCandidatDTO.setPrenomsTDH(occuperBean.getUtilisateurBean().getPrenomsUtilisateur());
             localiteCandidatDTO.setDistrictTDH(occuperBean.getDistrictOccuper());
             localiteCandidatDTO.setZoneTDH(occuperBean.getZoneOccuper());
 
