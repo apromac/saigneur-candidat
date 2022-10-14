@@ -2,6 +2,7 @@ package com.apromac.saigneur.proxy;
 
 import com.apromac.saigneur.bean.OccuperBean;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -14,5 +15,5 @@ public interface MicroserviceUtilisateurProxy {
     OccuperBean recupererPosteActuelTDHOccuper(@PathVariable long posteTDHID);
 
     @GetMapping(value = "/api/v1/occuper/district/{district}/profil/{profilID}")
-    List<OccuperBean> recupererProfilTDHParDistrict(@PathVariable String district, @PathVariable Long profilID);
+    ResponseEntity<List<OccuperBean>> recupererProfilTDHParDistrict(@PathVariable("district") String district, @PathVariable("profilID") Long profilID);
 }
