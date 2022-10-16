@@ -65,7 +65,7 @@ public class InscriptionDTO {
     private Double noteSprotif;
     private String descriptionLongueDistance;
     private Double noteLongueDistance;
-
+    private Boolean isInterviewer;
 
     // adaptation
     private Boolean monteVelo;

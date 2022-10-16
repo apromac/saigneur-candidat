@@ -3,6 +3,7 @@ package com.apromac.saigneur.controller;
 import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.service.CampagneService;
 import com.apromac.saigneur.service.CandidatService;
@@ -32,7 +33,7 @@ public class InscriptionController {
 
 
 
-    @ApiOperation(value = "Méthode permettant de sauvegarder l'inscription d'un candidat pour une campagne prévise")
+    @ApiOperation(value = "Méthode permettant de sauvegarder l'inscription d'un candidat pour une campagne précise")
     @PostMapping(value = "/inscription/saveInscription")
     public ResponseEntity<InscriptionEntity> sauvegarderInscription(@RequestBody CandidatCampagneRequest candidatCampagneRequest) {
         CampagneEntity campagneTrouver = campagneService.findByCampagneID(candidatCampagneRequest.getCampagneEntity().getCampagneID());
@@ -62,7 +63,7 @@ public class InscriptionController {
 
 
 
-    @ApiOperation(value = "Méthode permettant de valider les candidats de l'interviewdont de la campagne en cours")
+    @ApiOperation(value = "Méthode permettant de valider les candidats de l'interview de la campagne en cours")
     @GetMapping(value = "/inscription/candidat/{candidatID}/interview/{isInterview}")
     public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long candidatID,
                                                                                   @PathVariable Boolean isInterview) {
@@ -79,7 +80,24 @@ public class InscriptionController {
 
 
 
+    @ApiOperation(value = "Méthode permettant de recevoir les données de l'interview transmis par le TDH")
+    @PutMapping(value = "/inscription/updateInterview")
+    public ResponseEntity<List<InscriptionEntity>> majInterview(@RequestBody CandidatCampagneRequest candidatCampagneRequest) {
+//        CampagneEntity campagneTrouver = campagneService.findByCampagneID(candidatCampagneRequest.getCampagneEntity().getCampagneID());
+//        if (campagneTrouver == null)
+//            throw new RuntimeException("Désolé, aucune campagne trouvé avec cet ID");
+//
+//        InscriptionEntity saveInscription = inscriptionService.saveInscriptionCampagneCandidat(
+//                campagneTrouver,
+//                candidatCampagneRequest.getCandidatEntity(),
+//                candidatCampagneRequest.getInscriptionDTO());
+//        if (saveInscription == null)
+//            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à l'insnscription du candidat");
+//
+//        return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
 
+        throw new NoContentException("La methode est en cours d'élaboration.");
+    }
 
 
 

@@ -89,4 +89,5 @@ public class CandidatDTO {
     private Boolean presencePlantation;
     private String motifPresencePlantation;
     private Double notePresencePlantation;
+    private Boolean isInterviewer;
 }
