@@ -20,7 +20,37 @@ public class CampagneServiceImpl implements CampagneService {
 
 
     /**
-     *
+     * Methode permettant de récupérer la liste des campagnes
+     * @return campagnes
+     */
+    @Override
+    public List<CampagneEntity> findAllCampagne() {
+        List<CampagneEntity> campagnes = campagneRepository.findAll();
+        if (campagnes.isEmpty())
+            throw new NoContentException("Désolé, aucune campagne disponible");
+
+        return campagnes;
+    }
+
+
+
+    /**
+     * Methode permettant de récupérer la campagne en cours
+     * @return campagneEntity
+     */
+    @Override
+    public CampagneEntity findCurrentCampagne() {
+        CampagneEntity campagneEntity = campagneRepository.findByActiveCampagneTrue();
+        if (campagneEntity == null)
+            throw new NotFoundException("Désolé, nous n'avons pas réussi à récupérer la campagne en cours");
+
+        return campagneEntity;
+    }
+
+
+
+    /**
+     * Methode permettant de récuperer une campagne gras à son ID
      * @param campagneID
      * @return
      */
@@ -36,9 +66,9 @@ public class CampagneServiceImpl implements CampagneService {
 
 
     /**
-     *
-     * @param campagne
-     * @return
+     * Methode permettant de sauvegarder une campagne
+     * @param campagne represent l'objet Campagne
+     * @return campagne Save
      */
     @Override
     public CampagneEntity saveCampagne(CampagneEntity campagne) {
@@ -50,42 +80,14 @@ public class CampagneServiceImpl implements CampagneService {
     }
 
 
-
     /**
-     *
-     * @return campagnes, list of all campagne
+     * Methode permettant de modifier une campagne en fonction d'un objet CampagneTrouver, provenant de la base de données
+     * et un objet CampagneEntity provenant de la partie cliente
+     * @param campagneTrouver represente un objet campagne provenant de la base de données
+     * @param campagneEntity represente un objet campagne provenant de la partie cliente
+     * @return
      */
     @Override
-    public List<CampagneEntity> findAllCampagne() {
-        List<CampagneEntity> campagnes = campagneRepository.findAll();
-        if (campagnes.isEmpty())
-            throw new NoContentException("Désolé, aucune campagne disponible");
-
-        return campagnes;
-    }
-
-
-
-    /**
-     *
-     * @return
-     */
-    public CampagneEntity findCurrentCampagne() {
-        CampagneEntity campagneEntity = campagneRepository.findByActiveCampagneTrue();
-        if (campagneEntity == null)
-            throw new NotFoundException("Désolé, nous n'avons pas reussi à récupérer la campagne en cours");
-
-        return campagneEntity;
-    }
-
-
-
-    /**
-     *
-     * @param campagneTrouver
-     * @param campagneEntity
-     * @return
-     */
     public CampagneEntity updateCampagne(CampagneEntity campagneTrouver, CampagneEntity campagneEntity) {
         campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
         campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
@@ -94,4 +96,6 @@ public class CampagneServiceImpl implements CampagneService {
 
         return campagneSave;
     }
+
 }
+

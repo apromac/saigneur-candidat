@@ -19,14 +19,6 @@ public class CampagneController {
     private CampagneService campagneService;
 
 
-    @ApiOperation(value = "Méthode permettant de sauvegarder une campagne")
-    @PostMapping(value = "/campagne/saveCampagne")
-    public ResponseEntity<CampagneEntity> sauvegarderUneCampagne(@RequestBody CampagneEntity campagne) {
-        CampagneEntity campagneSave = campagneService.saveCampagne(campagne);
-
-        return new ResponseEntity<>(campagneSave, HttpStatus.CREATED);
-    }
-
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des campagnes")
     @GetMapping(value = "/campagne/findAllCampagne")
@@ -35,6 +27,7 @@ public class CampagneController {
 
         return new ResponseEntity<>(campagnes, HttpStatus.OK);
     }
+
 
 
     @ApiOperation(value = "Méthode permettant de récupérer la compagne en cours")
@@ -46,7 +39,28 @@ public class CampagneController {
     }
 
 
-    @ApiOperation(value = "Méthode permettant de modifier une campagne grace à son ID")
+
+    @ApiOperation(value = "Méthode permettant de récupérer une campagne grace à son ID")
+    @GetMapping(value = "/campagne/findByCampagneID/{campagneID}")
+    public ResponseEntity<CampagneEntity> recupererUneCampagne(@PathVariable long campagneID) {
+        CampagneEntity campagne = campagneService.findByCampagneID(campagneID);
+
+        return new ResponseEntity<>(campagne, HttpStatus.OK);
+    }
+
+
+
+    @ApiOperation(value = "Méthode permettant de sauvegarder une campagne")
+    @PostMapping(value = "/campagne/saveCampagne")
+    public ResponseEntity<CampagneEntity> sauvegarderUneCampagne(@RequestBody CampagneEntity campagne) {
+        CampagneEntity campagneSave = campagneService.saveCampagne(campagne);
+
+        return new ResponseEntity<>(campagneSave, HttpStatus.CREATED);
+    }
+
+
+
+    @ApiOperation(value = "Méthode permettant de modifier une campagne grace à son ID et un objet Campagne")
     @PutMapping(value = "/campagne/{campagneID}")
     public ResponseEntity<CampagneEntity> modifierCampagne(@RequestBody CampagneEntity campagneEntity,
                                                            @PathVariable Long campagneID) {
@@ -57,30 +71,5 @@ public class CampagneController {
         return new ResponseEntity<>(campagneUpdate, HttpStatus.OK);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @ApiOperation(value = "Méthode permettant de récupérer une campagne grace à son ID")
-    @GetMapping(value = "/campagne/findByCampagneID/{campagneID}")
-    public ResponseEntity<CampagneEntity> recupererUneCampagne(@PathVariable long campagneID) {
-        CampagneEntity campagne = campagneService.findByCampagneID(campagneID);
-
-        return new ResponseEntity<>(campagne, HttpStatus.OK);
-    }
-
 }
+

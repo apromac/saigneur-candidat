@@ -5,7 +5,6 @@ import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
 import com.apromac.saigneur.exception.NoContentException;
-import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.CandidatRepository;
 import com.apromac.saigneur.service.CandidatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CandidatServiceImpl implements CandidatService {
@@ -24,17 +22,24 @@ public class CandidatServiceImpl implements CandidatService {
 
 
     /**
-     *
-     * @param inscriptions
+     * Methode permettant de constituer la liste des candidats provenant des inscriptions.
+     * @param inscriptions objet representant la liste des inscriptions contenant les candidats de la campagne en cours
+     *                     en fonction du statut et du district du candidat. Dans le cas d'une requete de l'administrateur,
+     *                     la liste "inscriptions" est obtenue en fonction de la campagne et du statut
      * @return
      */
-    public List<CandidatDTO> candidatsByCampagne(List<InscriptionEntity> inscriptions) {
-        List<CandidatDTO> candidatsDTO = new ArrayList<>();
+    @Override
+    public List<CandidatDTO> findByInscriptions(List<InscriptionEntity> inscriptions) {
+        if (inscriptions.isEmpty())
+            throw new NoContentException("Désolé, aucun candidat trouvé");
+
+        List<CandidatDTO> candidatDTOs = new ArrayList<>();
+
         for (InscriptionEntity inscription: inscriptions) {
             CandidatDTO candidatDTO = new CandidatDTO();
 
-            CandidatEntity candidat = inscription.getCandidat();
             // candidat
+            CandidatEntity candidat = inscription.getCandidat();
             candidatDTO.setCandidatID(candidat.getCandidatID());
             candidatDTO.setNomCandidat(candidat.getNomCandidat());
             candidatDTO.setPrenomsCandidat(candidat.getPrenomsCandidat());
@@ -49,15 +54,13 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setTypePieceCandidat(candidat.getTypePieceCandidat());
             candidatDTO.setNumeroPieceCandidat(candidat.getNumeroPieceCandidat());
 
-
+            // campagne
             CampagneEntity campagne = inscription.getCampagne();
-            //campagne
             candidatDTO.setCampagneID(campagne.getCampagneID());
             candidatDTO.setLibelleCampagne(campagne.getLibelleCampagne());
             candidatDTO.setActiveCampagne(campagne.getActiveCampagne());
 
-
-            //inscription
+            // inscription
             candidatDTO.setInscriptionID(inscription.getInscriptionID());
             candidatDTO.setDistrictInscription(inscription.getDistrictInscription());
             candidatDTO.setZoneInscription(inscription.getZoneInscription());
@@ -89,7 +92,6 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setMotivation(inscription.getMotivation());
             candidatDTO.setStatut(inscription.getStatut());
 
-
             // motivation
             candidatDTO.setDescriptionReveil(inscription.getDescriptionReveil());
             candidatDTO.setNoteReveil(inscription.getNoteReveil());
@@ -100,14 +102,12 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setPeurObscurite(inscription.getPeurObscurite());
             candidatDTO.setNoteObscurite(inscription.getNoteObscurite());
 
-
             // endurance
             candidatDTO.setSportif(inscription.getSportif());
             candidatDTO.setDescriptionSportif(inscription.getDescriptionSportif());
             candidatDTO.setNoteSprotif(inscription.getNoteSprotif());
             candidatDTO.setDescriptionLongueDistance(inscription.getDescriptionLongueDistance());
             candidatDTO.setNoteLongueDistance(inscription.getNoteLongueDistance());
-
 
             // adaptation
             candidatDTO.setMonteVelo(inscription.getMonteVelo());
@@ -116,57 +116,57 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setMotifPresencePlantation(inscription.getMotifPresencePlantation());
             candidatDTO.setNotePresencePlantation(inscription.getNotePresencePlantation());
 
-
-            candidatsDTO.add(candidatDTO);
+            candidatDTOs.add(candidatDTO);
         }
 
-        return candidatsDTO;
-    }
-
-
-
-
-    /**
-     *
-     * @param candidatID
-     * @return
-     */
-    @Override
-    public CandidatEntity findByCandidatID(Long candidatID) {
-        Optional<CandidatEntity> candidatOptional = candidatRepository.findById(candidatID);
-        if (!candidatOptional.isPresent())
-            throw new NotFoundException("Désolé, le candidat désignée n'existe pas");
-
-        return candidatOptional.get();
-    }
-
-
-
-    /**
-     *
-     * @param candidat
-     * @return
-     */
-    @Override
-    public CandidatEntity saveCandidat(CandidatEntity candidat) {
-        CandidatEntity candidatSave = candidatRepository.save(candidat);
-        if (candidatSave == null)
-            throw new RuntimeException("Une erreur est survenu lors de la sauvegarde du candidat.");
-
-        return candidatSave;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public List<CandidatEntity> findAllCandidat() {
-        List<CandidatEntity> candidats = candidatRepository.findAll();
-        if (candidats.isEmpty())
-            throw new NoContentException("Désolé, aucun candidat disponible");
-
-        return candidats;
+        return candidatDTOs;
     }
 
 }
+
+
+
+
+//
+//    /**
+//     *
+//     * @param candidatID
+//     * @return
+//     */
+//    @Override
+//    public CandidatEntity findByCandidatID(Long candidatID) {
+//        Optional<CandidatEntity> candidatOptional = candidatRepository.findById(candidatID);
+//        if (!candidatOptional.isPresent())
+//            throw new NotFoundException("Désolé, le candidat désignée n'existe pas");
+//
+//        return candidatOptional.get();
+//    }
+//
+//
+//
+//    /**
+//     *
+//     * @param candidat
+//     * @return
+//     */
+//    @Override
+//    public CandidatEntity saveCandidat(CandidatEntity candidat) {
+//        CandidatEntity candidatSave = candidatRepository.save(candidat);
+//        if (candidatSave == null)
+//            throw new RuntimeException("Une erreur est survenu lors de la sauvegarde du candidat.");
+//
+//        return candidatSave;
+//    }
+//
+//    /**
+//     *
+//     * @return
+//     */
+//    @Override
+//    public List<CandidatEntity> findAllCandidat() {
+//        List<CandidatEntity> candidats = candidatRepository.findAll();
+//        if (candidats.isEmpty())
+//            throw new NoContentException("Désolé, aucun candidat disponible");
+//
+//        return candidats;
+//    }

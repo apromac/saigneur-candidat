@@ -8,6 +8,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class InscriptionDTO {
+
+    // localite
     private Long inscriptionID;
     private String districtInscription;
     private String zoneInscription;
