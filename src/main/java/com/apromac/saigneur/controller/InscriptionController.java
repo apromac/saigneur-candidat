@@ -1,18 +1,19 @@
 package com.apromac.saigneur.controller;
 
 import com.apromac.saigneur.entity.CampagneEntity;
-import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
-import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.service.CampagneService;
 import com.apromac.saigneur.service.CandidatService;
 import com.apromac.saigneur.service.InscriptionService;
 import com.apromac.saigneur.utility.CandidatCampagneRequest;
+import com.apromac.saigneur.utility.InterviewRequest;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -29,16 +30,6 @@ public class InscriptionController {
     private CandidatService candidatService;
 
 
-
-
-//    @ApiOperation(value = "Méthode permettant de sauvegarder l'inscription d'un candidat")
-//    @PostMapping(value = "/inscription/saveInscription")
-//    public ResponseEntity<InscriptionEntity> sauvegarderInscription(@RequestBody InscriptionEntity inscriptionEntity) {
-//
-//        InscriptionEntity saveInscription = inscriptionService.saveInscription(inscriptionEntity);
-//
-//        return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
-//    }
 
 
 
@@ -72,22 +63,76 @@ public class InscriptionController {
 
 
 
-    @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat dans la liste des candidats à selectionner")
+    @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat dans la liste des candidats inscrits")
     @GetMapping(value = "/inscription/{inscriptionID}/selection/{isSelect}")
-    public ResponseEntity<InscriptionEntity> recupererValidationCandidat(@PathVariable Long inscriptionID,
-                                                                         @PathVariable Boolean isSelect) {
-        InscriptionEntity inscription = inscriptionService.findByInscriptionID(inscriptionID, isSelect);
+    public ResponseEntity<InscriptionEntity> recupererValidationSelectionCandidat(@PathVariable Long inscriptionID,
+                                                                                  @PathVariable Boolean isSelect) {
+        InscriptionEntity inscription = inscriptionService.findBySelectionInscriptionID(inscriptionID, isSelect);
 
         return new ResponseEntity<>(inscription, HttpStatus.OK);
+    }
+
+
+
+    @ApiOperation(value = "Méthode permettant de valider les candidats retenus pour l'interview de la campagne en cours")
+    @GetMapping(value = "/inscription/{inscriptionID}/interview/{isInterview}")
+    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long inscriptionID,
+                                                                                  @PathVariable Boolean isInterview) {
+        InscriptionEntity inscription = inscriptionService.findByInterviewInscriptionID(inscriptionID, isInterview);
+
+        return new ResponseEntity<>(inscription, HttpStatus.OK);
+    }
+
+
+
+    @ApiOperation(value = "Méthode permettant de valider les candidats retenus à l'interview de la campagne en cours")
+    @GetMapping(value = "/inscription/{inscriptionID}/retenus/{isRetenus}")
+    public ResponseEntity<InscriptionEntity> recupererValidationRetenuesCandidat(@PathVariable Long inscriptionID,
+                                                                                 @PathVariable Boolean isRetenus) {
+        InscriptionEntity inscription = inscriptionService.findByRetenusInscriptionID(inscriptionID, isRetenus);
+
+        return new ResponseEntity<>(inscription, HttpStatus.OK);
+    }
+
+
+    /******************************************************************************************************************/
+    /**                                        IMPLEMENTATION DE LA PARTIE MOBILE                                    **/
+    /******************************************************************************************************************/
+
+    @ApiOperation(value = "Methode permettant de mettre à jour les informations de l'interview réalisé par le TDH avec le mobile")
+    @PutMapping(value = "/inscription/candidat/interviewer")
+    public ResponseEntity<List<InscriptionEntity>> recupererCandidatInterviewer(@RequestBody InterviewRequest interviewRequest) {
+        List<InscriptionEntity> inscriptionEntities = inscriptionService.findByCandidatInterviewer(interviewRequest);
+
+        return new ResponseEntity<>(inscriptionEntities, HttpStatus.OK);
+    }
+
+
+
+    @ApiOperation(value = "Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." +
+            "ici, les candidats ne sont pas encore interviewer. isInterviewer doit etre à 'false'")
+    @PutMapping(value = "/inscription/statut/{statutID}/zone/{zoneCandidat}/interview")
+    public ResponseEntity<List<InscriptionEntity>> synchroniserCandidatParStatutEtZoneEtInterview(@PathVariable Integer statutID,
+                                                                                                  @PathVariable String zoneCandidat) {
+        List<InscriptionEntity> inscriptionEntities = inscriptionService.findByStatutAndZoneAndInterview(statutID, zoneCandidat);
+
+        return new ResponseEntity<>(inscriptionEntities, HttpStatus.OK);
     }
 
 }
 
 
-//    @ApiOperation(value = "Méthode permettant de valider les candidats de l'interview de la campagne en cours")
+
+
+
+
+
+//    @ApiOperation(value = "Méthode permettant de valider les candidats retenus pour l'interview de la campagne en cours")
 //    @GetMapping(value = "/inscription/candidat/{candidatID}/interview/{isInterview}")
 //    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long candidatID,
 //                                                                                  @PathVariable Boolean isInterview) {
+//
+//
 //        CampagneEntity campagne = campagneService.findCurrentCampagne();
 //
 //        CandidatEntity candidat = candidatService.findByCandidatID(candidatID);
@@ -96,8 +141,7 @@ public class InscriptionController {
 //
 //        return new ResponseEntity<>(inscriptions, HttpStatus.OK);
 //    }
-
-
+//
 //
 //
 //
@@ -128,4 +172,13 @@ public class InscriptionController {
 //        List<InscriptionEntity> byCampagne = inscriptionService.findByCampagne(campagneID);
 //
 //        return new ResponseEntity<>(byCampagne, HttpStatus.OK);
+//    }
+
+//    @ApiOperation(value = "Méthode permettant de sauvegarder l'inscription d'un candidat")
+//    @PostMapping(value = "/inscription/saveInscription")
+//    public ResponseEntity<InscriptionEntity> sauvegarderInscription(@RequestBody InscriptionEntity inscriptionEntity) {
+//
+//        InscriptionEntity saveInscription = inscriptionService.saveInscription(inscriptionEntity);
+//
+//        return new ResponseEntity<>(saveInscription, HttpStatus.CREATED);
 //    }

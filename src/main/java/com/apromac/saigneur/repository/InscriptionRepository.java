@@ -11,6 +11,7 @@ import java.util.List;
 public interface InscriptionRepository extends JpaRepository<InscriptionEntity, Long> {
     List<InscriptionEntity> findByCampagneAndStatutAndDistrictInscription(CampagneEntity campagneEntity, Integer statutCandidat, String districtCandidat);
     List<InscriptionEntity> findByCampagneAndStatut(CampagneEntity campagneEntity, Integer statutCandidat);
+    List<InscriptionEntity> findByStatutAndZoneInscriptionAndIsInterviewerFalse(Integer statutCandidat, String zoneCandidat);
 }
 
 //

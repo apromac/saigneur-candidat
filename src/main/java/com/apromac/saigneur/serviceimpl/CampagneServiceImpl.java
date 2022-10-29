@@ -8,6 +8,7 @@ import com.apromac.saigneur.service.CampagneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,12 +68,20 @@ public class CampagneServiceImpl implements CampagneService {
 
     /**
      * Methode permettant de sauvegarder une campagne
-     * @param campagne represent l'objet Campagne
+     * @param campagneEntity represent l'objet Campagne
      * @return campagne Save
      */
     @Override
-    public CampagneEntity saveCampagne(CampagneEntity campagne) {
-        CampagneEntity campagneSave = campagneRepository.save(campagne);
+    public CampagneEntity saveCampagne(CampagneEntity campagneEntity) {
+        List<CampagneEntity> campagnesActives = cheickAllCampagneActivated();
+        if (campagnesActives.isEmpty()) {
+            campagneEntity.setActiveCampagne(true);
+        } else {
+            disableAllCampagneActivated(campagnesActives);
+            campagneEntity.setActiveCampagne(true);
+        }
+
+        CampagneEntity campagneSave = campagneRepository.save(campagneEntity);
         if (campagneSave == null)
             throw new RuntimeException("Une erreur est survenu lors de la sauvegarde de la campagne.");
 
@@ -89,12 +98,57 @@ public class CampagneServiceImpl implements CampagneService {
      */
     @Override
     public CampagneEntity updateCampagne(CampagneEntity campagneTrouver, CampagneEntity campagneEntity) {
-        campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
-        campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+        CampagneEntity campagneActivated = campagneRepository.findByActiveCampagneTrue();
+
+        if (campagneActivated != null) {
+            if (campagneEntity.getActiveCampagne()) {
+                campagneActivated.setActiveCampagne(false);
+                campagneRepository.save(campagneActivated);
+
+                campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
+                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+            } else {
+                campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
+                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+            }
+        }
 
         CampagneEntity campagneSave = campagneRepository.saveAndFlush(campagneTrouver);
 
         return campagneSave;
+    }
+
+
+    /**
+     * Methode permettant de désactiver toutes les campagnes actives
+     */
+    private void disableAllCampagneActivated(List<CampagneEntity> campagnesActives) {
+        for (CampagneEntity campagne: campagnesActives) {
+            campagne.setActiveCampagne(false);
+            campagneRepository.save(campagne);
+        }
+    }
+
+
+
+    /**
+     * Methode permettant de récupérer la liste des campagnes activées
+     * @return
+     */
+    private List<CampagneEntity> cheickAllCampagneActivated() {
+        List<CampagneEntity> campagneActives = new ArrayList<>();
+
+        List<CampagneEntity> campagnes = campagneRepository.findAll();
+        if (campagnes.isEmpty()) {
+            return campagneActives;
+        } else {
+            for (CampagneEntity campagne: campagnes) {
+                if (campagne.getActiveCampagne())
+                    campagneActives.add(campagne);
+            }
+        }
+
+        return campagneActives;
     }
 
 }

@@ -4,6 +4,7 @@ import com.apromac.saigneur.dto.InscriptionDTO;
 import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
+import com.apromac.saigneur.utility.InterviewRequest;
 
 import java.util.List;
 
@@ -38,6 +39,13 @@ public interface InscriptionService {
     public InscriptionEntity saveInscriptionCampagneCandidat(CampagneEntity campagneEntity, CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO);
 
+//    /**
+//     * Methode permettant de sauvegarder une inscription d'un candidat
+//     * @param inscriptionEntity
+//     * @return
+//     */
+//    public InscriptionEntity saveInscription(InscriptionEntity inscriptionEntity);
+
     /**
      * Methode permettant de récupérer un objet Inscription grace à l'ID de l'inscription.
      * @param inscriptionID
@@ -54,22 +62,56 @@ public interface InscriptionService {
     public InscriptionEntity updateInscription(InscriptionEntity inscriptionTrouver, InscriptionEntity inscriptionEntity);
 
     /**
-     * Methode permettant de valider ou retirer un candidat dans la liste des candidats à selectionner
+     * Methode permettant de valider ou retirer un candidat dans la liste des candidats inscrits
      * @param inscriptionID
      * @param isSelect
      * @return
      */
-    public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect);
+    public InscriptionEntity findBySelectionInscriptionID(Long inscriptionID, Boolean isSelect);
+
+    /**
+     * Methode permettant de valider un candidat dans la liste des candidats selectionné
+     * @param inscriptionID
+     * @param isInterview
+     * @return
+     */
+    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview);
+
+    /**
+     * Methode permettant de valider un candidat dans la liste des candidats interviewer
+     * @param inscriptionID
+     * @param isRetenus
+     * @return
+     */
+    public InscriptionEntity findByRetenusInscriptionID(Long inscriptionID, Boolean isRetenus);
+
+
+
+    /******************************************************************************************************************/
+    /**                                         IMPLEMENTATION PARTIE MOBILE                                         **/
+    /******************************************************************************************************************/
+
+    /**
+     * Methode permettant de mettre à jour les informations de l'interview réalisé par le TDH
+     * @param interviewRequest
+     * @return
+     */
+    public List<InscriptionEntity> findByCandidatInterviewer(InterviewRequest interviewRequest);
+
+    /**
+     * Methode permettant de synchroniser les données des candidats à interviewer sur le mobile."
+     * @param statutID
+     * @param zoneCandidat
+     * @return
+     */
+    public List<InscriptionEntity> findByStatutAndZoneAndInterview(Integer statutID, String zoneCandidat);
 
 }
 
 
 
-//
 //    public InscriptionEntity findByValidationInterviewCandidats(CandidatEntity candidatEntity, CampagneEntity campagneEntity, Boolean isInterview);
 //    public List<InscriptionEntity> findByCampagne(Long campagneID);
-
 //    public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect);
-//
 //    public List<InscriptionEntity> findByCandidat(Long candidatID);
 //    public List<InscriptionEntity> findByCampagneAndCandidat(Long campagneID, Long candidatID);

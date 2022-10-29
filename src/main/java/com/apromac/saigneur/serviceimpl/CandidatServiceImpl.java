@@ -33,6 +33,18 @@ public class CandidatServiceImpl implements CandidatService {
         if (inscriptions.isEmpty())
             throw new NoContentException("Désolé, aucun candidat trouvé");
 
+        List<CandidatDTO> candidatDTOs = findByCandidatDTO(inscriptions);
+        return candidatDTOs;
+    }
+
+
+    /**
+     * Methode privée permettant de constituer la liste des candidats avec beaucoup plus d'informations à partir de la
+     * liste des inscriptions obtenues
+     * @param inscriptions
+     * @return
+     */
+    private List<CandidatDTO> findByCandidatDTO(List<InscriptionEntity> inscriptions) {
         List<CandidatDTO> candidatDTOs = new ArrayList<>();
 
         for (InscriptionEntity inscription: inscriptions) {
@@ -92,7 +104,7 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setMotivation(inscription.getMotivation());
             candidatDTO.setStatut(inscription.getStatut());
 
-            // motivation
+            // motivation (pour interview)
             candidatDTO.setDescriptionReveil(inscription.getDescriptionReveil());
             candidatDTO.setNoteReveil(inscription.getNoteReveil());
             candidatDTO.setDescriptionCouche(inscription.getDescriptionCouche());
@@ -102,14 +114,14 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setPeurObscurite(inscription.getPeurObscurite());
             candidatDTO.setNoteObscurite(inscription.getNoteObscurite());
 
-            // endurance
+            // endurance (pour interview)
             candidatDTO.setSportif(inscription.getSportif());
             candidatDTO.setDescriptionSportif(inscription.getDescriptionSportif());
             candidatDTO.setNoteSprotif(inscription.getNoteSprotif());
             candidatDTO.setDescriptionLongueDistance(inscription.getDescriptionLongueDistance());
             candidatDTO.setNoteLongueDistance(inscription.getNoteLongueDistance());
 
-            // adaptation
+            // adaptation (pour interview)
             candidatDTO.setMonteVelo(inscription.getMonteVelo());
             candidatDTO.setNoteVelo(inscription.getNoteVelo());
             candidatDTO.setPresencePlantation(inscription.getPresencePlantation());

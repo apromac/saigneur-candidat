@@ -1,6 +1,7 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.dto.InscriptionDTO;
+import com.apromac.saigneur.dto.InterviewDTO;
 import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
@@ -10,9 +11,11 @@ import com.apromac.saigneur.repository.CampagneRepository;
 import com.apromac.saigneur.repository.CandidatRepository;
 import com.apromac.saigneur.repository.InscriptionRepository;
 import com.apromac.saigneur.service.InscriptionService;
+import com.apromac.saigneur.utility.InterviewRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +69,24 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
 
+//    /**
+//     *
+//     * @param inscriptionEntity
+//     * @return
+//     */
+//    public InscriptionEntity saveInscription(InscriptionEntity inscriptionEntity) {
+//        if (inscriptionEntity.getCandidat() == null)
+//            throw new RuntimeException("Désolé, nous avons rencontré une erreur lors de la récupérations des informations du candidat");
+//
+//        InscriptionEntity saveInscription = inscriptionRepository.saveAndFlush(inscriptionEntity);
+//        if (saveInscription == null)
+//            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat");
+//
+//        return saveInscription;
+//    }
+
+
+
     /**
      * Methode permettant de sauvegarder l'inscription d'un candidat à une campagne
      * @param campagneEntity objet representant la campagne
@@ -73,6 +94,7 @@ public class InscriptionServiceImpl implements InscriptionService {
      * @param inscriptionDTO objet representant les informations sur l'inscription du candidat
      * @return saveInscription
      */
+    @Override
     public InscriptionEntity saveInscriptionCampagneCandidat(CampagneEntity campagneEntity, CandidatEntity candidatEntity,
                                                              InscriptionDTO inscriptionDTO) {
 
@@ -141,10 +163,11 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
     /**
-     *
+     * Methode permettant de recupérer une inscription grace à son ID
      * @param inscriptionID
      * @return
      */
+    @Override
     public InscriptionEntity findByInscriptionID(Long inscriptionID) {
         Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
         if (!inscriptionOptional.isPresent())
@@ -156,13 +179,66 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
     /**
-     *
+     * Methode permettant de modifier l'inscription d'un candidat d'une campagne grace à l'ID de l'inscription et un
+     * objet inscription
      * @param inscriptionTrouver
      * @param inscriptionEntity
      * @return
      */
+    @Override
     public InscriptionEntity updateInscription(InscriptionEntity inscriptionTrouver, InscriptionEntity inscriptionEntity) {
-        return null;
+
+        //inscriptionTrouver.setInscriptionID(inscriptionEntity.getInscriptionID());
+        inscriptionTrouver.setDateInscription(inscriptionEntity.getDateInscription());
+        inscriptionTrouver.setDistrictInscription(inscriptionEntity.getDistrictInscription());
+        inscriptionTrouver.setZoneInscription(inscriptionEntity.getZoneInscription());
+
+        inscriptionTrouver.setIsFormer(inscriptionEntity.getIsFormer());
+        inscriptionTrouver.setStructureFormation(inscriptionEntity.getStructureFormation());
+        inscriptionTrouver.setAnneeFormation(inscriptionEntity.getAnneeFormation());
+        inscriptionTrouver.setIsAppliquer(inscriptionEntity.getIsAppliquer());
+        inscriptionTrouver.setTypeFormation(inscriptionEntity.getTypeFormation());
+        inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation());
+        inscriptionTrouver.setTypeSaigneFormation(inscriptionEntity.getTypeSaigneFormation());
+        inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation());
+        inscriptionTrouver.setMatriculePlanteurFormation(inscriptionEntity.getMatriculePlanteurFormation());
+        inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation());
+        inscriptionTrouver.setAnneePlanteurFormation(inscriptionEntity.getAnneePlanteurFormation());
+        inscriptionTrouver.setContactPlanteurFormation(inscriptionEntity.getContactPlanteurFormation());
+
+        inscriptionTrouver.setPropositionEmploi(inscriptionEntity.getPropositionEmploi());
+        inscriptionTrouver.setNomPlanteurEmploi(inscriptionEntity.getNomPlanteurEmploi());
+        inscriptionTrouver.setMatriculePlanteurEmploi(inscriptionEntity.getMatriculePlanteurEmploi());
+        inscriptionTrouver.setLieuPlanteurEmploi(inscriptionEntity.getLieuPlanteurEmploi());
+        inscriptionTrouver.setAnneePlanteurEmploi(inscriptionEntity.getAnneePlanteurEmploi());
+        inscriptionTrouver.setContactPlanteurEmploi(inscriptionEntity.getContactPlanteurEmploi());
+
+        inscriptionTrouver.setIsActivite(inscriptionEntity.getIsActivite());
+        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite());
+        inscriptionTrouver.setMatriculePlanteurActivite(inscriptionEntity.getMatriculePlanteurActivite());
+        inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite());
+        inscriptionTrouver.setAnneePlanteurActivite(inscriptionEntity.getAnneePlanteurActivite());
+        inscriptionTrouver.setContactPlanteurActivite(inscriptionEntity.getContactPlanteurActivite());
+
+        inscriptionTrouver.setMotivation(inscriptionEntity.getMotivation());
+        inscriptionTrouver.setStatut(inscriptionEntity.getStatut());
+
+        // campagne
+        inscriptionTrouver.setCampagne(inscriptionEntity.getCampagne());
+
+        // candidat
+        CandidatEntity updateCandidat = candidatRepository.saveAndFlush(inscriptionEntity.getCandidat());
+        if (updateCandidat == null)
+            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
+
+        inscriptionTrouver.setCandidat(updateCandidat);
+
+        // sauvegarde des modifications de l'inscription
+        InscriptionEntity updateInscription = inscriptionRepository.saveAndFlush(inscriptionTrouver);
+        if (updateInscription == null)
+            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat");
+
+        return updateInscription;
     }
 
 
@@ -173,10 +249,11 @@ public class InscriptionServiceImpl implements InscriptionService {
      * @param isSelect
      * @return
      */
-    public InscriptionEntity findByInscriptionID(Long inscriptionID, Boolean isSelect) {
+    @Override
+    public InscriptionEntity findBySelectionInscriptionID(Long inscriptionID, Boolean isSelect) {
         Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
         if (!inscriptionOptional.isPresent())
-            throw new RuntimeException("Désolé, l'inscription recherché est introuvable");
+            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
 
@@ -193,6 +270,137 @@ public class InscriptionServiceImpl implements InscriptionService {
         return inscriptionUpdate;
     }
 
+
+
+    /**
+     * Methode permettant de valider un candidat dans la liste des candidats selectionné
+     * @param inscriptionID
+     * @param isInterview
+     * @return
+     */
+    @Override
+    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview) {
+        Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
+        if (!inscriptionOptional.isPresent())
+            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
+
+        InscriptionEntity inscriptionEntity = inscriptionOptional.get();
+
+        if (isInterview) {
+            inscriptionEntity.setStatut(2);
+        } else {
+            inscriptionEntity.setStatut(1);
+        }
+
+        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
+        if (inscriptionUpdate == null)
+            throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
+
+        return inscriptionUpdate;
+    }
+
+
+
+    /**
+     * Methode permettant de valider un candidat dans la liste des candidats interviewer
+     * @param inscriptionID
+     * @param isRetenus
+     * @return
+     */
+    @Override
+    public InscriptionEntity findByRetenusInscriptionID(Long inscriptionID, Boolean isRetenus) {
+        Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
+        if (!inscriptionOptional.isPresent())
+            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
+
+        InscriptionEntity inscriptionEntity = inscriptionOptional.get();
+
+        if (isRetenus) {
+            inscriptionEntity.setStatut(3);
+        } else {
+            inscriptionEntity.setStatut(2);
+        }
+
+        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
+        if (inscriptionUpdate == null)
+            throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
+
+        return inscriptionUpdate;
+    }
+
+
+
+    /******************************************************************************************************************/
+    /**                                     IMPLEMENTATION DE LA PARTIE MOBILE                                       **/
+    /******************************************************************************************************************/
+
+    /**
+     * Methode permettant de mettre à jour les informations de l'interview réalisé par le TDH. Ces informations provient de l'enquete
+     * effectuée par le TDH sur le terrain à l'aide du mobile
+     * @param interviewRequest
+     * @return
+     */
+    @Override
+    public List<InscriptionEntity> findByCandidatInterviewer(InterviewRequest interviewRequest) {
+        List<InscriptionEntity> inscriptionsUpdate = new ArrayList<>();
+
+        List<InterviewDTO> interviewDTOS = interviewRequest.getInterviewDTOS();
+        for (InterviewDTO interviewDTO : interviewDTOS) {
+            Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(interviewDTO.getInscriptionID());
+            if (!inscriptionOptional.isPresent())
+                throw new NotFoundException("Désolé, une erreur c'est produite lors de la syncrhonisation des données.");
+
+            InscriptionEntity inscriptionTrouver = inscriptionOptional.get();
+
+            // motivation
+            inscriptionTrouver.setDescriptionReveil(interviewDTO.getDescriptionReveil());
+            inscriptionTrouver.setNoteReveil(interviewDTO.getNoteReveil());
+            inscriptionTrouver.setDescriptionCouche(interviewDTO.getDescriptionCouche());
+            inscriptionTrouver.setNoteCouche(interviewDTO.getNoteCouche());
+            inscriptionTrouver.setDescriptionOccupation(interviewDTO.getDescriptionOccupation());
+            inscriptionTrouver.setNoteOccupation(interviewDTO.getNoteOccupation());
+            inscriptionTrouver.setPeurObscurite(interviewDTO.getPeurObscurite());
+            inscriptionTrouver.setNoteObscurite(interviewDTO.getNoteObscurite());
+
+            // endurance
+            inscriptionTrouver.setSportif(interviewDTO.getSportif());
+            inscriptionTrouver.setDescriptionSportif(interviewDTO.getDescriptionSportif());
+            inscriptionTrouver.setNoteSprotif(interviewDTO.getNoteSprotif());
+            inscriptionTrouver.setDescriptionLongueDistance(interviewDTO.getDescriptionLongueDistance());
+            inscriptionTrouver.setNoteLongueDistance(interviewDTO.getNoteLongueDistance());
+
+            // adaptation
+            inscriptionTrouver.setMonteVelo(interviewDTO.getMonteVelo());
+            inscriptionTrouver.setNoteVelo(interviewDTO.getNoteVelo());
+            inscriptionTrouver.setPresencePlantation(interviewDTO.getPresencePlantation());
+            inscriptionTrouver.setMotifPresencePlantation(interviewDTO.getMotifPresencePlantation());
+            inscriptionTrouver.setNotePresencePlantation(interviewDTO.getNotePresencePlantation());
+            inscriptionTrouver.setIsInterviewer(interviewDTO.getIsInterviewer());
+
+            InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionTrouver);
+            inscriptionsUpdate.add(inscriptionUpdate);
+        }
+
+        return inscriptionsUpdate;
+    }
+
+
+
+    /**
+     * Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." ici, les candidats ne
+     * sont pas encore interviewer. isInterviewer est par defaut à 'false'
+     * @param statutID
+     * @param zoneCandidat
+     * @return
+     */
+    @Override
+    public List<InscriptionEntity> findByStatutAndZoneAndInterview(Integer statutID, String zoneCandidat) {
+        List<InscriptionEntity> sychroInscriptions = inscriptionRepository.findByStatutAndZoneInscriptionAndIsInterviewerFalse(statutID, zoneCandidat);
+        if (sychroInscriptions.isEmpty())
+            throw new NoContentException("Désolé, aucun candidat disponible pour l'interview");
+
+        return sychroInscriptions;
+    }
 
 }
 
@@ -346,30 +554,6 @@ public class InscriptionServiceImpl implements InscriptionService {
 //
 //        return statutInscriptions;
 //    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //    /**
