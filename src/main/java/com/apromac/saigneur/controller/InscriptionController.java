@@ -111,7 +111,7 @@ public class InscriptionController {
 
     @ApiOperation(value = "Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." +
             "ici, les candidats ne sont pas encore interviewer. isInterviewer doit etre à 'false'")
-    @PutMapping(value = "/inscription/statut/{statutID}/zone/{zoneCandidat}/interview")
+    @GetMapping(value = "/inscription/statut/{statutID}/zone/{zoneCandidat}/interview")
     public ResponseEntity<List<InscriptionEntity>> synchroniserCandidatParStatutEtZoneEtInterview(@PathVariable Integer statutID,
                                                                                                   @PathVariable String zoneCandidat) {
         List<InscriptionEntity> inscriptionEntities = inscriptionService.findByStatutAndZoneAndInterview(statutID, zoneCandidat);
