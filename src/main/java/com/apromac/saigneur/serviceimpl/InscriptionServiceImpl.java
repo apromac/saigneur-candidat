@@ -379,6 +379,8 @@ public class InscriptionServiceImpl implements InscriptionService {
             inscriptionTrouver.setPresencePlantation(interviewDTO.getPresencePlantation());
             inscriptionTrouver.setMotifPresencePlantation(interviewDTO.getMotifPresencePlantation());
             inscriptionTrouver.setNotePresencePlantation(interviewDTO.getNotePresencePlantation());
+
+            inscriptionTrouver.setStatut(interviewDTO.getStatut());
             inscriptionTrouver.setIsInterviewer(interviewDTO.getIsInterviewer());
 
             InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionTrouver);

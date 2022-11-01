@@ -8,6 +8,7 @@ import lombok.Setter;
 public class InterviewDTO {
     // inscription
     private Long inscriptionID;
+    private Integer statut;
 
     // motivation
     private String descriptionReveil;
