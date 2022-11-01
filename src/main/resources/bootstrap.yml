@@ -3,7 +3,7 @@
 # ==================================================
 config:
   server:
-    #    hostname: localhost
+#    hostname: localhost
     hostname: 78.138.45.243
     port: 9101
 
