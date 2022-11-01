@@ -35,6 +35,7 @@ public class CandidatDTO {
     private String districtInscription;
     private String zoneInscription;
     private Date dateInscription;
+    private Double distanceInscription;
 
     private Boolean isFormer;
     private String structureFormation;
