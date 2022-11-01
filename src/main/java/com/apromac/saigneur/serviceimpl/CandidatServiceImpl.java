@@ -104,6 +104,7 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTO.setContactPlanteurActivite(inscription.getContactPlanteurActivite());
             candidatDTO.setMotivation(inscription.getMotivation());
             candidatDTO.setStatut(inscription.getStatut());
+            candidatDTO.setIsInterviewer(inscription.getIsInterviewer());
 
             // motivation (pour interview)
             candidatDTO.setDescriptionReveil(inscription.getDescriptionReveil());
@@ -132,6 +133,27 @@ public class CandidatServiceImpl implements CandidatService {
             candidatDTOs.add(candidatDTO);
         }
 
+        return candidatDTOs;
+    }
+
+
+
+
+    /******************************************************************************************************************/
+    /**                                     IMPLEMENTATION DE LA PARTIE MOBILE                                       **/
+    /******************************************************************************************************************/
+
+    /**
+     *
+     * @param inscriptions
+     * @return
+     */
+    @Override
+    public List<CandidatDTO> findBySynchroInscriptions(List<InscriptionEntity> inscriptions) {
+        if (inscriptions.isEmpty())
+            throw new NoContentException("Désolé, aucun candidat trouvé");
+
+        List<CandidatDTO> candidatDTOs = findByCandidatDTO(inscriptions);
         return candidatDTOs;
     }
 

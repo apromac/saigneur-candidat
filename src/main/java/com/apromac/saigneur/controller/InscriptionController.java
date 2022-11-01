@@ -63,6 +63,8 @@ public class InscriptionController {
 
 
 
+
+
     @ApiOperation(value = "Méthode permettant de valider ou retirer un candidat dans la liste des candidats inscrits")
     @GetMapping(value = "/inscription/{inscriptionID}/selection/{isSelect}")
     public ResponseEntity<InscriptionEntity> recupererValidationSelectionCandidat(@PathVariable Long inscriptionID,
@@ -108,16 +110,16 @@ public class InscriptionController {
     }
 
 
-
-    @ApiOperation(value = "Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." +
-            "ici, les candidats ne sont pas encore interviewer. isInterviewer doit etre à 'false'")
-    @GetMapping(value = "/inscription/statut/{statutID}/zone/{zoneCandidat}/interview")
-    public ResponseEntity<List<InscriptionEntity>> synchroniserCandidatParStatutEtZoneEtInterview(@PathVariable Integer statutID,
-                                                                                                  @PathVariable String zoneCandidat) {
-        List<InscriptionEntity> inscriptionEntities = inscriptionService.findByStatutAndZoneAndInterview(statutID, zoneCandidat);
-
-        return new ResponseEntity<>(inscriptionEntities, HttpStatus.OK);
-    }
+// Cette methode a été deplacé dans CandaidatController mais le findByStatutAndZoneAndInterview est utilisé
+//    @ApiOperation(value = "Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." +
+//            "ici, les candidats ne sont pas encore interviewer. isInterviewer doit etre à 'false'")
+//    @GetMapping(value = "/inscription/statut/{statutID}/zone/{zoneCandidat}/interview")
+//    public ResponseEntity<List<InscriptionEntity>> synchroniserCandidatParStatutEtZoneEtInterview(@PathVariable Integer statutID,
+//                                                                                                  @PathVariable String zoneCandidat) {
+//        List<InscriptionEntity> inscriptionEntities = inscriptionService.findByStatutAndZoneAndInterview(statutID, zoneCandidat);
+//
+//        return new ResponseEntity<>(inscriptionEntities, HttpStatus.OK);
+//    }
 
 }
 

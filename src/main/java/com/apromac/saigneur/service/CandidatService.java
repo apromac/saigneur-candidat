@@ -16,6 +16,18 @@ public interface CandidatService {
      */
     public List<CandidatDTO> findByInscriptions(List<InscriptionEntity> inscriptions);
 
+
+    /******************************************************************************************************************/
+    /**                                         IMPLEMENTATION PARTIE MOBILE                                         **/
+    /******************************************************************************************************************/
+
+    /**
+     * Methode permettant de synchroniser les données des candidats à interviewer sur le mobile."
+     * @param inscriptions
+     * @return
+     */
+    public List<CandidatDTO> findBySynchroInscriptions(List<InscriptionEntity> inscriptions);
+
 }
 
 

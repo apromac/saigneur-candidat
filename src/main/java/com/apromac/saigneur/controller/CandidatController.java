@@ -60,6 +60,25 @@ public class CandidatController {
         return new ResponseEntity<>(candidatDTOs, HttpStatus.OK);
     }
 
+
+
+
+    /******************************************************************************************************************/
+    /**                                        IMPLEMENTATION DE LA PARTIE MOBILE                                    **/
+    /******************************************************************************************************************/
+
+    @ApiOperation(value = "Methode permettant de synchroniser les données des candidats à interviewer sur le mobile." +
+            "ici, les candidats ne sont pas encore interviewer. isInterviewer doit etre à 'false'")
+    @GetMapping(value = "/candidat/statut/{statutID}/zone/{zoneCandidat}/interview")
+    public ResponseEntity<List<CandidatDTO>> synchroniserCandidatParStatutEtZoneEtInterview(@PathVariable Integer statutID,
+                                                                                                  @PathVariable String zoneCandidat) {
+        List<InscriptionEntity> inscriptions = inscriptionService.findByStatutAndZoneAndInterview(statutID, zoneCandidat);
+
+        List<CandidatDTO> candidatDTOs = candidatService.findBySynchroInscriptions(inscriptions);
+
+        return new ResponseEntity<>(candidatDTOs, HttpStatus.OK);
+    }
+
 }
 
 

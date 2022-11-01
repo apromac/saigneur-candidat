@@ -66,6 +66,7 @@ public class CandidatDTO {
 
     private String motivation;
     private Integer statut;
+    private Boolean isInterviewer;
 
     // motivation
     private String descriptionReveil;
@@ -90,5 +91,5 @@ public class CandidatDTO {
     private Boolean presencePlantation;
     private String motifPresencePlantation;
     private Double notePresencePlantation;
-    private Boolean isInterviewer;
+
 }

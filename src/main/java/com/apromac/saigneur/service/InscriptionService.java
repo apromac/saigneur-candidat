@@ -61,6 +61,7 @@ public interface InscriptionService {
      */
     public InscriptionEntity updateInscription(InscriptionEntity inscriptionTrouver, InscriptionEntity inscriptionEntity);
 
+
     /**
      * Methode permettant de valider ou retirer un candidat dans la liste des candidats inscrits
      * @param inscriptionID
