@@ -181,7 +181,7 @@ public class InscriptionEntity {
     @Column(name = "note_pres", nullable = true)
     private Double notePresencePlantation;
 
-    @Column(name = "interview", nullable = false)
+    @Column(name = "interview", nullable = true)
     private Boolean isInterviewer;
 
 

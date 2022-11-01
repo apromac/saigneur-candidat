@@ -143,7 +143,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
         saveInscriptionEntity.setStatut(inscriptionDTO.getStatut());
 
-        saveInscriptionEntity.setIsInterviewer(false);
+//        saveInscriptionEntity.setIsInterviewer(false);
 
         // campagne
         saveInscriptionEntity.setCampagne(campagneEntity);
@@ -263,6 +263,7 @@ public class InscriptionServiceImpl implements InscriptionService {
 
         if (isSelect) {
             inscriptionEntity.setStatut(1);
+            inscriptionEntity.setIsInterviewer(false);
         } else {
             inscriptionEntity.setStatut(0);
         }
