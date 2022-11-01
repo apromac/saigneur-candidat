@@ -143,6 +143,8 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setMotivation(inscriptionDTO.getMotivation());
         saveInscriptionEntity.setStatut(inscriptionDTO.getStatut());
 
+        saveInscriptionEntity.setIsInterviewer(false);
+
         // campagne
         saveInscriptionEntity.setCampagne(campagneEntity);
 
