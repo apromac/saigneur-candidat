@@ -32,5 +32,5 @@ public class InterviewDTO {
     private Boolean presencePlantation;
     private String motifPresencePlantation;
     private Double notePresencePlantation;
-    private boolean isInterviewer;
+    private Boolean isInterviewer;
 }

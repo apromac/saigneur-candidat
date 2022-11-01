@@ -182,7 +182,7 @@ public class InscriptionEntity {
     private Double notePresencePlantation;
 
     @Column(name = "interview", nullable = false)
-    private boolean isInterviewer;
+    private Boolean isInterviewer;
 
 
     @ManyToOne
