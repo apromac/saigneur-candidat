@@ -111,6 +111,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
+        saveInscriptionEntity.setDistanceInscription(inscriptionDTO.getDistanceInscription());
 
         saveInscriptionEntity.setIsFormer(inscriptionDTO.getIsFormer());
         saveInscriptionEntity.setStructureFormation(inscriptionDTO.getStructureFormation());
@@ -192,6 +193,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setDateInscription(inscriptionEntity.getDateInscription());
         inscriptionTrouver.setDistrictInscription(inscriptionEntity.getDistrictInscription());
         inscriptionTrouver.setZoneInscription(inscriptionEntity.getZoneInscription());
+        inscriptionTrouver.setDistanceInscription(inscriptionEntity.getDistanceInscription());
 
         inscriptionTrouver.setIsFormer(inscriptionEntity.getIsFormer());
         inscriptionTrouver.setStructureFormation(inscriptionEntity.getStructureFormation());

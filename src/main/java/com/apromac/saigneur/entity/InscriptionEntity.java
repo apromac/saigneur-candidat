@@ -26,6 +26,9 @@ public class InscriptionEntity {
     @Temporal(TemporalType.DATE)
     private Date dateInscription;
 
+    @Column(name = "distance_inscri", nullable = true)
+    private Double distanceInscription;
+
 
 
     @Column(name = "estformer_form", nullable = false)
