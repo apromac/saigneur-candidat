@@ -70,13 +70,13 @@ public interface InscriptionService {
      */
     public InscriptionEntity findBySelectionInscriptionID(Long inscriptionID, Boolean isSelect);
 
-    /**
-     * Methode permettant de valider un candidat dans la liste des candidats selectionné
-     * @param inscriptionID
-     * @param isInterview
-     * @return
-     */
-    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview);
+//    /**
+//     * Methode permettant de valider un candidat dans la liste des candidats selectionné
+//     * @param inscriptionID
+//     * @param isInterview
+//     * @return
+//     */
+//    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview);
 
     /**
      * Methode permettant de valider un candidat dans la liste des candidats interviewer

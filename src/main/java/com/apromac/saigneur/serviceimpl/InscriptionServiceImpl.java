@@ -276,32 +276,32 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
 
-    /**
-     * Methode permettant de valider un candidat dans la liste des candidats selectionné
-     * @param inscriptionID
-     * @param isInterview
-     * @return
-     */
-    @Override
-    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview) {
-        Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
-        if (!inscriptionOptional.isPresent())
-            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
-
-        InscriptionEntity inscriptionEntity = inscriptionOptional.get();
-
-        if (isInterview) {
-            inscriptionEntity.setStatut(2);
-        } else {
-            inscriptionEntity.setStatut(1);
-        }
-
-        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
-        if (inscriptionUpdate == null)
-            throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
-
-        return inscriptionUpdate;
-    }
+//    /**
+//     * Methode permettant de valider un candidat dans la liste des candidats selectionné
+//     * @param inscriptionID
+//     * @param isInterview
+//     * @return
+//     */
+//    @Override
+//    public InscriptionEntity findByInterviewInscriptionID(Long inscriptionID, Boolean isInterview) {
+//        Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
+//        if (!inscriptionOptional.isPresent())
+//            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
+//
+//        InscriptionEntity inscriptionEntity = inscriptionOptional.get();
+//
+//        if (isInterview) {
+//            inscriptionEntity.setStatut(2);
+//        } else {
+//            inscriptionEntity.setStatut(1);
+//        }
+//
+//        InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
+//        if (inscriptionUpdate == null)
+//            throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
+//
+//        return inscriptionUpdate;
+//    }
 
 
 
@@ -320,9 +320,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
 
         if (isRetenus) {
-            inscriptionEntity.setStatut(3);
-        } else {
             inscriptionEntity.setStatut(2);
+        } else {
+            inscriptionEntity.setStatut(1);
         }
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);

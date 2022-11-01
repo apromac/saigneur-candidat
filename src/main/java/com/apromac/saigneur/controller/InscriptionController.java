@@ -76,14 +76,14 @@ public class InscriptionController {
 
 
 
-    @ApiOperation(value = "Méthode permettant de valider les candidats retenus pour l'interview de la campagne en cours")
-    @GetMapping(value = "/inscription/{inscriptionID}/interview/{isInterview}")
-    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long inscriptionID,
-                                                                                  @PathVariable Boolean isInterview) {
-        InscriptionEntity inscription = inscriptionService.findByInterviewInscriptionID(inscriptionID, isInterview);
-
-        return new ResponseEntity<>(inscription, HttpStatus.OK);
-    }
+//    @ApiOperation(value = "Méthode permettant de valider les candidats retenus pour l'interview de la campagne en cours")
+//    @GetMapping(value = "/inscription/{inscriptionID}/interview/{isInterview}")
+//    public ResponseEntity<InscriptionEntity> recupererValidationInterviewCandidat(@PathVariable Long inscriptionID,
+//                                                                                  @PathVariable Boolean isInterview) {
+//        InscriptionEntity inscription = inscriptionService.findByInterviewInscriptionID(inscriptionID, isInterview);
+//
+//        return new ResponseEntity<>(inscription, HttpStatus.OK);
+//    }
 
 
 
