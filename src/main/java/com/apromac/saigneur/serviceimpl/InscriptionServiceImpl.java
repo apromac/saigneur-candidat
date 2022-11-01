@@ -320,9 +320,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
 
         if (isRetenus) {
-            inscriptionEntity.setStatut(2);
+            inscriptionEntity.setStatut(3);
         } else {
-            inscriptionEntity.setStatut(1);
+            inscriptionEntity.setStatut(2);
         }
 
         InscriptionEntity inscriptionUpdate = inscriptionRepository.save(inscriptionEntity);
