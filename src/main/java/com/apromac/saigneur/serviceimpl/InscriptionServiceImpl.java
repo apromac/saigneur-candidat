@@ -120,23 +120,23 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setTypeFormation(inscriptionDTO.getTypeFormation());
         saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
         saveInscriptionEntity.setTypeSaigneFormation(inscriptionDTO.getTypeSaigneFormation());
-        saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation());
+        saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation().toUpperCase());
         saveInscriptionEntity.setMatriculePlanteurFormation(inscriptionDTO.getMatriculePlanteurFormation());
-        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
+        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation().toUpperCase());
         saveInscriptionEntity.setAnneePlanteurFormation(inscriptionDTO.getAnneePlanteurFormation());
         saveInscriptionEntity.setContactPlanteurFormation(inscriptionDTO.getContactPlanteurFormation());
 
         saveInscriptionEntity.setPropositionEmploi(inscriptionDTO.getPropositionEmploi());
-        saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi());
+        saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi().toUpperCase());
         saveInscriptionEntity.setMatriculePlanteurEmploi(inscriptionDTO.getMatriculePlanteurEmploi());
-        saveInscriptionEntity.setLieuPlanteurEmploi(inscriptionDTO.getLieuPlanteurEmploi());
+        saveInscriptionEntity.setLieuPlanteurEmploi(inscriptionDTO.getLieuPlanteurEmploi().toUpperCase());
         saveInscriptionEntity.setAnneePlanteurEmploi(inscriptionDTO.getAnneePlanteurEmploi());
         saveInscriptionEntity.setContactPlanteurEmploi(inscriptionDTO.getContactPlanteurEmploi());
 
         saveInscriptionEntity.setIsActivite(inscriptionDTO.getIsActivite());
-        saveInscriptionEntity.setNomPlanteurActivite(inscriptionDTO.getNomPlanteurActivite());
+        saveInscriptionEntity.setNomPlanteurActivite(inscriptionDTO.getNomPlanteurActivite().toUpperCase());
         saveInscriptionEntity.setMatriculePlanteurActivite(inscriptionDTO.getMatriculePlanteurActivite());
-        saveInscriptionEntity.setLieuPlanteurActivite(inscriptionDTO.getLieuPlanteurActivite());
+        saveInscriptionEntity.setLieuPlanteurActivite(inscriptionDTO.getLieuPlanteurActivite().toUpperCase());
         saveInscriptionEntity.setAnneePlanteurActivite(inscriptionDTO.getAnneePlanteurActivite());
         saveInscriptionEntity.setContactPlanteurActivite(inscriptionDTO.getContactPlanteurActivite());
 
@@ -147,6 +147,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setCampagne(campagneEntity);
 
         // candidat
+        candidatEntity.setNomCandidat(candidatEntity.getNomCandidat().toUpperCase());
+        candidatEntity.setPrenomsCandidat(candidatEntity.getPrenomsCandidat().toUpperCase());
+        candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase());
         CandidatEntity saveCandidat = candidatRepository.saveAndFlush(candidatEntity);
         if (saveCandidat == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
@@ -202,23 +205,23 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setTypeFormation(inscriptionEntity.getTypeFormation());
         inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation());
         inscriptionTrouver.setTypeSaigneFormation(inscriptionEntity.getTypeSaigneFormation());
-        inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation());
+        inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation().toUpperCase());
         inscriptionTrouver.setMatriculePlanteurFormation(inscriptionEntity.getMatriculePlanteurFormation());
-        inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation());
+        inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation().toUpperCase());
         inscriptionTrouver.setAnneePlanteurFormation(inscriptionEntity.getAnneePlanteurFormation());
         inscriptionTrouver.setContactPlanteurFormation(inscriptionEntity.getContactPlanteurFormation());
 
         inscriptionTrouver.setPropositionEmploi(inscriptionEntity.getPropositionEmploi());
-        inscriptionTrouver.setNomPlanteurEmploi(inscriptionEntity.getNomPlanteurEmploi());
+        inscriptionTrouver.setNomPlanteurEmploi(inscriptionEntity.getNomPlanteurEmploi().toUpperCase());
         inscriptionTrouver.setMatriculePlanteurEmploi(inscriptionEntity.getMatriculePlanteurEmploi());
-        inscriptionTrouver.setLieuPlanteurEmploi(inscriptionEntity.getLieuPlanteurEmploi());
+        inscriptionTrouver.setLieuPlanteurEmploi(inscriptionEntity.getLieuPlanteurEmploi().toUpperCase());
         inscriptionTrouver.setAnneePlanteurEmploi(inscriptionEntity.getAnneePlanteurEmploi());
         inscriptionTrouver.setContactPlanteurEmploi(inscriptionEntity.getContactPlanteurEmploi());
 
         inscriptionTrouver.setIsActivite(inscriptionEntity.getIsActivite());
-        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite());
+        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite().toUpperCase());
         inscriptionTrouver.setMatriculePlanteurActivite(inscriptionEntity.getMatriculePlanteurActivite());
-        inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite());
+        inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite().toUpperCase());
         inscriptionTrouver.setAnneePlanteurActivite(inscriptionEntity.getAnneePlanteurActivite());
         inscriptionTrouver.setContactPlanteurActivite(inscriptionEntity.getContactPlanteurActivite());
 
@@ -229,6 +232,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setCampagne(inscriptionEntity.getCampagne());
 
         // candidat
+        inscriptionEntity.getCandidat().setNomCandidat(inscriptionEntity.getCandidat().getNomCandidat().toUpperCase());
+        inscriptionEntity.getCandidat().setPrenomsCandidat(inscriptionEntity.getCandidat().getPrenomsCandidat().toUpperCase());
+        inscriptionEntity.getCandidat().setLieuNaisCandidat(inscriptionEntity.getCandidat().getLieuNaisCandidat().toUpperCase());
         CandidatEntity updateCandidat = candidatRepository.saveAndFlush(inscriptionEntity.getCandidat());
         if (updateCandidat == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");

@@ -81,6 +81,7 @@ public class CampagneServiceImpl implements CampagneService {
             campagneEntity.setActiveCampagne(true);
         }
 
+        campagneEntity.setLibelleCampagne(campagneEntity.getLibelleCampagne().toUpperCase());
         CampagneEntity campagneSave = campagneRepository.save(campagneEntity);
         if (campagneSave == null)
             throw new RuntimeException("Une erreur est survenu lors de la sauvegarde de la campagne.");
@@ -106,10 +107,10 @@ public class CampagneServiceImpl implements CampagneService {
                 campagneRepository.save(campagneActivated);
 
                 campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
-                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne().toUpperCase());
             } else {
                 campagneTrouver.setActiveCampagne(campagneEntity.getActiveCampagne());
-                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne());
+                campagneTrouver.setLibelleCampagne(campagneEntity.getLibelleCampagne().toUpperCase());
             }
         }
 
