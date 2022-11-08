@@ -147,9 +147,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setCampagne(campagneEntity);
 
         // candidat
-        candidatEntity.setNomCandidat(candidatEntity.getNomCandidat().toUpperCase());
-        candidatEntity.setPrenomsCandidat(candidatEntity.getPrenomsCandidat().toUpperCase());
-        candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase());
+//        candidatEntity.setNomCandidat(candidatEntity.getNomCandidat().toUpperCase());
+//        candidatEntity.setPrenomsCandidat(candidatEntity.getPrenomsCandidat().toUpperCase());
+//        candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase());
         CandidatEntity saveCandidat = candidatRepository.saveAndFlush(candidatEntity);
         if (saveCandidat == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
