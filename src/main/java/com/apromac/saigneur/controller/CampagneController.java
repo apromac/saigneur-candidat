@@ -71,5 +71,16 @@ public class CampagneController {
         return new ResponseEntity<>(campagneUpdate, HttpStatus.OK);
     }
 
+
+    @ApiOperation(value = "Méthode permettant de supprimer une campagne grace à son ID")
+    @DeleteMapping(value = "/campagne/{campagneID}")
+    public ResponseEntity<Void> supprimerUneCampagne(@PathVariable Long campagneID) {
+        CampagneEntity campagneTrouver = campagneService.findByCampagneID(campagneID);
+
+        campagneService.deleteCampagne(campagneTrouver);
+
+        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+    }
+
 }
 

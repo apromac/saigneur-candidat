@@ -40,5 +40,11 @@ public interface CampagneService {
      */
     public CampagneEntity updateCampagne(CampagneEntity campagneTrouver, CampagneEntity campagneEntity);
 
+    /**
+     * Methode permetant de supprimer une campagne grace à son ID
+     * @param campagneEntity
+     */
+    public void deleteCampagne(CampagneEntity campagneEntity);
+
 }
 

@@ -152,5 +152,14 @@ public class CampagneServiceImpl implements CampagneService {
         return campagneActives;
     }
 
+
+    /**
+     * Methode permettant de supprimer une campagne grace à un objet CampagneEntity
+     * @param campagneEntity
+     */
+    public void deleteCampagne(CampagneEntity campagneEntity) {
+        campagneRepository.delete(campagneEntity);
+    }
+
 }
 
