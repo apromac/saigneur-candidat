@@ -108,8 +108,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
 
         saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
-//        saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
-        saveInscriptionEntity.setDateInscription(null);
+        saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
         saveInscriptionEntity.setDistanceInscription(inscriptionDTO.getDistanceInscription());
