@@ -147,9 +147,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setCampagne(campagneEntity);
 
         // candidat
-//        candidatEntity.setNomCandidat(candidatEntity.getNomCandidat().toUpperCase());
-//        candidatEntity.setPrenomsCandidat(candidatEntity.getPrenomsCandidat().toUpperCase());
-//        candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase());
+        candidatEntity.setNomCandidat(candidatEntity.getNomCandidat().toUpperCase().trim());
+        candidatEntity.setPrenomsCandidat(candidatEntity.getPrenomsCandidat().toUpperCase().trim());
+        candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase().trim());
         CandidatEntity saveCandidat = candidatRepository.saveAndFlush(candidatEntity);
         if (saveCandidat == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
@@ -219,7 +219,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setContactPlanteurEmploi(inscriptionEntity.getContactPlanteurEmploi());
 
         inscriptionTrouver.setIsActivite(inscriptionEntity.getIsActivite());
-        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite().toUpperCase());
+        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite().toUpperCase().trim());
         inscriptionTrouver.setMatriculePlanteurActivite(inscriptionEntity.getMatriculePlanteurActivite());
         inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite().toUpperCase());
         inscriptionTrouver.setAnneePlanteurActivite(inscriptionEntity.getAnneePlanteurActivite());
@@ -232,9 +232,9 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setCampagne(inscriptionEntity.getCampagne());
 
         // candidat
-        inscriptionEntity.getCandidat().setNomCandidat(inscriptionEntity.getCandidat().getNomCandidat().toUpperCase());
-        inscriptionEntity.getCandidat().setPrenomsCandidat(inscriptionEntity.getCandidat().getPrenomsCandidat().toUpperCase());
-        inscriptionEntity.getCandidat().setLieuNaisCandidat(inscriptionEntity.getCandidat().getLieuNaisCandidat().toUpperCase());
+        inscriptionEntity.getCandidat().setNomCandidat(inscriptionEntity.getCandidat().getNomCandidat().toUpperCase().trim());
+        inscriptionEntity.getCandidat().setPrenomsCandidat(inscriptionEntity.getCandidat().getPrenomsCandidat().toUpperCase().trim());
+        inscriptionEntity.getCandidat().setLieuNaisCandidat(inscriptionEntity.getCandidat().getLieuNaisCandidat().toUpperCase().trim());
         CandidatEntity updateCandidat = candidatRepository.saveAndFlush(inscriptionEntity.getCandidat());
         if (updateCandidat == null)
             throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
@@ -336,6 +336,17 @@ public class InscriptionServiceImpl implements InscriptionService {
             throw new NoContentException("Désolé, nous avons rencontré un problème lors de la mise à jour des entités.");
 
         return inscriptionUpdate;
+    }
+
+
+    /**
+     *
+     * @param inscriptionEntity
+     * @return
+     */
+    @Override
+    public void deleteInscription(InscriptionEntity inscriptionEntity) {
+        inscriptionRepository.delete(inscriptionEntity);
     }
 
 

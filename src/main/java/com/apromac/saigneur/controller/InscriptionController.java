@@ -55,13 +55,23 @@ public class InscriptionController {
                                                                     @PathVariable Long inscriptionID) {
         InscriptionEntity inscriptionTrouver = inscriptionService.findByInscriptionID(inscriptionID);
 
-
         InscriptionEntity updateInscription = inscriptionService.updateInscription(inscriptionTrouver, inscriptionEntity);
 
         return new ResponseEntity<>(updateInscription, HttpStatus.OK);
     }
 
 
+
+
+    @ApiOperation(value = "Méthode permettant de supprimer une inscription de candidat d'une campagne grace à l'ID de" +
+            "l'inscription et un objet inscription")
+    @DeleteMapping(value = "/inscription/{inscriptionID}")
+    public ResponseEntity<Void> modifierUneInscription(@PathVariable Long inscriptionID) {
+        InscriptionEntity inscriptionTrouver = inscriptionService.findByInscriptionID(inscriptionID);
+
+        inscriptionService.deleteInscription(inscriptionTrouver);
+        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+    }
 
 
 

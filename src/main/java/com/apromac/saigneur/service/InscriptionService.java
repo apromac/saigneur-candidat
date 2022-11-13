@@ -87,6 +87,13 @@ public interface InscriptionService {
     public InscriptionEntity findByRetenusInscriptionID(Long inscriptionID, Boolean isRetenus);
 
 
+    /**
+     * Méthode permettant de supprimer une inscription de candidat
+     * @param inscriptionEntity
+     * @return
+     */
+    public void deleteInscription(InscriptionEntity inscriptionEntity);
+
 
     /******************************************************************************************************************/
     /**                                         IMPLEMENTATION PARTIE MOBILE                                         **/
