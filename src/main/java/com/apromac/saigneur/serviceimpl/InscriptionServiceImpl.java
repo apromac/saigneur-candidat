@@ -119,25 +119,25 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setAnneeFormation(inscriptionDTO.getAnneeFormation());
         saveInscriptionEntity.setIsAppliquer(inscriptionDTO.getIsAppliquer());
         saveInscriptionEntity.setTypeFormation(inscriptionDTO.getTypeFormation());
-        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation().toUpperCase());
+        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
         saveInscriptionEntity.setTypeSaigneFormation(inscriptionDTO.getTypeSaigneFormation());
-        saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation().toUpperCase());
+        saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation());
         saveInscriptionEntity.setMatriculePlanteurFormation(inscriptionDTO.getMatriculePlanteurFormation());
         saveInscriptionEntity.setLieuPlanteurFormation(inscriptionDTO.getLieuPlanteurFormation());
         saveInscriptionEntity.setAnneePlanteurFormation(inscriptionDTO.getAnneePlanteurFormation());
         saveInscriptionEntity.setContactPlanteurFormation(inscriptionDTO.getContactPlanteurFormation());
 
         saveInscriptionEntity.setPropositionEmploi(inscriptionDTO.getPropositionEmploi());
-        saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi().toUpperCase());
+        saveInscriptionEntity.setNomPlanteurEmploi(inscriptionDTO.getNomPlanteurEmploi());
         saveInscriptionEntity.setMatriculePlanteurEmploi(inscriptionDTO.getMatriculePlanteurEmploi());
-        saveInscriptionEntity.setLieuPlanteurEmploi(inscriptionDTO.getLieuPlanteurEmploi().toUpperCase());
+        saveInscriptionEntity.setLieuPlanteurEmploi(inscriptionDTO.getLieuPlanteurEmploi());
         saveInscriptionEntity.setAnneePlanteurEmploi(inscriptionDTO.getAnneePlanteurEmploi());
         saveInscriptionEntity.setContactPlanteurEmploi(inscriptionDTO.getContactPlanteurEmploi());
 
         saveInscriptionEntity.setIsActivite(inscriptionDTO.getIsActivite());
-        saveInscriptionEntity.setNomPlanteurActivite(inscriptionDTO.getNomPlanteurActivite().toUpperCase());
+        saveInscriptionEntity.setNomPlanteurActivite(inscriptionDTO.getNomPlanteurActivite());
         saveInscriptionEntity.setMatriculePlanteurActivite(inscriptionDTO.getMatriculePlanteurActivite());
-        saveInscriptionEntity.setLieuPlanteurActivite(inscriptionDTO.getLieuPlanteurActivite().toUpperCase());
+        saveInscriptionEntity.setLieuPlanteurActivite(inscriptionDTO.getLieuPlanteurActivite());
         saveInscriptionEntity.setAnneePlanteurActivite(inscriptionDTO.getAnneePlanteurActivite());
         saveInscriptionEntity.setContactPlanteurActivite(inscriptionDTO.getContactPlanteurActivite());
 
