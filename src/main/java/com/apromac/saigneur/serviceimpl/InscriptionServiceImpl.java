@@ -207,7 +207,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setTypeSaigneFormation(inscriptionEntity.getTypeSaigneFormation());
         inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation());
         inscriptionTrouver.setMatriculePlanteurFormation(inscriptionEntity.getMatriculePlanteurFormation());
-        inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation().toUpperCase());
+        inscriptionTrouver.setLieuPlanteurFormation(inscriptionEntity.getLieuPlanteurFormation());
         inscriptionTrouver.setAnneePlanteurFormation(inscriptionEntity.getAnneePlanteurFormation());
         inscriptionTrouver.setContactPlanteurFormation(inscriptionEntity.getContactPlanteurFormation());
 
