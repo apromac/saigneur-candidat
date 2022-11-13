@@ -108,7 +108,8 @@ public class InscriptionServiceImpl implements InscriptionService {
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
 
         saveInscriptionEntity.setInscriptionID(inscriptionDTO.getInscriptionID());
-        saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
+//        saveInscriptionEntity.setDateInscription(inscriptionDTO.getDateInscription());
+        saveInscriptionEntity.setDateInscription(null);
         saveInscriptionEntity.setDistrictInscription(inscriptionDTO.getDistrictInscription());
         saveInscriptionEntity.setZoneInscription(inscriptionDTO.getZoneInscription());
         saveInscriptionEntity.setDistanceInscription(inscriptionDTO.getDistanceInscription());
@@ -118,11 +119,11 @@ public class InscriptionServiceImpl implements InscriptionService {
         saveInscriptionEntity.setAnneeFormation(inscriptionDTO.getAnneeFormation());
         saveInscriptionEntity.setIsAppliquer(inscriptionDTO.getIsAppliquer());
         saveInscriptionEntity.setTypeFormation(inscriptionDTO.getTypeFormation());
-        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation());
+        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation().toUpperCase());
         saveInscriptionEntity.setTypeSaigneFormation(inscriptionDTO.getTypeSaigneFormation());
         saveInscriptionEntity.setNomPlanteurFormation(inscriptionDTO.getNomPlanteurFormation().toUpperCase());
         saveInscriptionEntity.setMatriculePlanteurFormation(inscriptionDTO.getMatriculePlanteurFormation());
-        saveInscriptionEntity.setLieuFormation(inscriptionDTO.getLieuFormation().toUpperCase());
+        saveInscriptionEntity.setLieuPlanteurFormation(inscriptionDTO.getLieuPlanteurFormation());
         saveInscriptionEntity.setAnneePlanteurFormation(inscriptionDTO.getAnneePlanteurFormation());
         saveInscriptionEntity.setContactPlanteurFormation(inscriptionDTO.getContactPlanteurFormation());
 
