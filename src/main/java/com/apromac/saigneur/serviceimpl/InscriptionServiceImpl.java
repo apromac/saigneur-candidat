@@ -205,23 +205,23 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionTrouver.setTypeFormation(inscriptionEntity.getTypeFormation());
         inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation());
         inscriptionTrouver.setTypeSaigneFormation(inscriptionEntity.getTypeSaigneFormation());
-        inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation().toUpperCase());
+        inscriptionTrouver.setNomPlanteurFormation(inscriptionEntity.getNomPlanteurFormation());
         inscriptionTrouver.setMatriculePlanteurFormation(inscriptionEntity.getMatriculePlanteurFormation());
         inscriptionTrouver.setLieuFormation(inscriptionEntity.getLieuFormation().toUpperCase());
         inscriptionTrouver.setAnneePlanteurFormation(inscriptionEntity.getAnneePlanteurFormation());
         inscriptionTrouver.setContactPlanteurFormation(inscriptionEntity.getContactPlanteurFormation());
 
         inscriptionTrouver.setPropositionEmploi(inscriptionEntity.getPropositionEmploi());
-        inscriptionTrouver.setNomPlanteurEmploi(inscriptionEntity.getNomPlanteurEmploi().toUpperCase());
+        inscriptionTrouver.setNomPlanteurEmploi(inscriptionEntity.getNomPlanteurEmploi());
         inscriptionTrouver.setMatriculePlanteurEmploi(inscriptionEntity.getMatriculePlanteurEmploi());
-        inscriptionTrouver.setLieuPlanteurEmploi(inscriptionEntity.getLieuPlanteurEmploi().toUpperCase());
+        inscriptionTrouver.setLieuPlanteurEmploi(inscriptionEntity.getLieuPlanteurEmploi());
         inscriptionTrouver.setAnneePlanteurEmploi(inscriptionEntity.getAnneePlanteurEmploi());
         inscriptionTrouver.setContactPlanteurEmploi(inscriptionEntity.getContactPlanteurEmploi());
 
         inscriptionTrouver.setIsActivite(inscriptionEntity.getIsActivite());
-        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite().toUpperCase().trim());
+        inscriptionTrouver.setNomPlanteurActivite(inscriptionEntity.getNomPlanteurActivite());
         inscriptionTrouver.setMatriculePlanteurActivite(inscriptionEntity.getMatriculePlanteurActivite());
-        inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite().toUpperCase());
+        inscriptionTrouver.setLieuPlanteurActivite(inscriptionEntity.getLieuPlanteurActivite());
         inscriptionTrouver.setAnneePlanteurActivite(inscriptionEntity.getAnneePlanteurActivite());
         inscriptionTrouver.setContactPlanteurActivite(inscriptionEntity.getContactPlanteurActivite());
 
