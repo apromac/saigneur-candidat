@@ -62,7 +62,6 @@ public class InscriptionController {
 
 
 
-
     @ApiOperation(value = "Méthode permettant de supprimer une inscription de candidat d'une campagne grace à l'ID de" +
             "l'inscription et un objet inscription")
     @DeleteMapping(value = "/inscription/{inscriptionID}")
@@ -70,6 +69,7 @@ public class InscriptionController {
         InscriptionEntity inscriptionTrouver = inscriptionService.findByInscriptionID(inscriptionID);
 
         inscriptionService.deleteInscription(inscriptionTrouver);
+
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
@@ -107,6 +107,7 @@ public class InscriptionController {
     }
 
 
+
     /******************************************************************************************************************/
     /**                                        IMPLEMENTATION DE LA PARTIE MOBILE                                    **/
     /******************************************************************************************************************/
@@ -132,6 +133,14 @@ public class InscriptionController {
 //    }
 
 }
+
+
+
+
+
+
+
+
 
 
 

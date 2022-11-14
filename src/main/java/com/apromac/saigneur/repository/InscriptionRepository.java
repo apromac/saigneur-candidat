@@ -12,10 +12,11 @@ public interface InscriptionRepository extends JpaRepository<InscriptionEntity, 
     List<InscriptionEntity> findByCampagneAndStatutAndDistrictInscription(CampagneEntity campagneEntity, Integer statutCandidat, String districtCandidat);
     List<InscriptionEntity> findByCampagneAndStatut(CampagneEntity campagneEntity, Integer statutCandidat);
     List<InscriptionEntity> findByStatutAndZoneInscriptionAndIsInterviewerFalse(Integer statutCandidat, String zoneCandidat);
+    List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity);
 }
 
 //
-//    List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity);
+//
 //    InscriptionEntity findByCandidatAndCampagne(CandidatEntity candidatEntity, CampagneEntity campagneEntity);
 //    List<InscriptionEntity> findByCampagneAndStatut(CampagneEntity campagneEntity, Integer statutCandidat);
 //

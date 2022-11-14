@@ -95,6 +95,14 @@ public interface InscriptionService {
     public void deleteInscription(InscriptionEntity inscriptionEntity);
 
 
+    /**
+     * Methode permettant de récupérer la liste des inscriptions d'une campagne
+     * @param campagneEntity
+     * @return
+     */
+    public List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity);
+
+
     /******************************************************************************************************************/
     /**                                         IMPLEMENTATION PARTIE MOBILE                                         **/
     /******************************************************************************************************************/

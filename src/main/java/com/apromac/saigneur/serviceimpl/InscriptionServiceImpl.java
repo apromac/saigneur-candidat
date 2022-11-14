@@ -6,6 +6,7 @@ import com.apromac.saigneur.entity.CampagneEntity;
 import com.apromac.saigneur.entity.CandidatEntity;
 import com.apromac.saigneur.entity.InscriptionEntity;
 import com.apromac.saigneur.exception.NoContentException;
+import com.apromac.saigneur.exception.NotAcceptableException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.CampagneRepository;
 import com.apromac.saigneur.repository.CandidatRepository;
@@ -99,10 +100,10 @@ public class InscriptionServiceImpl implements InscriptionService {
                                                              InscriptionDTO inscriptionDTO) {
 
         if (candidatEntity == null)
-            throw new RuntimeException("Désolé, nous avons rencontré une erreur lors de la récupérations des informations du candidat");
+            throw new RuntimeException("Désolé, nous avons rencontré une erreur lors de la récupérations des informations du candidat.");
 
         if (inscriptionDTO == null)
-            throw new RuntimeException("Désolé, une erreur c'est produite lors de la récupération des informations de l'inscription");
+            throw new RuntimeException("Désolé, une erreur c'est produite lors de la récupération des informations de l'inscription.");
 
 
         InscriptionEntity saveInscriptionEntity = new InscriptionEntity();
@@ -152,14 +153,14 @@ public class InscriptionServiceImpl implements InscriptionService {
         candidatEntity.setLieuNaisCandidat(candidatEntity.getLieuNaisCandidat().toUpperCase().trim());
         CandidatEntity saveCandidat = candidatRepository.saveAndFlush(candidatEntity);
         if (saveCandidat == null)
-            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
+            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat.");
 
         saveInscriptionEntity.setCandidat(saveCandidat);
 
         // sauvegarde de l'inscription
         InscriptionEntity saveInscription = inscriptionRepository.save(saveInscriptionEntity);
         if (saveInscription == null)
-            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat");
+            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat.");
 
         return saveInscription;
     }
@@ -237,14 +238,14 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionEntity.getCandidat().setLieuNaisCandidat(inscriptionEntity.getCandidat().getLieuNaisCandidat().toUpperCase().trim());
         CandidatEntity updateCandidat = candidatRepository.saveAndFlush(inscriptionEntity.getCandidat());
         if (updateCandidat == null)
-            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat");
+            throw new RuntimeException("Désolé, une erreur est survenue lors de la sauvegarde des informations relatives à ce candidat.");
 
         inscriptionTrouver.setCandidat(updateCandidat);
 
         // sauvegarde des modifications de l'inscription
         InscriptionEntity updateInscription = inscriptionRepository.saveAndFlush(inscriptionTrouver);
         if (updateInscription == null)
-            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat");
+            throw new RuntimeException("Désolé, nous avons rencontrés une erreur lors de la sauvegarde des informations relatives à l'inscription du candidat.");
 
         return updateInscription;
     }
@@ -262,7 +263,7 @@ public class InscriptionServiceImpl implements InscriptionService {
     public InscriptionEntity findBySelectionInscriptionID(Long inscriptionID, Boolean isSelect) {
         Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
         if (!inscriptionOptional.isPresent())
-            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
+            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable.");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
 
@@ -321,7 +322,7 @@ public class InscriptionServiceImpl implements InscriptionService {
     public InscriptionEntity findByRetenusInscriptionID(Long inscriptionID, Boolean isRetenus) {
         Optional<InscriptionEntity> inscriptionOptional = inscriptionRepository.findById(inscriptionID);
         if (!inscriptionOptional.isPresent())
-            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable");
+            throw new RuntimeException("Désolé, l'inscription recherchée est introuvable.");
 
         InscriptionEntity inscriptionEntity = inscriptionOptional.get();
 
@@ -340,14 +341,35 @@ public class InscriptionServiceImpl implements InscriptionService {
 
 
     /**
+     * Methode permettant de récupérer la liste des inscriptions d'une campagne
+     * @param campagneEntity
+     * @return
+     */
+    @Override
+    public List<InscriptionEntity> findByCampagne(CampagneEntity campagneEntity) {
+        List<InscriptionEntity> inscriptions = inscriptionRepository.findByCampagne(campagneEntity);
+        if (inscriptions.isEmpty())
+            throw new NoContentException("");
+
+        return inscriptions;
+    }
+
+
+
+    /**
      *
      * @param inscriptionEntity
      * @return
      */
     @Override
     public void deleteInscription(InscriptionEntity inscriptionEntity) {
-        inscriptionRepository.delete(inscriptionEntity);
+        if (inscriptionEntity.getStatut() == 0) {
+            inscriptionRepository.delete(inscriptionEntity);
+        } else {
+            throw new NotAcceptableException("Désolé, cette inscription ne peut être supprimée car elle est rattachée à une autre entité.");
+        }
     }
+
 
 
 
