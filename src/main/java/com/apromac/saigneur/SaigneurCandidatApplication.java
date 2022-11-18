@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableDiscoveryClient
 //@EnableEurekaClient
 @EnableFeignClients("com.apromac.saigneur")
-@EnableWebMvc
 public class SaigneurCandidatApplication {
 
 	public static void main(String[] args) {
